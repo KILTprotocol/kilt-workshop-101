@@ -1,35 +1,47 @@
 # Verification
 
-Open up a new file `4-verification.js`
+In this section, we will take an *AttestedClaim* object from the exchange and verify it.
 
+## Preparation
+Open up a new file `4-verification.js`.
+All the following code needs to go into this file.
+
+## Imports
 The following imports will be necessary for this section:
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 ```
 
-Convert AttestedClaim as JSON to Kilt.AttestedClaim object
+## Take AttestedClaim object
+Choose an *AttestedClaim* object from the exchange and paste it here.
+This will convert the JSON object to a Kilt.AttestedClaim object
 ```javascript
 const attestedClaimAsJson = '[ATTESTEDCLAIM JSON OBJECT]'
 const attestedClaimObj = JSON.parse(attestedClaimAsJson)
 const attestedClaim = Kilt.AttestedClaim.fromObject(attestedClaimObj)
 ```
 
-Verify data against ctype
+## Verify data
+You can verify the included data against the included ctype:
 ```javascript
 const isDataVerified = attestedClaim.verifyData()
 console.log('isDataVerified', isDataVerified)
 ```
 
-Connect to the blockchain.
+## Verify on-chain
+Before you can verify the *Attestation* in the *AttestedClaim* on-chain, you have to connect to the blockchain.
 ```javascript
 Kilt.default.connect('wss://full-nodes.kilt.io')
 ```
 
-Verify, that the included attestation is on-chain.
+To verify, that the included attestation is on-chain, you can write following code:
 ```javascript
 attestedClaim.verify().then(data => {
   console.log('isVerified', data)
 })
 ```
 
-
+Execute the file with
+```bash
+node 4-verification.js
+```

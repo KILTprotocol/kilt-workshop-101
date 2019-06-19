@@ -1,7 +1,12 @@
 # Claim
 
-Open up a new file `2-claim.js`
+In this section we will create a *Claim* and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it.
 
+## Preparation
+Open up a new file `2-claim.js`.
+All the following code needs to go into this file.
+
+## Imports
 The following imports will be necessary for this section:
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
@@ -16,7 +21,8 @@ const mnemonic = "[YOUR MNEMONIC]"
 const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 ```
 
-## Create a claim based on the provided ctype and using the claimer identity
+## Create a claim
+We create a claim based on the provided ctype and using the claimer identity.
 
 ```javascript
 const rawClaim = {
@@ -27,7 +33,8 @@ const rawClaim = {
 const claim = new Kilt.Claim(ctype, rawClaim, claimer)
 ```
 
-## Build the RequestForAttestation object, which will be send to a potential attester
+## Create the RequestForAttestation object 
+Here we will build the RequestForAttestation object, which will be send to a potential attester
 
 ```javascript
 const requestForAttestation = new Kilt.RequestForAttestation(claim, [], claimer)

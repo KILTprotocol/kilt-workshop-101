@@ -1,6 +1,7 @@
 
 - [Welcome](/)
 - [Prerequirements](0-prerequirements.md)
+- [Ctype](0-ctype.md)
 - [Identity](1-identity.md)
 - [Claim](2-claim.md)
 - [Attestation](3-attestation.md)
