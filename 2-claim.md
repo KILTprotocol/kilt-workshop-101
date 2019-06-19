@@ -41,7 +41,7 @@ const requestForAttestation = new Kilt.RequestForAttestation(claim, [], claimer)
 ```
 
 > Since the KILT-SDK relies on a 1:1 messaging system, we have to exchange our requests without it.
-> Just log out your RequestForAttestation object and paste it in the exchange interface.
+> Just log out your RequestForAttestation object and paste it in the exchange (https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
 
 ```javascript
 console.log(JSON.stringify(requestForAttestation))
