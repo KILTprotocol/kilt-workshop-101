@@ -9,5 +9,6 @@ You also need to make a new folder, e.g. `kilt-sbhack-workshop` and navigate int
 ## Install SDK
 Install the KILT-SDK with
 ```bash
+npm init
 npm install @kiltprotocol/sdk-js
 ```
