@@ -13,7 +13,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 ```
 
 ## Take AttestedClaim object
-Choose an *AttestedClaim* object from the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit) and paste it here.
+Get an *AttestedClaim* object from a participant directly or from the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit) and paste it here.
 This will convert the JSON object to a Kilt.AttestedClaim object
 ```javascript
 const attestedClaimAsJson = '[ATTESTEDCLAIM JSON OBJECT]'

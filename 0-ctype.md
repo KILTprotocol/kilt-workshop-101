@@ -8,7 +8,7 @@ Create a file `ctype.json` with following content:
 ```json
 {
   "schema": {
-    "$id": "SBHACK_KILT_WORKSHOP_ATTENDED",
+    "$id": "KILT_WORKSHOP_ATTENDED",
     "$schema": "http://kilt-protocol.org/draft-01/ctype#",
     "properties": {
       "name": {
@@ -22,7 +22,7 @@ Create a file `ctype.json` with following content:
   },
   "metadata": {
     "title": {
-      "default": "SBHACK KILT Workshop Attended"
+      "default": "KILT Workshop Attended"
     },
     "description": {
       "default": ""

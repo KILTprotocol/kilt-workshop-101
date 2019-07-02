@@ -23,3 +23,5 @@ Example output:
 mnemonic: gold upset segment cake universe carry demand comfort dawn invite element capital
 address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
 ```
+
+You will need this output in the next sections.

@@ -40,8 +40,7 @@ Here we will build the RequestForAttestation object, which will be send to a pot
 const requestForAttestation = new Kilt.RequestForAttestation(claim, [], claimer)
 ```
 
-> Since the KILT-SDK relies on a 1:1 messaging system, we have to exchange our requests without it.
-> Just log out your RequestForAttestation object and paste it in the exchange (https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+We will just log it out, to copy/paste it and send it to a fellow participant.
 
 ```javascript
 console.log(JSON.stringify(requestForAttestation))
@@ -51,3 +50,7 @@ Execute the file with
 ```bash
 node 2-claim.js
 ```
+
+> Since the KILT-SDK relies on a 1:1 messaging system, we have to exchange our requests without it.
+> Just log out your RequestForAttestation object and paste it in the exchange (https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).  
+> You can also send it via mail or another messaging system to a fellow participant.

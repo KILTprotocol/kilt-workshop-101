@@ -1,6 +1,6 @@
-# SBHACK KILT Workshop
+# KILT Workshop
 
-Welcome to the KILT Workshop
+KILT Workshop
 
 In this workshop you will learn 
 - how to setup the KILT-SDK

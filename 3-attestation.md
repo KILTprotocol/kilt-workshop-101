@@ -24,7 +24,7 @@ const attester = Kilt.Identity.buildFromMnemonic('[YOUR MNEMONIC]')
 ```
 
 ## Take RequestForAttestation object
-Select a RequestForAttestation from the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit) and paste it here.
+Get a RequestForAttestation from a fellow participant (if not sent directly, you can look at the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit) and select one there) and paste it here.
 ```javascript
 const requestForAttestationAsJson = '[THE JSON OBJECT]'
 const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
@@ -72,7 +72,7 @@ attestation.store(attester).then(data => {
 ```
 
 ## Create AttestedClaim
-After the attestation was successfully stored on the chain, we can create the *AttestedClaim* object and put it back to the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+After the attestation was successfully stored on the chain, we can create the *AttestedClaim* object and send it back to the fellow particiapnt or put it back to the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
 
 ```javascript
 // The AttestedClaim object is the one sent back to the claimer.
