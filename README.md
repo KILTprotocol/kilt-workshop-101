@@ -1,7 +1,5 @@
 # KILT Workshop
 
-KILT Workshop
-
 In this workshop you will learn 
 - how to setup the KILT-SDK
 - how to build identities
