@@ -31,7 +31,7 @@ console.log('isDataVerified', isDataVerified)
 ## Verify on-chain
 Before you can verify the *Attestation* in the *AttestedClaim* on-chain, you have to connect to the blockchain.
 ```javascript
-Kilt.default.connect('wss://full-nodes.kilt.io')
+Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 ```
 
 To verify, that the included attestation is on-chain, you can write following code:
