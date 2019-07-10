@@ -48,7 +48,7 @@ const attestation = new Kilt.Attestation(requestForAttestation, attester)
 ```
 
 The attestation can now be stored on the blockchain.
-To do that, we first have to connect to the it.
+To do that, we first have to connect to it.
 ```javascript
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 ```
@@ -72,7 +72,7 @@ attestation.store(attester).then(data => {
 ```
 
 ## Create AttestedClaim
-After the attestation was successfully stored on the chain, we can create the *AttestedClaim* object and send it back to the fellow particiapnt or put it back to the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+After the attestation was successfully stored on the chain, we can create the *AttestedClaim* object and send it back to the fellow participant or put it back to the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
 
 ```javascript
 // The AttestedClaim object is the one sent back to the claimer.
