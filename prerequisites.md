@@ -1,4 +1,4 @@
-# Prerequirements
+# Prerequisites
 
 ## Node.js
 You need to have [Node.js](https://nodejs.org/) installed.   

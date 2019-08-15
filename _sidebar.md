@@ -1,11 +1,10 @@
 
-- [Welcome](/)
-- [Prerequirements](0-prerequirements.md)
-- [Ctype](0-ctype.md)
-- [Identity](1-identity.md)
-- [Claim](2-claim.md)
-- [Attestation](3-attestation.md)
-- [Verification](4-verification.md)
-
+- [0. Welcome](/)
+- [1. Prerequisites](prerequisites.md)
+- [2. Ctype](0-ctype.md)
+- [3. Identity](1-identity.md)
+- [4. Claim](2-claim.md)
+- [5. Attestation](3-attestation.md)
+- [6. Verification](4-verification.md) 
 - [SDK on GitHub](https://github.com/KILTprotocol/sdk-js)
 - [Node on GitHub](https://github.com/KILTprotocol/mashnet-node)
