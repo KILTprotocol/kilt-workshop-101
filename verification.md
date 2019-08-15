@@ -1,4 +1,4 @@
-# Verification
+# ✅ Verification
 
 In this section, we will take an *AttestedClaim* object from the exchange and verify it.
 

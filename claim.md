@@ -1,4 +1,4 @@
-# Claim
+# 💬 Claim
 
 In this section we will create a *Claim* and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it.
 

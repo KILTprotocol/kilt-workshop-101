@@ -1,4 +1,4 @@
-# Attestation
+# 🔖 Attestation
 
 In this section, we will take a *RequestForAttestation* object, attest it, store the attest on the chain and build the *AttestedClaim* object, which will be send back to the claimer.
 

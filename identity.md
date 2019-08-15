@@ -1,4 +1,4 @@
-# Identity
+# 👤 Identity
 
 To build an Identity, you first have to generate a mnemonic for it.
 
