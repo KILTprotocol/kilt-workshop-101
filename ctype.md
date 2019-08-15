@@ -1,7 +1,3 @@
-Before a user can make a Claim, two things are needed:  
-* 👤 an Identity // so that the Claim can be associated with this user
-* 💠 a Claim Type (CTYPE for short) // to create the Claim with a given structure.   
-
 # 💠 CTYPE 
 
 CTYPE is a KILT-specific term, but the concept is simple: a CTYPE defines what the structure of a Claim must be.  
@@ -38,10 +34,12 @@ But in this tutorial, we want to keep it simple.
 We'll just use a CTYPE that we already know exists on our blockchain.  
 
 
-## Hands-on time
+## Code
 
-Create a file `ctype.json` with following content:  
-We'll then use it later in the tutorial to crate a claim. 
+Create a file `ctype.json`.  
+We'll need it later in this tutorial, in order to create a Claim and then verify it.  
+
+Paste the follwing content in `ctype.json`:
 
 ```json
 {
@@ -84,18 +82,12 @@ We'll then use it later in the tutorial to crate a claim.
 
 ```  
 
-Let's have a look at what these fields are: 
+Let's have a look at what these entries mean.   
 
-
-Key name | What it's used for 
+Key | What it is
 ---------|----------
- `schema` | B1 
- `metadata` | B2 
- A3 | B3 | C3
+ `schema` |  The actual structure a Claim should have
+ `metadata` | Metadata used to support different languages 
+ `owner` | The public address of the user who created this CTYPE 
+`hash` | Most important attribute. 
 
-
-> 💡 `metadata` is a field KILT may use in the future to support different languages.
-
-
-
-We will need it to create our claim and to verify, that the claim follows the rules of this ctype. 

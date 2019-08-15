@@ -1,8 +1,12 @@
-# KILT Workshop  
+# KILT SDK Tutorial  
 
-Welcome to the KILT tutorial!  
+Welcome, curious mind!   
 
-You will:   
+The KILT SDK...
+
+===
+
+In this tutorial, you will:   
 
 ✅ Get familiar with KILT's essential concepts and what they mean: `CTYPE`, `Claim`, `Attester`, and `Verifier`;   
 ✅ Learn how to create an Identity with the KILT-SDK;   

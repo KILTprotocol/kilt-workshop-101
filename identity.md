@@ -1,3 +1,9 @@
+Before a user can make a Claim, two things are needed:  
+* 👤 an Identity, so that the Claim can be associated with this user
+* 💠 a Claim Type (CTYPE for short), to create the Claim with based on a specific structure.   
+
+Let's start with the Identity.  
+
 # 👤 Identity
 
 To build an Identity, you first have to generate a mnemonic for it.
