@@ -6,5 +6,6 @@
 - [4. Claim](2-claim.md)
 - [5. Attestation](3-attestation.md)
 - [6. Verification](4-verification.md) 
+- [7. Done!](done.md)
 - [SDK on GitHub](https://github.com/KILTprotocol/sdk-js)
 - [Node on GitHub](https://github.com/KILTprotocol/mashnet-node)
