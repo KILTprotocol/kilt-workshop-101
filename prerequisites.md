@@ -4,11 +4,11 @@
 You need to have [Node.js](https://nodejs.org/) installed.   
 The stable (LTS) version is sufficient.
 
-## Working folder
+## Your working folder
 Create a new folder, that you can name for example `kilt-rocks`.       
 This is where we'll be doing work for the rest of this tutorial.   
 
-## Install the KILT-SDK 
+## KILT-SDK 
 Navigate into your newly created folder (`kilt-rocks`).    
  
 Install the KILT-SDK by running the following commands:  
