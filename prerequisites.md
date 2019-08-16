@@ -1,7 +1,5 @@
 # Prerequisites  
 
-A few things, before we can get started.
-
 ## Node.js
 You need to have [Node.js](https://nodejs.org/) installed.   
 The stable (LTS) version is sufficient.
