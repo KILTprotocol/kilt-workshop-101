@@ -1,9 +1,11 @@
 # 💠 CTYPE 
 
+Now that we have an identity, we only need a CTYPE before we can create a claim.  
+
 CTYPE is a KILT-specific term, but the concept is simple.  
 A CTYPE defines what the structure of a claim must be. You can think of it as the data model for your claim.   
 
-For example, a very basic CTYPE for a Driver's License could look like this: 
+For example, a very basic CTYPE for a driver's license could look like this: 
 
 ```json
 {
@@ -20,28 +22,41 @@ For example, a very basic CTYPE for a Driver's License could look like this:
     },
     "type": "object"
   },
-  ...
+  "metadata": {...},
+  "owner": "8UPfLqrqbKoKyi61YErwUrWEa1PWxikEojV7PCnLJgxrWd6W",
+  "hash": "0x081955a2b7990554f6193a9e770ea625c68d2bfc5a1ff996e6e28d2a620fae16"
 }
 
 ```
 
-> 💡 CTYPES are based on JSON Schema, a standard used to annotate and validate JSON documents. We don't need to dive into it in this tutorial, for now we can think of CTYPE as JSON objects.    
+> 💡 JSON Schema   
+> CTYPES are based on JSON Schema, a standard used to annotate and validate JSON documents. We don't need to dive into it in this tutorial, for now we can think of CTYPE as JSON objects.     
 
-A CTYPE is stored on the KILT blockchain - more exactly, a CTYPE hash is stored on the KILT blockchain. We'll look into this.  
+Let's have a look at what these attributes are.   
+
+| Key                     | Value                                                                                                                 |
+|-------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `schema` > `$id`        | The name of this CTYPE                                                                                                |
+| `schema` > `properties` | The properties that a claim of type `KILT_DRIVERS_LICENSE` should have                                                |
+| `metadata`              | Metadata used to support different languages                                                                          |
+| `owner`                 | The public address of the user who created this CTYPE                                                                 |
+| `hash`                  | Most important attribute, the hash is the CTYPE's digital footprint. It's generated from the content of the `schema`. |
+
+
+A CTYPE is stored on the KILT blockchain - more exactly, **the CTYPE's hash** is stored on the KILT blockchain.
 
 In a real-life case:  
 A user would simply retrieve an existing CTYPE from a repository of CTYPES, for example via a REST API.   
 
-In this tutorial: 
+In this tutorial:   
 To keep it simple, we'll just use a CTYPE that we already know exists on our blockchain.  
 
 
 ## Code
 
-Create a file `ctype.json`.  
-We'll need it later in this tutorial, in order to create a claim and then verify it.  
+Create a new file `ctype.json`.  
 
-Paste the follwing content in `ctype.json`:
+Paste the following content in `ctype.json`:
 
 ```json
 {
@@ -81,15 +96,8 @@ Paste the follwing content in `ctype.json`:
   "owner": "5HXfLqrqbKoKyi61YErwUrWEa1PWxikEojV7PCnLJgxrWd6W",
   "hash": "0x981955a2b7990554f6193a9e770ea625c68d2bfc5a1ff996e6e28d2a620fae16"
 }
-
 ```  
 
-Let's have a look at what these entries mean.   
+Now this CTYPE is available to us.  
 
-Key | Meaning
----------|----------
- `schema` |  The actual structure a claim should have
- `metadata` | Metadata used to support different languages 
- `owner` | The public address of the user who created this CTYPE 
-`hash` | Most important attribute. 
-
+An identity and a CTYPE: we've got all we need to create a claim, so let's move on! 

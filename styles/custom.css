@@ -3,7 +3,7 @@ body {
   --theme-color: rgb(255, 191, 15); /* this would break in IE */
 }
 
-/* Sidebar */
+/* SIDEBAR */
 
 .sidebar ul li a {
   color: white;
@@ -13,7 +13,7 @@ body {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Code */
+/* CODE */
 
 .token.function {
   color: #ff9720;
@@ -27,8 +27,17 @@ code {
   color: #b8c6c9 !important;
 }
 
-/* Table */
+/* TABLE */
 
 .markdown-section tr:nth-child(2n) {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* MISC */
+
+strong,
+em {
+  color: inherit !important;
+  font-weight: 1000 !important;
+  font-size: 110%;
 }

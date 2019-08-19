@@ -1,17 +1,12 @@
 # 💬 Claim
 
-In this section we will create a *Claim* and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it.
+Let's now create a claim.  
+But a claim in itself has no value: it needs to be **attested** by a trusted entity in order to become valid in the eyes of verifiers.  
 
-## Preparation
-Open up a new file `2-claim.js`.
-All the following code needs to go into this file.
+Let's illustrate this with the driving license example:   
++++ explain permisionless
 
-## Imports
-The following imports will be necessary for this section:
-```javascript
-const Kilt = require('@kiltprotocol/sdk-js')
-const ctype = require('./ctype.json')
-```
+<!-- and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it. -->
   
 ## Create an identity
 It is best to use the same mnemonic for the same role, so that the generated objects are still valid on a re-run.
@@ -22,9 +17,15 @@ const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 ```
 
 ## Create a claim
-We create a claim based on the provided ctype and using the claimer identity.
+We'll create a claim using the provided ctype and the claimer identity. 
 
-```javascript
+Create a new file `2-claim.js`. 
+
+```javascript 
+const Kilt = require('@kiltprotocol/sdk-js')
+// import the claim type we created in a previous step
+const ctype = require('./ctype.json')
+
 const rawClaim = {
   name: 'Alice',
   age: 29,
@@ -33,14 +34,20 @@ const rawClaim = {
 const claim = new Kilt.Claim(ctype, rawClaim, claimer)
 ```
 
-## Create the RequestForAttestation object 
-Here we will build the RequestForAttestation object, which will be send to a potential attester
+## Create the `RequestForAttestation` object  
+
+Now that we've created a Claim, we'd like it to be attested by a trusted entity.  
+To do so, we'll use the KILT SDK to build a `RequestForAttestation` object and send it to an attester. 
+
+<!-- which will be send to a potential attester -->
 
 ```javascript
+// RequestForAttestation needs 3 arguments: a claim, a legitimation (only useful for trust hierarchies, but for this
+// tutorial we stick to a simple case), and a claimer
 const requestForAttestation = new Kilt.RequestForAttestation(claim, [], claimer)
 ```
 
-We will just log it out, to copy/paste it and send it to a fellow participant.
+<!-- We will just log it out, to copy/paste it and send it to a fellow participant. -->
 
 ```javascript
 console.log(JSON.stringify(requestForAttestation))
