@@ -24,7 +24,7 @@ One of them is the `address` : it's the entity's unique and public identifier.
 All we need to create an identity is a mnemonic.   
 
 > 💡 Mnemonics   
-> In cryptography, a mnemonic is a random series of words. `gold upset segment cake universe` is a mnemonic. It's used to generate a public address (via a key). What's great about a mnemonic is that it's human-readable, so a person can simply remember it to generate their keypairs and address again later. 
+> In cryptography, a mnemonic is a random series of words. `gold upset segment cake universe` is a mnemonic. It's used to generate a public address (via a key). What's great about a mnemonic is that it's human-readable, so a person can simply remember it to re-generate their keypairs and address later. 
 
 ## Code 
 

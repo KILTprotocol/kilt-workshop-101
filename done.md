@@ -1,1 +1,1 @@
-You're done.
+You're done with the KILT 101 Tutorial!

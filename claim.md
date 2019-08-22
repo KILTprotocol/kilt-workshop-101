@@ -1,20 +1,24 @@
 # 💬 Claim
 
-Let's now create a claim.  
-But a claim in itself has no value: it needs to be **attested** by a trusted entity in order to become valid in the eyes of verifiers.  
+Now, you'll play the role of a <span class="label-actor-type claimer">claimer</span>:  
+* You'll make a claim about yourself; 
 
-Let's illustrate this with the driving license example:   
-+++ explain permisionless
+> 💡 KILT is permissionless.   
+> Anyone/anything can make a claim about themselves.
+
+* You'll request an attestation of your claim. You need to, because a claim in itself has no value. To become valid in the eyes of <span class="label-actor-type verifier">verifiers</span>, it needs to be attested by a trusted entity.
+
+Then an <span class="label-actor-type attester">attester</span> will pick up your request and hopefully attest your claim. We'll look into this in the next steps, for now let's just focus on our claim.   
 
 <!-- and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it. -->
   
-## Create an identity
+## Create your identity as a claimer
 It is best to use the same mnemonic for the same role, so that the generated objects are still valid on a re-run.
-Just run `node generateMnemonic.js` and copy the mnemonic into `[YOUR MNEMONIC]`.
-```javascript
-const mnemonic = "[YOUR MNEMONIC]"
-const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
-```
+Run `node generateMnemonic.js` and copy the mnemonic.   
+In the following, we'll refer to this mnemonic as your `[claimer mnemonic]`.
+
+<span class="label-actor-type attester">attester</span>
+<span class="label-actor-type verifier">verifier</span>
 
 ## Create a claim
 We'll create a claim using the provided ctype and the claimer identity. 
@@ -22,16 +26,19 @@ We'll create a claim using the provided ctype and the claimer identity.
 Create a new file `2-claim.js`. 
 
 ```javascript 
-const Kilt = require('@kiltprotocol/sdk-js')
-// import the claim type we created in a previous step
-const ctype = require('./ctype.json')
+const Kilt = require('@kiltprotocol/sdk-js');
+// import the claim type file we've created previously
+const ctype = require('./ctype.json');
+
+const mnemonic = "[claimer mnemonic]"
+const claimer = Kilt.Identity.buildFromMnemonic(mnemonic);
 
 const rawClaim = {
   name: 'Alice',
   age: 29,
-}
+};
 
-const claim = new Kilt.Claim(ctype, rawClaim, claimer)
+const claim = new Kilt.Claim(ctype, rawClaim, claimer);
 ```
 
 ## Create the `RequestForAttestation` object  

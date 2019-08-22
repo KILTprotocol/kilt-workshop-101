@@ -1,5 +1,6 @@
 body {
   color: white;
+  font-size: 16px !important;
   --theme-color: rgb(255, 191, 15); /* this would break in IE */
 }
 
@@ -39,5 +40,23 @@ strong,
 em {
   color: inherit !important;
   font-weight: 1000 !important;
-  font-size: 110%;
+}
+
+.label-actor-type {
+  padding: 0.1rem 0.2rem;
+}
+
+.label-actor-type.claimer {
+  color: #fff78b;
+  background-color: #fffb0044;
+}
+
+.label-actor-type.attester {
+  color: #ffa7a7;
+  background-color: #e0000062;
+}
+
+.label-actor-type.verifier {
+  color: #caaeff;
+  background-color: #7125ff55;
 }
