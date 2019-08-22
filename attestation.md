@@ -8,28 +8,23 @@ In this section, you'll play the role of an <span class="label-role attester">at
 
 ## Preparation
 Open up a new file `3-attestation.js`.
-All the following code needs to go into this file.
+All the following code needs to go into this file. 
 
-## Imports
-The following imports will be necessary for this section:
-```javascript
-const Kilt = require('@kiltprotocol/sdk-js')
-```
+> Since the KILT-SDK relies on a 1:1 messaging system, we have to exchange our requests without it.
+> Just log out your RequestForAttestation object and paste it in the exchange (https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).  
+> You can also send it via mail or another messaging system to a fellow participant.
 
-## Create Attester Identity
-First we need to generate an Identity for the Attester.
-Use `node 1-generateMnemonic.js` again to generate one.
+## Get some tokens as an attester
 
 !> Tell the workshop organizer the address of your attester, so that he can transfer some tokens to you.
 
-Paste the mnemonic into `[YOUR MNEMONIC]`
-```javascript
-const attester = Kilt.Identity.buildFromMnemonic('[YOUR MNEMONIC]')
-```
-
 ## Take RequestForAttestation object
 Get a RequestForAttestation from a fellow participant (if not sent directly, you can look at the [exchange](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit) and select one there) and paste it here.
-```javascript
+```javascript 
+const Kilt = require('@kiltprotocol/sdk-js') 
+
+const attester = Kilt.Identity.buildFromMnemonic('[YOUR attester MNEMONIC]')
+
 const requestForAttestationAsJson = '[THE JSON OBJECT]'
 const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
 const requestForAttestation = Kilt.RequestForAttestation.fromObject(requestForAttestationAsObj)

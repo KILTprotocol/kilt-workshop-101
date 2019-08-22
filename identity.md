@@ -28,7 +28,7 @@ To generate an identity, two methods from the KILT SDK are needed:
 
 Create a new file and name it `1-generateMnemonic.js`.
 
-Open it and copy/paste the following code: 
+Open it and paste the following code: 
 
 ```javascript
 // import KILT SDK

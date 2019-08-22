@@ -1,6 +1,6 @@
-# 💠 CTYPE 
+# 💠 CTYPE  
 
-Now that we have an identity, we only need a CTYPE before we can create a claim.  
+Before the <span class="label-role claimer">claimer</span> can make a claim about themselves, they first need a CTYPE.  
 
 CTYPE is a KILT-specific term, but the concept is simple.  
 A CTYPE defines the structure of a claim. You can think of it as the data model for your claim.   
@@ -56,7 +56,7 @@ To keep it simple, we'll just use a CTYPE that we already know exists on our blo
 
 Create a new file `ctype.json`.  
 
-Paste the following content in `ctype.json`:
+Open it and paste the following:
 
 ```json
 {
@@ -100,4 +100,4 @@ Paste the following content in `ctype.json`:
 
 Now this CTYPE is available to us.  
 
-An identity and a CTYPE: we've got all we need to create a claim, so let's move on! 
+Identities and a CTYPE: we've got all we need to create a claim, so let's move on! 
