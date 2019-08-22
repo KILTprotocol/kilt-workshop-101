@@ -1,24 +1,22 @@
 # 💬 Claim
 
-Now, you'll play the role of a <span class="label-actor-type claimer">claimer</span>:  
-* You'll make a claim about yourself; 
+Now, you'll play the role of a <span class="label-role claimer">claimer</span>:  
+* You'll make a claim about yourself;  
+* You'll request an attestation of your claim. You need to, because a claim in itself has no value. To become valid in the eyes of <span class="label-role verifier">verifiers</span>, it needs to be attested by a trusted entity.
+
+Then an <span class="label-role attester">attester</span> will pick up your request and hopefully attest your claim. We'll look into this in the next steps, for now let's just focus on our claim.    
+
 
 > 💡 KILT is permissionless.   
 > Anyone/anything can make a claim about themselves.
 
-* You'll request an attestation of your claim. You need to, because a claim in itself has no value. To become valid in the eyes of <span class="label-actor-type verifier">verifiers</span>, it needs to be attested by a trusted entity.
-
-Then an <span class="label-actor-type attester">attester</span> will pick up your request and hopefully attest your claim. We'll look into this in the next steps, for now let's just focus on our claim.   
-
 <!-- and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it. -->
   
-## Create your identity as a claimer
-It is best to use the same mnemonic for the same role, so that the generated objects are still valid on a re-run.
-Run `node generateMnemonic.js` and copy the mnemonic.   
-In the following, we'll refer to this mnemonic as your `[claimer mnemonic]`.
+## Get your identity as a claimer  
+In the Identity step earlier, you've been    `[claimer mnemonic]`.
 
-<span class="label-actor-type attester">attester</span>
-<span class="label-actor-type verifier">verifier</span>
+<span class="label-role attester">attester</span>
+<span class="label-role verifier">verifier</span>
 
 ## Create a claim
 We'll create a claim using the provided ctype and the claimer identity. 

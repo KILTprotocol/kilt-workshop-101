@@ -1,10 +1,10 @@
 # 🔖 Attestation 
 
-In this section, you'll play the role of an <span class="label-actor-type attester">attester</span>:
+In this section, you'll play the role of an <span class="label-role attester">attester</span>:
 * You'll take a `RequestForAttestation` object; 
 * Attest it;
 * Store the attestation on the chain;
-* Build the `AttestedClaim` object, which will be send back to the <span class="label-actor-type claimer">claimer</span>.
+* Build the `AttestedClaim` object, which will be send back to the <span class="label-role claimer">claimer</span>.
 
 ## Preparation
 Open up a new file `3-attestation.js`.

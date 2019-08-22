@@ -42,21 +42,21 @@ em {
   font-weight: 1000 !important;
 }
 
-.label-actor-type {
+.label-role {
   padding: 0.1rem 0.2rem;
 }
 
-.label-actor-type.claimer {
+.label-role.claimer {
   color: #fff78b;
   background-color: #fffb0044;
 }
 
-.label-actor-type.attester {
+.label-role.attester {
   color: #ffa7a7;
   background-color: #e0000062;
 }
 
-.label-actor-type.verifier {
+.label-role.verifier {
   color: #caaeff;
   background-color: #7125ff55;
 }

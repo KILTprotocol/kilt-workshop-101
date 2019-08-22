@@ -1,22 +1,16 @@
-Before a user can make a claim, two things are needed:  
-* 👤 an identity, so that the claim can be associated with this user
-* 💠 a claim type (CTYPE for short), to create the claim based on a specific structure.   
+In this tutorial, we'll run through the full story of a verifiable credential. To do so, three actors will be involved: a <span class="label-role claimer">claimer</span>, an <span class="label-role attester">attester</span> and a <span class="label-role verifier">verifier</span>.   
 
-Let's start with the identity.   
+This means that we'll need to create three identities.   
 
----
+# 👤 Identity 
 
-# 👤 Identity
-
-What's an identity in KILT?   
-
-An identity is an object representing an entity, for example a person, an organization or even a machine.   
+in KILT, an identity is an object representing an entity - for example a person, an organization or even a machine.     
 
 An identity contains multiple properties.  
 One of them is the `address` : it's the entity's unique and public identifier.     
 
 > 💡 Asymmetric cryptography  
-> A KILT identity contains:
+> If you're interested in the cryptographic details, a KILT identity contains:
 > * An encryption keypair (x25519-xsalsa20-poly1305) used to encrypting messages between participants of the system;   
 > * A signing keypair (ed25519, will be replaced with sr25519);
 > * The address, which is generated from the signing public key using the ss58 algorithm. 
@@ -28,8 +22,8 @@ All we need to create an identity is a mnemonic.
 
 ## Code 
 
-To generate an identity, we'll use two methods from the KILT SDK. 
-* `generateMnemonic` // generates a mnemonic. 
+To generate an identity, two methods from the KILT SDK are needed: 
+* `generateMnemonic`
 * `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
 
 Create a new file and name it `1-generateMnemonic.js`.
@@ -37,7 +31,7 @@ Create a new file and name it `1-generateMnemonic.js`.
 Open it and copy/paste the following code: 
 
 ```javascript
-// import Kilt SDK
+// import KILT SDK
 const Kilt = require('@kiltprotocol/sdk-js');
 
 const mnemonic = Kilt.Identity.generateMnemonic();
@@ -47,9 +41,11 @@ const identity = Kilt.Identity.buildFromMnemonic(mnemonic);
 console.log('address:', identity.address);
 ```
 
-You're now ready to generate an Identity.  
+You're now ready to generate an Identity.    
 
-To do so, run this command in your terminal, still within your `kilt-rocks` directory:  
+## Run 
+
+To generate an identity, run this command in your terminal (still within your `kilt-rocks` directory):  
 ```bash
 node 1-generateMnemonic.js
 ``` 
@@ -58,9 +54,13 @@ Your output should look like this (but not be identical to it, since the mnemoni
 ```bash
 mnemonic: gold upset segment cake universe carry demand comfort dawn invite element capital
 address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
-```   
+```     
 
-That's it - You've successfully generated a new identity and its address!  
+You want to run this command three times, in order to generate three identities. Each time, keep the output (mnemonic and address) for later.  
+In the next steps, we'll refer to the so-generated identities as follows:  
+* `[claimer mnemonic]` is the mnemonic you've generated on the first run of the command above, and `[claimer address]` the associated address;  
+* `[attester mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[attester address]` the associated address;      
+* `[verifier mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[verifier address]` the associated address.
 
-Make sure to copy this output, since we'll need it in the Claim section.  
+That's it - You've successfully generated three new identity and their address!  
 
