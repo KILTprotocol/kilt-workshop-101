@@ -26,19 +26,19 @@ To generate an identity, two methods from the KILT SDK are needed:
 * `generateMnemonic`
 * `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
 
-Create a new file and name it `1-generateMnemonic.js`.
+Create a new file `1-generateMnemonic.js`.
 
 Open it and paste the following code: 
 
 ```javascript
 // import KILT SDK
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
-const mnemonic = Kilt.Identity.generateMnemonic();
-console.log('mnemonic:', mnemonic);
+const mnemonic = Kilt.Identity.generateMnemonic()
+console.log('mnemonic:', mnemonic)
 
-const identity = Kilt.Identity.buildFromMnemonic(mnemonic);
-console.log('address:', identity.address);
+const identity = Kilt.Identity.buildFromMnemonic(mnemonic)
+console.log('address:', identity.address)
 ```
 
 You're now ready to generate an Identity.    
@@ -56,11 +56,13 @@ mnemonic: gold upset segment cake universe carry demand comfort dawn invite elem
 address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
 ```     
 
-You want to run this command three times, in order to generate three identities. Each time, keep the output (mnemonic and address) for later.  
+You want to run this command three times, in order to generate three identities.   
+Each time, copy/paste the output (mnemonic and address) somewhere since we'll need these identities later.  
+
 In the next steps, we'll refer to the so-generated identities as follows:  
 * `[claimer mnemonic]` is the mnemonic you've generated on the first run of the command above, and `[claimer address]` the associated address;  
 * `[attester mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[attester address]` the associated address;      
 * `[verifier mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[verifier address]` the associated address.
 
-That's it - You've successfully generated three new identity and their address!  
+That's it - You've successfully generated three new identities and their address!  
 

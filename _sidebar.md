@@ -7,6 +7,5 @@
 - [4. 🔖Attestation](attestation.md)
 - [5. ✅Verification](verification.md) 
 - [6. Done!](done.md)
-- [<span style="font-size:large;">🦉</span> Definitions](definitions.md)
 - [</> SDK source code on GitHub](https://github.com/KILTprotocol/sdk-js)
 - [</> Node source code on GitHub](https://github.com/KILTprotocol/mashnet-node)
