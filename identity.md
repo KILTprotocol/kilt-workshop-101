@@ -1,6 +1,8 @@
-In this tutorial, we'll run through the full story of a verifiable credential. To do so, three actors will be involved: a <span class="label-role claimer">claimer</span>, an <span class="label-role attester">attester</span> and a <span class="label-role verifier">verifier</span>.   
+In this tutorial, we'll run through the full story of a verifiable credential.  
+To do so, three actors will be involved: a <span class="label-role claimer">claimer</span>, an <span class="label-role attester">attester</span> and a <span class="label-role verifier">verifier</span>.   
+So we'll need to create three identities.  
 
-This means that we'll need to create three identities.   
+We'll come back to what each of these actors represent, but for now let's create their identities.   
 
 # 👤 Identity 
 
