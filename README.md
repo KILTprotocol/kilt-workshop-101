@@ -1,3 +1,3 @@
 Welcome to the KILT workshop!  
 
-# >>>> Workshop: https://kiltprotocol.github.io/kilt-workshop-101/#/ 
+### 👉 Workshop: https://kiltprotocol.github.io/kilt-workshop-101/#/ 
