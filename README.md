@@ -1,10 +1,7 @@
 # KILT Tutorial  
 
 Welcome, curious mind!    
-KILT's sdk-js is a TypeScript SDK that helps you use verifiable credentials in your application. 
-
-👉 Tutorial: https://kiltprotocol.github.io/kilt-workshop-101/#/  
-SDK: https://kiltprotocol.github.io/kilt-workshop-101/#/
+KILT's [sdk-js](https://kiltprotocol.github.io/kilt-workshop-101/#/) is an SDK that helps you use verifiable credentials in your application. 
 
 In this tutorial, you will:   
 
@@ -17,4 +14,6 @@ In this tutorial, you will:
 
 Estimated time: 30 minutes.   
 
-Let's go!
+Let's go!   
+👉 [Step 0: prerequisites](http://localhost:3000/#/prerequisites)
+
