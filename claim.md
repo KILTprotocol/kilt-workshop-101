@@ -14,7 +14,7 @@ Then an <span class="label-role attester">attester</span> will pick up your requ
   
 ## Get your identity as a claimer  
 In the previous Identity step in this tutorial, you've generated three identities.    
-You'll need the first mnemonic you've created; it's referred to as `[claimer mnemonic]` in the code snippet below.   
+You'll need the first mnemonic you've created; it's referred to as `[CLAIMER'S MNEMONIC]` in the code snippet below.   
 
 ## Code: create file 
 
@@ -30,8 +30,8 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // import the claim type file we've created previously
 const ctype = require('./ctype.json')
 
-// "[claimer mnemonic]" is for example "gold upset segment cake universe carry demand comfort dawn invite element capital"
-const mnemonic = "[claimer mnemonic]" 
+// "[CLAIMER'S MNEMONIC]" is for example "gold upset segment cake universe carry demand comfort dawn invite element capital"
+const mnemonic = "[CLAIMER'S MNEMONIC]" 
 const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
 const rawClaim = {

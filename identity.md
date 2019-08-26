@@ -62,9 +62,9 @@ You want to run this command three times, in order to generate three identities.
 Each time, copy/paste the output (mnemonic and address) somewhere since we'll need these identities later.  
 
 In the next steps, we'll refer to the so-generated identities as follows:  
-* `[claimer mnemonic]` is the mnemonic you've generated on the first run of the command above, and `[claimer address]` the associated address;  
-* `[attester mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[attester address]` the associated address;      
-* `[verifier mnemonic]` is the mnemonic you've generated on the second run of the command above, and `[verifier address]` the associated address.
+* `[CLAIMER'S MNEMONIC]` is the mnemonic you've generated on the first run of the command above, and `[CLAIMER'S ADDRESS]` the associated address;  
+* `[ATTESTER'S MNEMONIC]` is the mnemonic you've generated on the second run of the command above, and `[ATTESTER'S ADDRESS]` the associated address;      
+* `[VERIFIER'S MNEMONIC]` is the mnemonic you've generated on the second run of the command above, and `[VERIFIER'S ADDRESS]` the associated address.
 
 That's it - You've successfully generated three new identities and their address!  
 

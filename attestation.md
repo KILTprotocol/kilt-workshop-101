@@ -9,7 +9,7 @@ In this section, you'll play the role of the <span class="label-role attester">a
 ## Get some tokens as an attester  
 
 You'll need some token in  order to attest a claim.   
-Go to https://faucet.kilt.io/ and request tokens for your `[attester address]`.
+Go to https://faucet.kilt.io/ and request tokens for your `[ATTESTER'S ADDRESS]`.
 
 ## Code: create file 
 
@@ -32,8 +32,8 @@ Paste the following code in `3-attestation.js`.
 ```javascript 
 const Kilt = require('@kiltprotocol/sdk-js') 
 
-// use the attester mnemonic you've generated in the Identity step
-const attester = Kilt.Identity.buildFromMnemonic('[attester mnemonic]')
+// use the ATTESTER'S MNEMONIC you've generated in the Identity step
+const attester = Kilt.Identity.buildFromMnemonic('[ATTESTER'S MNEMONIC]')
 
 const requestForAttestationAsJson = '[requestForAttestation]'
 const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
