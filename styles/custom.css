@@ -1,7 +1,7 @@
 body {
   color: white;
-  font-size: 16px !important;
-  --theme-color: rgb(255, 191, 15); /* this would break in IE */
+  /* theme color would look different in IE */
+  --theme-color: rgb(255, 191, 15);
 }
 
 /* SIDEBAR */
@@ -34,13 +34,7 @@ code {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* MISC */
-
-strong,
-em {
-  color: inherit !important;
-  font-weight: 1000 !important;
-}
+/* LABEL FOR KILT ROLE */
 
 .label-role {
   padding: 0 0.2rem;

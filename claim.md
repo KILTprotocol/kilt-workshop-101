@@ -14,7 +14,7 @@ Then an <span class="label-role attester">attester</span> will pick up your requ
   
 ## Get your identity as a claimer  
 In the previous Identity step in this tutorial, you've generated three identities.    
-You'll need the **first** mnemonic you've created; it's referred to as `[claimer mnemonic]` in the code snippet below.   
+You'll need the first mnemonic you've created; it's referred to as `[claimer mnemonic]` in the code snippet below.   
 
 ## Code: create file 
 
@@ -47,7 +47,7 @@ const claim = new Kilt.Claim(ctype, rawClaim, claimer)
 We'd like our claim to be attested by a trusted entity.  
 To do so, we'll build a `RequestForAttestation` object, and send it to an attester.   
 
-Append the follwoing code to `2-claim.js`:
+Append the following code to `2-claim.js`:
 
 ```javascript
 /* RequestForAttestation needs 3 arguments: 

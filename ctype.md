@@ -43,7 +43,7 @@ Let's have a look at what these attributes are.
 | `hash`                  | Most important attribute, the hash is the CTYPE's digital footprint. It's generated from the content of the `schema`. |
 
 
-A CTYPE is stored on the KILT blockchain - more exactly, **the CTYPE's hash** is stored on the KILT blockchain.
+A CTYPE is stored on the KILT blockchain - more exactly, the CTYPE's hash is stored on the KILT blockchain.
 
 In a real-life case:  
 A user would simply retrieve an existing CTYPE from a repository of CTYPES, for example via a REST API.   
