@@ -2,7 +2,7 @@
 
 In this section, you'll play the role of a <span class="label-role claimer">claimer</span>:  
 * You'll make a claim about yourself;  
-* You'll request an attestation of your claim. You need to, because a claim in itself has no value. To become valid in the eyes of <span class="label-role verifier">verifiers</span>, it needs to be attested by a trusted entity.
+* A claim in itself has no value; you'll have to request an attestation of your claim. For a claim to become valid in the eyes of <span class="label-role verifier">verifiers</span>, it needs to be attested by a trusted entity.
 
 Then an <span class="label-role attester">attester</span> will pick up your request and hopefully attest your claim. We'll look into this in the next steps - for now, let's just focus on our claim.    
 

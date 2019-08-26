@@ -23,7 +23,7 @@ In a real system: as an <span class="label-role attester">attester</span>, you w
 In this tutorial, you can either:
 * take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
 * or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
-* or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object via email/another messaging system.  
+* or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
 In the following, we'll refer to it as `[requestForAttestation]`.  
 

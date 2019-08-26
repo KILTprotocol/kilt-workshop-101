@@ -2,7 +2,7 @@
 
 Before the <span class="label-role claimer">claimer</span> can make a claim about themselves, they first need a CTYPE.  
 
-CTYPE is a KILT-specific term, but the concept is simple.  
+A CTYPE is a KILT-specific term, but the concept is simple.  
 A CTYPE defines the structure of a claim. You can think of it as the data model for your claim.   
 
 For example, a very basic CTYPE for a driver's license could look like this: 

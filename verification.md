@@ -10,7 +10,7 @@ In this section, you'll play the role of a <span class="label-role verifier">ver
 You can either:
 * take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
 * or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
-* or if you're in a workshop, ask another participant to send you their `AttestedClaim` object via email/another messaging system.  
+* or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
 In the following, we'll refer to it as `[ATTESTEDCLAIM JSON OBJECT]`.
 
