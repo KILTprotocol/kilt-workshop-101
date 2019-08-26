@@ -1,6 +1,6 @@
 # 🔖 Attestation 
 
-In this section, you'll play the role of an <span class="label-role attester">attester</span>:
+In this section, you'll play the role of the <span class="label-role attester">attester</span>:
 * You'll take a `RequestForAttestation` object; 
 * Attest it;
 * Store the attestation on the chain;

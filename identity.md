@@ -6,7 +6,7 @@ We'll come back to what each of these actors represent, but for now let's create
 
 # 👤 Identity 
 
-in KILT, an identity is an object representing an entity - for example a person, an organization or even a machine.     
+In KILT, an identity is an object representing an entity - for example a person, an organization or even a machine.     
 
 An identity contains multiple properties.  
 One of them is the `address` : it's the entity's unique and public identifier.     
