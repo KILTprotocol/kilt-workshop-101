@@ -7,7 +7,9 @@ In this section, you'll play the role of the <span class="label-role attester">a
 * Build the `AttestedClaim` object, which will be send back to the <span class="label-role claimer">claimer</span>.
 
 ## Get some tokens as an attester  
-You'll need some token in  order to attest a claim.   
+When writing the hash of credentials on the blockchain, <span class="label-role attester">attesters</span> have to pay the angel’s
+share (gas or transaction fee) in KILT Tokens. So you'll need tokens to attest a claim.   
+
 Go to https://faucet.kilt.io/ and request tokens for your `<ATTESTER'S ADDRESS>`.
 
 ## Code: create file 
