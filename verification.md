@@ -23,7 +23,7 @@ All the following code needs to go into this file.
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const attestedClaimAsJson = '[ATTESTEDCLAIM JSON OBJECT]'
+const attestedClaimAsJson = `[ATTESTEDCLAIM JSON OBJECT]`
 const attestedClaimObj = JSON.parse(attestedClaimAsJson)
 // create an attested claim from the JSON object
 const attestedClaim = Kilt.AttestedClaim.fromObject(attestedClaimObj) 

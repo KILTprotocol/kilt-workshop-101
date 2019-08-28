@@ -12,7 +12,7 @@ In this tutorial, you will:
 * Attest it as an <span class="label-role attester">attester</span>;
 * Verify is as a <span class="label-role verifier">verifier</span>.    
 
-Estimated time: 30 minutes.   
+Estimated time: 45 minutes.   
 
 Let's go!   
 👉 [Step 0: prerequisites](http://localhost:3000/#/prerequisites)
