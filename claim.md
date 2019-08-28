@@ -23,7 +23,7 @@ All the following code needs to go into this file.
 
 ## Code: create a claim
 We'll create a claim using the provided ctype and the claimer identity.  
-Paste the following in `2-claim.js`, make sure to replace the `<CLAIMER'S MNEMONIC>`.  
+Paste the following in `2-claim.js` (make sure to replace the `<CLAIMER'S MNEMONIC>`).  
 
 ```javascript 
 const Kilt = require('@kiltprotocol/sdk-js')

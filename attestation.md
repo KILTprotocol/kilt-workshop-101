@@ -7,12 +7,10 @@ In this section, you'll play the role of the <span class="label-role attester">a
 * Build the `AttestedClaim` object, which will be send back to the <span class="label-role claimer">claimer</span>.
 
 ## Get some tokens as an attester  
-
 You'll need some token in  order to attest a claim.   
 Go to https://faucet.kilt.io/ and request tokens for your `<ATTESTER'S ADDRESS>`.
 
 ## Code: create file 
-
 Create a new file `3-attestation.js`.
 All the following code needs to go into this file.  
 
@@ -27,15 +25,15 @@ In this tutorial, you can either:
 
 In the following, we'll refer to it as `<requestForAttestation>`.  
 
-Paste the following code in `3-attestation.js`. 
+Paste the following code in `3-attestation.js` (make sure to replace `<ATTESTER'S MNEMONIC>` and `<requestForAttestation>` with the relevant objects):  
 
 ```javascript 
 const Kilt = require('@kiltprotocol/sdk-js') 
 
-// use the ATTESTER'S MNEMONIC you've generated in the Identity step
+// Use the ATTESTER'S MNEMONIC you've generated in the Identity step
 const attester = Kilt.Identity.buildFromMnemonic(`<ATTESTER'S MNEMONIC>`)
 
-const requestForAttestationAsJson = '<requestForAttestation>'
+const requestForAttestationAsJson = `<requestForAttestation>`
 const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
 const requestForAttestation = Kilt.RequestForAttestation.fromObject(requestForAttestationAsObj)
 ```
