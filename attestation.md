@@ -32,7 +32,7 @@ Paste the following code in `3-attestation.js` (make sure to replace `<ATTESTER'
 ```javascript 
 const Kilt = require('@kiltprotocol/sdk-js') 
 
-// Use the ATTESTER'S MNEMONIC you've generated in the Identity step
+// use the ATTESTER'S MNEMONIC you've generated in the Identity step
 const attester = Kilt.Identity.buildFromMnemonic(`<ATTESTER'S MNEMONIC>`)
 
 const requestForAttestationAsJson = `<requestForAttestation>`
