@@ -15,5 +15,5 @@ In this tutorial, you will:
 Estimated time: 45 minutes.   
 
 Let's go!   
-👉 [Step 0: prerequisites](http://localhost:3000/#/prerequisites)
+👉 [Step 0: prerequisites](https://kiltprotocol.github.io/kilt-workshop-101/#/prerequisites)
 
