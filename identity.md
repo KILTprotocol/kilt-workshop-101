@@ -58,8 +58,8 @@ mnemonic: gold upset segment cake universe carry demand comfort dawn invite elem
 address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
 ```     
 
-You want to run this command twice times, in order to generate 2 identities: the attester's and the claimer's.  
-The third actor is a verifier, but you'll see that we don;t need an identity for it. 
+You want to run this command twice, in order to generate 2 identities: the attester's and the claimer's.  
+The third actor is a verifier, but you'll see that we don't need an identity for it. 
 
 Each time, copy/paste the output (mnemonic and address) somewhere since we'll need these identities later.  
 
@@ -67,5 +67,5 @@ In the next steps, we'll refer to the so-generated identities as follows:
 * `<CLAIMER'S MNEMONIC>` is the mnemonic you've generated on the first run of the command above, and `<CLAIMER'S ADDRESS>` the associated address;  
 * `<ATTESTER'S MNEMONIC>` is the mnemonic you've generated on the second run of the command above, and `<ATTESTER'S ADDRESS>` the associated address.      
 
-That's it - You've successfully generated three new identities and their address!  
+That's it - You've successfully generated two new identities and their address!  
 
