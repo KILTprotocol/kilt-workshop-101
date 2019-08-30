@@ -1,7 +1,7 @@
 # KILT Tutorial  
 
 Welcome, curious mind!    
-KILT's [sdk-js](https://kiltprotocol.github.io/kilt-workshop-101/#/) is an SDK that helps you use verifiable credentials in your application. 
+KILT's [sdk-js](https://kiltprotocol.github.io/kilt-workshop-101/#/) is an SDK that helps you use verifiable claims in your application. 
 
 In this tutorial, you will:   
 
