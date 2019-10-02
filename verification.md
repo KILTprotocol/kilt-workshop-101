@@ -12,7 +12,7 @@ You can either:
 * or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
 * or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
-In the following, we'll refer to it as `[ATTESTEDCLAIM JSON OBJECT]`.
+In the following, we'll refer to it as `<attestedClaimJSON>`.
 
 ## Code: create file
 Create a new file `4-verification.js`.  
@@ -23,7 +23,7 @@ All the following code needs to go into this file.
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const attestedClaimAsJson = `[ATTESTEDCLAIM JSON OBJECT]`
+const attestedClaimAsJson = '<attestedClaimJSON>'
 const attestedClaimObj = JSON.parse(attestedClaimAsJson)
 // create an attested claim from the JSON object
 const attestedClaim = Kilt.AttestedClaim.fromObject(attestedClaimObj) 
@@ -44,6 +44,10 @@ Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 // verify that the included attestation is on-chain
 attestedClaim.verify().then(data => {
   console.log('isVerified', data)
+}).finally(() => {
+  Kilt.BlockchainApiConnection.getCached().then(blockchain => {
+    blockchain.api.disconnect()
+  })
 })
 ```
 

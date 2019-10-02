@@ -13,7 +13,7 @@ Then an <span class="label-role attester">attester</span> will pick up your requ
 <!-- and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it. -->
   
 ## Get your identity as a claimer  
-In the previous Identity step in this tutorial, you've generated three identities.    
+In the previous Identity step in this tutorial, you've generated two identities.    
 You'll need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.   
 
 ## Code: create file 
@@ -75,4 +75,3 @@ We'll need it in the next step, so make sure to copy/paste it somewhere.
 
 Now, you've made a claim as a <span class="label-role claimer">claimer</span> and requested an attestation.  
 Let's make this attestation happen!
-
