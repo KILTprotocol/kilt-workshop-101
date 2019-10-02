@@ -44,6 +44,10 @@ Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 // verify that the included attestation is on-chain
 attestedClaim.verify().then(data => {
   console.log('isVerified', data)
+}).finally(() => {
+  Kilt.BlockchainApiConnection.getCached().then(blockchain => {
+    blockchain.api.disconnect()
+  })
 })
 ```
 
