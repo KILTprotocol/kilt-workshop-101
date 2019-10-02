@@ -25,9 +25,9 @@ In this tutorial, you can either:
 * or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
 * or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
-In the following, we'll refer to it as `<requestForAttestation>`.  
+In the following, we'll refer to it as `<requestForAttestationJSON>`.  
 
-Paste the following code in `3-attestation.js` (make sure to replace `<ATTESTER'S MNEMONIC>` and `<requestForAttestation>` with the relevant objects):  
+Paste the following code in `3-attestation.js` (make sure to replace `<ATTESTER'S MNEMONIC>` and `<requestForAttestationJSON>` with the relevant objects):  
 
 ```javascript 
 const Kilt = require('@kiltprotocol/sdk-js') 
@@ -35,7 +35,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // use the ATTESTER'S MNEMONIC you've generated in the Identity step
 const attester = Kilt.Identity.buildFromMnemonic(`<ATTESTER'S MNEMONIC>`)
 
-const requestForAttestationAsJson = `<requestForAttestation>`
+const requestForAttestationAsJson = '<requestForAttestationJSON>'
 const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
 const requestForAttestation = Kilt.RequestForAttestation.fromObject(requestForAttestationAsObj)
 ```
