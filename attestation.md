@@ -63,7 +63,7 @@ Append the following code to `3-attestation.js`.
 // build the Attestation object
 const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
   requestForAttestation,
-  attester
+  attester.getPublicIdentity()
 );
 
 // connect to the chain (this is one KILT test node)

@@ -42,7 +42,8 @@ const rawClaim = {
 const claim = Kilt.Claim.fromCTypeAndClaimContents(
   ctype,
   rawClaim,
-  claimer.address
+  claimer.address,
+  null
 );
 ```
 
