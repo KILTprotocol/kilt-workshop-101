@@ -35,9 +35,13 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // use the ATTESTER'S MNEMONIC you've generated in the Identity step
 const attester = Kilt.Identity.buildFromMnemonic(`<ATTESTER'S MNEMONIC>`)
 
-const requestForAttestationAsJson = '<requestForAttestationJSON>'
-const requestForAttestationAsObj = JSON.parse(requestForAttestationAsJson)
-const requestForAttestation = Kilt.RequestForAttestation.fromObject(requestForAttestationAsObj)
+const requestForAttestationAsJson = '<requestForAttestationJSON>';
+const requestForAttestationAsObj = JSON.parse(
+  JSON.stringify(requestForAttestationAsJson)
+);
+const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
+  requestForAttestationAsObj
+);
 ```
 
 To check if the object is valid, you can check the data against the CTYPE
@@ -57,7 +61,10 @@ Append the following code to `3-attestation.js`.
 
 ```javascript 
 // build the Attestation object
-const attestation = new Kilt.Attestation(requestForAttestation, attester)
+const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
+  requestForAttestation,
+  attester
+);
 
 // connect to the chain (this is one KILT test node)
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
@@ -67,7 +74,10 @@ attestation.store(attester).then(data => {
   console.log(data)
 }).then(() => {
   // the attestation was successfully stored on the chain, so we can create the *AttestedClaim* object 
-  const attestedClaim = new Kilt.AttestedClaim(requestForAttestation, attestation)
+    const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
+      requestForAttestation,
+      attestation
+    );
   // Let's copy the result to send it to the claimer
   console.log(JSON.stringify(attestedClaim))
 }).catch(e => {

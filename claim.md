@@ -39,7 +39,11 @@ const rawClaim = {
   age: 29,
 }
 
-const claim = new Kilt.Claim(ctype, rawClaim, claimer)
+const claim = Kilt.Claim.fromCTypeAndClaimContents(
+  ctype,
+  rawClaim,
+  claimer.address
+);
 ```
 
 ## Code: create the `RequestForAttestation` object  
@@ -52,10 +56,13 @@ Append the following code to `2-claim.js`:
 ```javascript
 /* RequestForAttestation needs 3 arguments: 
 * a claim
-* a legitimation (only useful for trust hierarchies, but for this tutorial we stick to a simple case)
 * a claimer
 */
-const requestForAttestation = new Kilt.RequestForAttestation(claim, [], claimer)
+const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
+  claim,
+  claimer,
+  []
+);
 
 // We will just log it out, to copy/paste it and send it to a fellow participant
 console.log(JSON.stringify(requestForAttestation))
