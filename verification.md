@@ -24,9 +24,9 @@ All the following code needs to go into this file.
 const Kilt = require('@kiltprotocol/sdk-js')
 
 const attestedClaimAsJson = '<attestedClaimJSON>'
-const attestedClaimObj = JSON.parse(attestedClaimAsJson)
+const attestedClaimObj = JSON.parse(JSON.stringify(attestedClaimAsJson));
 // create an attested claim from the JSON object
-const attestedClaim = Kilt.AttestedClaim.fromObject(attestedClaimObj) 
+const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimObj);
 
 // verify the included data against the included ctype
 const isDataVerified = attestedClaim.verifyData()
