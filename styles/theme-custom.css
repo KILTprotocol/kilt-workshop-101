@@ -1,0 +1,58 @@
+/* CSS VARIABLES USED BY DOCSIFY-THEMABLE */
+
+:root {
+  --theme-color: #ef5a28;
+  --base-background-color: #192025;
+  --kilt-color-secondary: #ff3bcc;
+  --link-color: var(--theme-color);
+  --base-font-size: 17px;
+  --modular-scale: 1.26;
+  --heading-font-family: "Montserrat", sans-serif;
+  --heading-h1-font-weight: 600;
+  --heading-h2-font-weight: 600;
+  --heading-h3-font-weight: 600;
+  --heading-h2-padding: 0;
+  --sidebar-background: #33002f;
+  --sidebar-nav-link-color: #ffffffd6;
+  --sidebar-toggle-background: var(--theme-color);
+  --sidebar-toggle-icon-color: white;
+  --code-theme-function: #ff784b;
+  --code-theme-keyword: #00ffff;
+  --code-theme-punctuation: #ffffff60;
+  --code-font-size: 14px;
+  --code-theme-selector: var(--kilt-color-secondary);
+  --code-theme-tag: var(--kilt-color-secondary);
+  --code-theme-operator: var(--kilt-color-secondary);
+}
+
+/* LABEL FOR KILT ROLE */
+
+.label-role {
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.label-role.claimer {
+  color: #00ffff;
+  background-color: #00ffff44;
+}
+
+.label-role.attester {
+  color: #ff864b;
+  background-color: #ff690036;
+}
+
+.label-role.verifier {
+  color: var(--kilt-color-secondary);
+  background-color: #ff00bd38;
+}
+
+/* MISC */
+
+.sidebar {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-section blockquote {
+  padding: 1rem;
+}

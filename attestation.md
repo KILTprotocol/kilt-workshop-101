@@ -1,28 +1,32 @@
 # 🔖 Attestation 
 
 In this section, you'll play the role of the <span class="label-role attester">attester</span>:
-* You'll take a `RequestForAttestation` object; 
-* Attest it;
-* Store the attestation on the chain;
-* Build the `AttestedClaim` object, which will be send back to the <span class="label-role claimer">claimer</span>.
 
-## Get some tokens as an attester  
-When writing the hash of credentials on the blockchain, <span class="label-role attester">attesters</span> have to pay the angel’s
+* You'll take a `RequestForAttestation` object;
+* Attest it;
+* Store the attestation on the chain (more specifically only its hash, we'll get to that);
+* Build the `AttestedClaim` object which will be send back to the <span class="label-role claimer">claimer</span>.
+
+## Request KILT tokens
+
+When writing the hash of attestations on the blockchain, <span class="label-role attester">attesters</span> have to pay the angel’s
 share (gas or transaction fee) in KILT Tokens. So you'll need tokens to attest a claim.   
 
-Go to https://faucet.kilt.io/ and request tokens for your `<ATTESTER'S ADDRESS>`.
+Go to the [faucet] and request tokens for your `<ATTESTER'S ADDRESS>`.
 
-## Code: create file 
+Sadly these are just test tokens, not real money.
+
+## Create a file
+
 Create a new file `3-attestation.js`.
-All the following code needs to go into this file.  
+All of the code for this step needs to go into this file.
 
 ## Code: validate the `RequestForAttestation` object 
 
-In a real system: as an <span class="label-role attester">attester</span>, you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span> via KILT's 1:1 messaging system.  
+In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span>.  
 
 In this tutorial, you can either:
 * take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
-* or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
 * or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
 In the following, we'll refer to it as `<requestForAttestationJSON>`.  
@@ -73,12 +77,12 @@ Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 attestation.store(attester).then(data => {
   console.log(data)
 }).then(() => {
-  // the attestation was successfully stored on the chain, so we can create the *AttestedClaim* object 
+  // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
     const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
       requestForAttestation,
       attestation
     );
-  // Let's copy the result to send it to the claimer
+  // log the attestedClaim so you can copy/send it back to the claimer
   console.log(JSON.stringify(attestedClaim))
 }).catch(e => {
   console.log(e)
@@ -91,9 +95,13 @@ attestation.store(attester).then(data => {
 
 ## Run 
 
-Execute the file by running this command in your terminal (still within your `kilt-rocks` directory):
+Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
+
 ```bash
 node 3-attestation.js
-``` 
-The `attestedClaim` should be printed out.   
-We now need to "send it back" to the claimer, for example by pasting it in the [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+```
+
+The `attestedClaim` should be printed out. 
+You now need to "send it back" to the claimer, for example by pasting it in the [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+
+[faucet]: [https://faucet.kilt.io/]

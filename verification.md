@@ -1,22 +1,24 @@
 # ✅ Verification
 
-In this section, you'll play the role of a <span class="label-role verifier">verifier</span>: 
-* You'll take an `AttestedClaim` object;
+In this section, you'll play the role of a <span class="label-role verifier">verifier</span>:
+
+* You'll take an `AttestedClaim` object given to you by a <span class="label-role claimer">claimer</span>;
 * You'll verify that its data is correct;
-* You'll verify that it exists, aka that it's on-chain.
+* You'll verify that the corresponding attestation hash exists on-chain and is not revoked.
 
 ## Get an `AttestedClaim` object
- 
+
 You can either:
+
 * take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
-* or select one from this [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit);
 * or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
 In the following, we'll refer to it as `<attestedClaimJSON>`.
 
-## Code: create file
+## Create a file
+
 Create a new file `4-verification.js`.  
-All the following code needs to go into this file.
+All of the code for this step needs to go into this file.
 
 ## Code: verify the data
 
@@ -33,7 +35,7 @@ const isDataVerified = attestedClaim.verifyData()
 console.log('isDataVerified', isDataVerified)
 ```
 
-## Code: verify on-chain 
+## Code: verify on-chain
 
 Append the following code to `4-verification.js`:  
 
@@ -52,11 +54,13 @@ attestedClaim.verify().then(data => {
 ```
 
 ## Run
-Execute the file by running this command in your terminal (still within your `kilt-rocks` directory):
+
+Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
 node 4-verification.js
 ```  
 
-That's it!   
-You've successfully verified a claim, as a <span class="label-role verifier">verifier</span>.
+You should see `true` being logged.
+
+That's it! You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.
