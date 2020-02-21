@@ -10,20 +10,20 @@ For example, a very basic CTYPE for a driver's license could look like this:
 ```json
 {
   "schema": {
-    "$id": "KILT_DRIVERS_LICENSE",
+    "$id": "SimpleLicense",
     "$schema": "http://kilt-protocol.org/draft-01/ctype#",
     "properties": {
       "name": {
         "type": "string"
       },
-      "canDrive": {
-        "type": "boolean"
+      "age": {
+        "type": "integer"
       }
     },
     "type": "object"
   },
-  "owner": "8UPfLqrqbKoKyi61YErwUrWEa1PWxikEojV7PCnLJgxrWd6W",
-  "hash": "0x081955a2b7990554f6193a9e770ea625c68d2bfc5a1ff996e6e28d2a620fae16"
+  "owner": "5EkPdXVsoJ8Vm8UTrs7c89ghJpWVZHGN7RGiQFSi6VC6RiX9",
+  "hash": "0x16fa158d730aa83f6339497fafa59d895c89c3eae24dc323532f71e235824152"
 }
 ```
 
@@ -34,7 +34,7 @@ Let's have a look at these attributes.
 | Key                     | Value                                                                                                                 |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `schema` > `$id`        | The name of this CTYPE.                                                                                                |
-| `schema` > `properties` | The properties that a claim of type `KILT_DRIVERS_LICENSE` should have.                                                |
+| `schema` > `properties` | The properties that a claim of type `SimpleLicense` should have.                                                |
 | `owner`                 | The public address of the user who created this CTYPE.                                                                 |
 | `hash`                  | Most important attribute, the hash is the CTYPE's **digital footprint**. |
 
@@ -54,7 +54,7 @@ Open it and paste the following:
 ```json
 {
   "schema": {
-    "$id": "KILT_WORKSHOP_ATTENDED",
+    "$id": "SimpleLicense",
     "$schema": "http://kilt-protocol.org/draft-01/ctype#",
     "properties": {
       "name": {
@@ -66,8 +66,8 @@ Open it and paste the following:
     },
     "type": "object"
   },
-  "owner": "5HXfLqrqbKoKyi61YErwUrWEa1PWxikEojV7PCnLJgxrWd6W",
-  "hash": "0x981955a2b7990554f6193a9e770ea625c68d2bfc5a1ff996e6e28d2a620fae16"
+  "owner": "5EkPdXVsoJ8Vm8UTrs7c89ghJpWVZHGN7RGiQFSi6VC6RiX9",
+  "hash": "0x16fa158d730aa83f6339497fafa59d895c89c3eae24dc323532f71e235824152"
 }
 ```
 

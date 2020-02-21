@@ -4,14 +4,16 @@ In this section, you'll play the role of a <span class="label-role verifier">ver
 
 * You'll take an `AttestedClaim` object given to you by a <span class="label-role claimer">claimer</span>;
 * You'll verify that its data is correct;
-* You'll verify that the corresponding attestation hash exists on-chain and is not revoked.
+* You'll verify that the attestation hash exists on-chain and is not revoked.
+
+> 💡 An `AttestedClaim` object is also called a Credential: it is what claimers persent to verifiers upon request.
 
 ## Get an `AttestedClaim` object
 
 You can either:
 
-* take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
-* or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
+* Take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
+* Or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
 In the following, we'll refer to it as `<attestedClaimJSON>`.
 
@@ -30,7 +32,7 @@ const attestedClaimObj = JSON.parse(JSON.stringify(attestedClaimAsJson));
 // create an attested claim from the JSON object
 const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimObj);
 
-// verify the included data against the included ctype
+// verify the data against the included CTYPE
 const isDataVerified = attestedClaim.verifyData()
 console.log('isDataVerified', isDataVerified)
 ```
@@ -40,12 +42,12 @@ console.log('isDataVerified', isDataVerified)
 Append the following code to `4-verification.js`:  
 
 ```javascript 
-// connect to the blockchain
+// connect to the KILT blockchain
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 
-// verify that the included attestation is on-chain
-attestedClaim.verify().then(data => {
-  console.log('isVerified', data)
+// verify on-chain that the attestation hash is present and that the attestation is not revoked
+attestedClaim.verify().then(isVerified => {
+  console.log('isVerified', isVerified)
 }).finally(() => {
   Kilt.BlockchainApiConnection.getCached().then(blockchain => {
     blockchain.api.disconnect()
@@ -61,6 +63,7 @@ Execute the file by running this command in your terminal, still within your `ki
 node 4-verification.js
 ```  
 
-You should see `true` being logged.
+In your logs, you should see the chain being queried, and data verification should be successful (`true`).
 
-That's it! You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.
+That's it!
+You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.

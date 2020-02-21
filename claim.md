@@ -35,7 +35,7 @@ const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
 const claimContents = {
   name: 'Alice',
-  age: 29,
+  age: 25,
 }
 
 const claim = Kilt.Claim.fromCTypeAndClaimContents(
@@ -60,7 +60,7 @@ const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
   []
 );
 
-// log this so you can paste it lcocally
+// log this so you can paste it locally
 console.log(JSON.stringify(requestForAttestation))
 ```
 

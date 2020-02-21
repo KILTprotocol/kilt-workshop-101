@@ -26,8 +26,8 @@ All of the code for this step needs to go into this file.
 In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span>.  
 
 In this tutorial, you can either:
-* take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
-* or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
+* Take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
+* Or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
 In the following, we'll refer to it as `<requestForAttestationJSON>`.  
 
@@ -101,7 +101,13 @@ Execute the file by running this command in your terminal, still within your `ki
 node 3-attestation.js
 ```
 
-The `attestedClaim` should be printed out. 
-You now need to "send it back" to the claimer, for example by pasting it in the [shared doc](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+You should see in your logs:
+* `true` for data validity;
+* The blockchain transaction status (TxStatus), which should be `Finalized`;
+* The `AttestedClaim` object.
+
+Copy the `AttestedClaim object`, you'll need it soon.
+
+Your job as an <span class="label-role attested">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the claimer.
 
 [faucet]: [https://faucet.kilt.io/]
