@@ -20,7 +20,8 @@ In this tutorial, you will:
 
 Ready? Let's go!
 
-👉 [Step 0: setup](https://kiltprotocol.github.io/kilt-workshop-101/#/setup)
+👉 [Step 0: Setup][setup]
 
-[sdk-js]: https://kiltprotocol.github.io/kilt-workshop-101/#/
+[sdk-js]: https://github.com/KILTprotocol/sdk-js
 [cmy-channel]: https://riot.im/app/#/room/#kilt-general:matrix.org
+[setup]: https://kiltprotocol.github.io/kilt-workshop-101/#/setup
