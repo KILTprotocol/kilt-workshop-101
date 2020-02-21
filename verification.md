@@ -6,7 +6,7 @@ In this section, you'll play the role of a <span class="label-role verifier">ver
 * You'll verify that its data is correct;
 * You'll verify that the attestation is valid (= its hash exists on-chain and the attestation is not revoked).
 
-> 💡 An `AttestedClaim` object is also called a Credential: it is what claimers persent to verifiers upon request.
+> 💡 An `AttestedClaim` object is also called a Credential: it is what <span class="label-role claimer">claimers</span> present to <span class="label-role verifier">verifiers</span> upon request.
 
 ## Get an `AttestedClaim` object
 
