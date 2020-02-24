@@ -1,9 +1,6 @@
-In this tutorial, we'll run through the full story of a claim.
-
-To do so, three actors will be involved: a <span class="label-role claimer">claimer</span>, an <span class="label-role attester">attester</span> and a <span class="label-role verifier">verifier</span>.   
-We'll come back to what each of these roles represent, but for now let's create the <span class="label-role claimer">claimer</span> identity and the <span class="label-role attester">attester</span> identity. You'll see that the <span class="label-role verifier">verifier</span> identity won't be needed.
-
 # 👤 Identity
+
+Let's create the <span class="label-role claimer">claimer</span> identity and the <span class="label-role attester">attester</span> identity. You'll see that the <span class="label-role verifier">verifier</span> identity won't be needed.
 
 In KILT, an identity is an object that represents an entity - for example a person, an organization or even a machine.
 

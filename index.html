@@ -20,18 +20,47 @@
       sizes="16x16"
       href="_media/favicon-16x16.png"
     />
+    <!-- Mermaid support -->
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
+    />
+    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </head>
   <body>
     <div id="app"></div>
     <script>
+      var num = 0;
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: "dark",
+        themeCSS:
+          ".node rect { fill: #ffffff7a; stroke: #ffffffa6;}"
+      });
+
       window.$docsify = {
-        repo: 'https://github.com/KILTprotocol/sdk-js',
+        repo: "https://github.com/KILTprotocol/sdk-js",
         loadSidebar: true,
-        auto2top: true,
+        // reset scroll position on navigate
+        // auto2top: true,
         themeable: {
           responsiveTables: true
+        },
+        markdown: {
+          renderer: {
+            code: function(code, lang) {
+              if (lang === "mermaid") {
+                return (
+                  '<div class="mermaid">' +
+                  mermaid.render("mermaid-svg-" + num++, code) +
+                  "</div>"
+                );
+              }
+              return this.origin.code.apply(this, arguments);
+            }
+          }
         }
-      }
+      };
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
     <script src="//unpkg.com/docsify-pagination@2.4.0/dist/docsify-pagination.min.js"></script>
