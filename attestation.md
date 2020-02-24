@@ -14,14 +14,14 @@ share (gas or transaction fee) in KILT Tokens. So you'll need tokens to attest a
 
 Go to the [faucet] and request tokens for your `<ATTESTER'S ADDRESS>`.
 
-Sadly these are just test tokens, not real money.
+Sadly these are just play tokens, not real money.
 
 ## Create a file
 
 Create a new file `3-attestation.js`.
 All of the code for this step needs to go into this file.
 
-## Code: validate the `RequestForAttestation` object 
+## Code: validate the `RequestForAttestation` object
 
 In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span>.  
 
