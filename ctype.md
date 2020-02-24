@@ -41,7 +41,7 @@ Let's have a look at these attributes.
 A CTYPE is stored on the KILT blockchain - more exactly, the CTYPE's hash is stored on the KILT blockchain.
 The full CTYPE can be stored in a regular web service.
 
-In a real-life setup, auser would simply retrieve an existing CTYPE from a repository of CTYPEs for example via a REST API.
+In a real-life setup, a user would simply retrieve an existing CTYPE from a repository of CTYPEs for example via a REST API.
 
 In this tutorial, to keep it simple we'll use a CTYPE that we already know exists on the KILT blockchain.
 
