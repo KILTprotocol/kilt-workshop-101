@@ -15,7 +15,7 @@ We'll look into the attestation in the next steps - for now, let's just focus on
 Create a new file `2-claim.js`.
 All of the code for this step needs to go into this file.
 
-## Code: create a claim
+## Code: create a `Claim`
 
 In the previous step, you've generated two mnemonics and identities.
 You'll now need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.
@@ -46,10 +46,12 @@ const claim = Kilt.Claim.fromCTypeAndClaimContents(
 );
 ```
 
-## Code: create the `RequestForAttestation` object  
+Don't run the code just yet; one more thing to add!
 
-Now that you have your claim, you want to sign it and prepare it for the <span class="label-role attester">attester</span>.
-To do so, let's build a `RequestForAttestation` object.
+## Code: create a `RequestForAttestation`
+
+Once your claim will be built, you will want to sign it and prepare it for the <span class="label-role attester">attester</span>.
+To do so, let's build a `RequestForAttestation` object from your `Claim`.
 
 Append the following code to `2-claim.js`:
 

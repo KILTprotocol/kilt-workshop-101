@@ -59,7 +59,7 @@ console.log(isDataValid)
 console.log(isSignatureValid)
 ```
 
-## Code: create Attestation  
+## Code: create an `Attestation`  
 
 Now is time to interact with the chain, in order to store an attestation on there.   
 Append the following code to `3-attestation.js`.
