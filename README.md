@@ -1,4 +1,4 @@
-# KILT SDK Tutorial
+# KILT SDK Tutorial 101
 
 > 📦 Topics: [KILT SDK][sdk-js] essentials, basic credential workflow.
 > 
