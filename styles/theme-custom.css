@@ -3,8 +3,10 @@
 :root {
   --theme-color: #ef5a28;
   --base-background-color: #192025;
-  --kilt-color-secondary: #ff3bcc;
+  --kilt-secondary-color: #ff3bcc;
+  --kilt-ternary-color: #00ffff;
   --link-color: var(--theme-color);
+  --txt-color: white;
   --base-font-size: 17px;
   --modular-scale: 1.26;
   --heading-font-family: "Montserrat", sans-serif;
@@ -17,12 +19,12 @@
   --sidebar-toggle-background: var(--theme-color);
   --sidebar-toggle-icon-color: white;
   --code-theme-function: #ff784b;
-  --code-theme-keyword: #00ffff;
+  --code-theme-keyword: var(--kilt-ternary-color);
   --code-theme-punctuation: #ffffff60;
   --code-font-size: 14px;
-  --code-theme-selector: var(--kilt-color-secondary);
-  --code-theme-tag: var(--kilt-color-secondary);
-  --code-theme-operator: var(--kilt-color-secondary);
+  --code-theme-selector: var(--kilt-secondary-color);
+  --code-theme-tag: var(--kilt-secondary-color);
+  --code-theme-operator: var(--kilt-secondary-color);
 }
 
 /* FONTS */
@@ -40,7 +42,7 @@
 }
 
 .label-role.claimer {
-  color: #00ffff;
+  color: var(--kilt-ternary-color);
   background-color: #00ffff44;
 }
 
@@ -50,8 +52,15 @@
 }
 
 .label-role.verifier {
-  color: var(--kilt-color-secondary);
+  color: var(--kilt-secondary-color);
   background-color: #ff00bd38;
+}
+
+/* MERMAID DIAGRAMS */
+
+.mermaid .label {
+  font-size: 0.8rem;
+  color: var(--txt-color) !important;
 }
 
 /* MISC */
