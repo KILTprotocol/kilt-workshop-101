@@ -35,12 +35,12 @@ const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimObj);
 
 // verify the data against the included CTYPE
 const isDataVerified = attestedClaim.verifyData()
-console.log('isDataVerified', isDataVerified)
+console.log('isDataVerified:', isDataVerified)
 ```
 
 ## Code: verify on-chain
 
-Append the following code to `4-verification.js`:  
+Append the following code to `4-verification.js`:
 
 ```javascript
 // connect to the KILT blockchain
@@ -48,7 +48,7 @@ Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 
 // verify on-chain that the attestation hash is present and that the attestation is not revoked
 attestedClaim.verify().then(isVerified => {
-  console.log('isVerified', isVerified)
+  console.log('isVerified:', isVerified)
 }).finally(() => {
   Kilt.BlockchainApiConnection.getCached().then(blockchain => {
     blockchain.api.disconnect()
