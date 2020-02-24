@@ -1,12 +1,14 @@
 # KILT SDK Tutorial 101
 
+SDK version **0.17.1**.
+
 > 📦 Topics: [KILT SDK][sdk-js] essentials, basic credential workflow.
 > 
 > ⏳ Duration: 15-45 minutes.
 > 
 > 🤓 Prerequisites: basic JavaScript or TypeScript knowledge.
 > 
-> ❓ Questions? Join our [developers community channel][cmy-channel]!
+> ❓ Questions? Join our [developer community channel][cmy-channel]!
 
 **Welcome, curious mind!**
 
@@ -20,8 +22,7 @@ In this tutorial, you will:
 
 Ready? Let's go!
 
-👉 [Step 0: Setup][setup]
+👉 [Step 0: Setup](verification)
 
 [sdk-js]: https://github.com/KILTprotocol/sdk-js
 [cmy-channel]: https://riot.im/app/#/room/#kilt-general:matrix.org
-[setup]: https://kiltprotocol.github.io/kilt-workshop-101/#/setup
