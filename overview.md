@@ -1,4 +1,4 @@
-# Overview
+# 👓 Overview
 
 In this tutorial, we'll run through the full story of a claim.
 
