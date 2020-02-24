@@ -112,4 +112,4 @@ Copy the `AttestedClaim` object, you'll need it soon.
 
 Your job as an <span class="label-role attested">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the <span class="label-role claimer">claimer</span>.
 
-[faucet]: [https://faucet.kilt.io/]
+[faucet]: https://faucet.kilt.io/
