@@ -29,6 +29,17 @@
   <body>
     <div id="app"></div>
     <script>
+      // this solves https://github.com/docsifyjs/docsify/issues/504
+      function makeid(len) {
+        const text = new Array(len);
+        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        for (let i = 0; i < len; i++)
+          text[i] = possible.charAt(
+            Math.floor(Math.random() * possible.length)
+          );
+        return text.join("");
+      }
+
       var mermaidCount = 0;
       window.$docsify = {
         repo: "https://github.com/KILTprotocol/sdk-js",
@@ -40,18 +51,16 @@
           renderer: {
             code: function(code, lang) {
               if (lang === "mermaid") {
-                return (
-                  '<div class="mermaid">' +
-                  mermaid.render("mermaid-svg-" + mermaidCount++, code) +
-                  "</div>"
-                );
+                const id = makeid(10);
+                const svg = mermaid.render(id, code);
+                return '<div class="mermaid">' + svg + "</div>";
               }
               return this.origin.code.apply(this, arguments);
             }
           }
         },
         // reset scroll position on navigate
-        auto2top: true,
+        auto2top: true
       };
     </script>
         <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>

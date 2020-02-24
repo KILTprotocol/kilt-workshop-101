@@ -7,7 +7,7 @@ To do so, three actors will be involved: a <span class="label-role claimer">clai
 These three actors will be exchanging various objects; the most important one is the `attestedClaim`, aka credential.
 This is how an `attestedClaim` is created:
 
-<div class="mermaid">
+```mermaid
 graph TD
 CTYPE --> claim[claim]
 claimContents --> claim
@@ -18,8 +18,7 @@ requestForAttestation --> attestation[attestation]
 attesterPublicIdentity --> attestation
 attestation --> attestedClaim[attestedClaim]
 requestForAttestatIon --> attestedClaim[attestedClaim]
-
-</div>
+```
 
 That's a mouthful, but don't worry - we'll dig deeper in the elements of this diagram in the next steps! For now, just keep in mind:
 
