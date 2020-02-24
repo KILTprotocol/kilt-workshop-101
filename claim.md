@@ -20,7 +20,7 @@ All of the code for this step needs to go into this file.
 In the previous step, you've generated two mnemonics and identities.
 You'll now need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.
 
-We'll create a claim using the provided CTYPE and the claimer identity.  
+We'll create a claim using the provided CTYPE and the <span class="label-role claimer">claimer</span> identity.  
 Paste the following in `2-claim.js`. Make sure to replace the `<CLAIMER'S MNEMONIC>`.
 
 ```javascript

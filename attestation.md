@@ -26,6 +26,7 @@ All of the code for this step needs to go into this file.
 In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span>.  
 
 In this tutorial, you can either:
+
 * Take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
 * Or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
@@ -50,6 +51,7 @@ const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
 
 To check if the object is valid, you can check the data against the CTYPE
 and check if the signature is valid.
+
 ```javascript
 const isDataValid = requestForAttestation.verifyData()
 const isSignatureValid = requestForAttestation.verifySignature()
@@ -62,8 +64,7 @@ console.log(isSignatureValid)
 Now is time to interact with the chain, in order to store an attestation on there.   
 Append the following code to `3-attestation.js`.
 
-
-```javascript 
+```javascript
 // build the Attestation object
 const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
   requestForAttestation,
@@ -102,12 +103,13 @@ node 3-attestation.js
 ```
 
 You should see in your logs:
-* `true` for data validity;
-* The blockchain transaction status (TxStatus), which should be `Finalized`;
+
+* `true` and `true` if the signature and data are valid (they should be);
+* The blockchain transaction status `TxStatus`, which should be `Finalized`;
 * The `AttestedClaim` object.
 
-Copy the `AttestedClaim object`, you'll need it soon.
+Copy the `AttestedClaim` object, you'll need it soon.
 
-Your job as an <span class="label-role attested">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the claimer.
+Your job as an <span class="label-role attested">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the <span class="label-role claimer">claimer</span>.
 
 [faucet]: [https://faucet.kilt.io/]
