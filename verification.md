@@ -29,6 +29,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 
 const attestedClaimAsJson = '<attestedClaimJSON>'
 const attestedClaimObj = JSON.parse(JSON.stringify(attestedClaimAsJson));
+
 // create an attested claim from the JSON object
 const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimObj);
 
@@ -41,7 +42,7 @@ console.log('isDataVerified', isDataVerified)
 
 Append the following code to `4-verification.js`:  
 
-```javascript 
+```javascript
 // connect to the KILT blockchain
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 
