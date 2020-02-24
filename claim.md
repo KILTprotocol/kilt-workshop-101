@@ -48,7 +48,7 @@ const claim = Kilt.Claim.fromCTypeAndClaimContents(
 
 ## Code: create the `RequestForAttestation` object  
 
-Now that you have your claim, you want to sign it and prepare it for the attester.
+Now that you have your claim, you want to sign it and prepare it for the <span class="label-role attester">attester</span>.
 To do so, let's build a `RequestForAttestation` object.
 
 Append the following code to `2-claim.js`:
