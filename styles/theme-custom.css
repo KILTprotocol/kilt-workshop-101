@@ -25,6 +25,13 @@
   --code-theme-operator: var(--kilt-color-secondary);
 }
 
+/* FONTS */
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/montserrat-latin-600.woff);
+}
+
 /* LABEL FOR KILT ROLE */
 
 .label-role {
