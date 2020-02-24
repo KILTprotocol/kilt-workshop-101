@@ -62,9 +62,9 @@ Execute the file by running this command in your terminal, still within your `ki
 
 ```bash
 node 4-verification.js
-```  
+```
 
-In your logs, you should see the chain being queried, and data verification should be successful (`true`).
+In your logs, you should see chain queries and successful data verification (`isVerified: true`).
 
 That's it!
 You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.
