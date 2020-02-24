@@ -17,6 +17,11 @@ All we need to create an identity is a mnemonic.
 
 > 💡 In cryptography, a mnemonic is a random series of words. For example, `gold upset segment cake universe` is a mnemonic. It's used to generate keypairs. What's great about a mnemonic is that it's **human-readable**. A person can memorize it, and use it later to re-generate their keypairs and address.
 
+## Create a file
+
+Create a new file `1-generateMnemonic.js`.
+All of the code for this step needs to go into this file.
+
 ## Code
 
 To generate an identity, two methods from the KILT SDK are needed:
@@ -24,9 +29,7 @@ To generate an identity, two methods from the KILT SDK are needed:
 * `generateMnemonic`
 * `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
 
-Create a new file `1-generateMnemonic.js`.
-
-Open it and paste the following code:
+Open `1-generateMnemonic.js` and paste the following code:
 
 ```javascript
 // import the KILT SDK
