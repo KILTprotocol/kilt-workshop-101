@@ -1,4 +1,4 @@
-# 🔖 Attestation 
+# 🔖 Attestation
 
 In this section, you'll play the role of the <span class="label-role attester">attester</span>:
 
@@ -94,7 +94,7 @@ attestation.store(attester).then(data => {
 })
 ```
 
-## Run 
+## Run
 
 Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
 

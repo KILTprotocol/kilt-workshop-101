@@ -25,24 +25,14 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css"
     />
-    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   </head>
   <body>
     <div id="app"></div>
     <script>
-      var num = 0;
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: "dark",
-        themeCSS:
-          ".node rect { fill: #ffffff7a; stroke: #ffffffa6;}"
-      });
-
+      var mermaidCount = 0;
       window.$docsify = {
         repo: "https://github.com/KILTprotocol/sdk-js",
         loadSidebar: true,
-        // reset scroll position on navigate
-        auto2top: true,
         themeable: {
           responsiveTables: true
         },
@@ -52,22 +42,34 @@
               if (lang === "mermaid") {
                 return (
                   '<div class="mermaid">' +
-                  mermaid.render("mermaid-svg-" + num++, code) +
+                  mermaid.render("mermaid-svg-" + mermaidCount++, code) +
                   "</div>"
                 );
               }
               return this.origin.code.apply(this, arguments);
             }
           }
-        }
+        },
+        // reset scroll position on navigate
+        auto2top: true,
       };
     </script>
-    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-    <script src="//unpkg.com/docsify-pagination@2.4.0/dist/docsify-pagination.min.js"></script>
-    <script src="//unpkg.com/docsify-copy-code@2"></script>
-    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-    <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
-    <!-- docsify-themeable -->
-    <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0"></script>
+        <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+        <script src="//unpkg.com/docsify-pagination@2.4.0/dist/docsify-pagination.min.js"></script>
+        <script src="//unpkg.com/docsify-copy-code@2"></script>
+        <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+        <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+        <!-- docsify-themeable -->
+        <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0"></script>
+        <!-- mermaid -->
+        <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+        <script>
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            themeCSS:
+              ".node rect { fill: #ffffff7a; stroke: #ffffffa6;}"
+          });
+        </script>
   </body>
 </html>

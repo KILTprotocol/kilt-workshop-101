@@ -8,16 +8,17 @@ These three actors will be exchanging various objects; the most important one is
 This is how an `attestedClaim` is created:
 
 <div class="mermaid">
-    graph TD
-    CTYPE --> claim[claim]
-    claimContents --> claim
-    claimerAddress --> claim
-    claimerIdentity[claimerIdentity] --> requestForAttestation
-    claim --> requestForAttestation
-    requestForAttestation --> attestation[attestation]
-    attesterPublicIdentity --> attestation
-    attestation --> attestedClaim=credential[attestedClaim]
-    requestForAttestatIon --> attestedClaim=credential[attestedClaim]
+graph TD
+CTYPE --> claim[claim]
+claimContents --> claim
+claimerAddress --> claim
+claimerIdentity[claimerIdentity] --> requestForAttestation
+claim --> requestForAttestation
+requestForAttestation --> attestation[attestation]
+attesterPublicIdentity --> attestation
+attestation --> attestedClaim[attestedClaim]
+requestForAttestatIon --> attestedClaim[attestedClaim]
+
 </div>
 
 That's a mouthful, but don't worry - we'll dig deeper in the elements of this diagram in the next steps! For now, just keep in mind:
