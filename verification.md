@@ -66,5 +66,3 @@ In your logs, you should see chain queries and successful data verification (`is
 
 That's it!
 You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.
-
-Or... have you? 😈
