@@ -29,9 +29,13 @@ Here's how it works:
 
 OK, let's see this in action.
 
-## As the <span class="label-role verifier">verifier</span>: create a challenge
+## As the <span class="label-role verifier">verifier</span>: create a nonce
 
 To generate a random, unique piece of data, we'll use a package called [uuid].
+A UUID is **random and unique**, which are the most important properties of a **nonce**.
+
+(A UUID is not *strictly* a nonce, because it's not a number, but here we'll refer to it as nonce).
+
 Install it:
 
 ```bash
@@ -41,48 +45,48 @@ yarn add uuid
 npm install uuid
 ```
 
-Create a new file `challenge.js`, and paste the following code into it:
+Create a new file `nonce.js`, and paste the following code into it:
 
 ```javascript
 import { v4 as uuid } from 'uuid'
-const challenge = uuid()
-console.log('challenge: ', challenge)
+const nonce = uuid()
+console.log('nonce: ', nonce)
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node challenge.js
+node nonce.js
 ```
 
-You should see in your logs the `uuid`, that will be used as a challenge; it should look like something like this: `9dbbad48-aad0-4280-aeca-4c4072c82625`.
+You should see in your logs the `uuid`, that will be used as a nonce; it should look like something like this: `9dbbad48-aad0-4280-aeca-4c4072c82625`.
 
 Copy it, you'll need it in the next step.
 
-## As the <span class="label-role claimer">claimer</span>: solve the challenge and prepare the data
+## As the <span class="label-role claimer">claimer</span>: sign the nonce and prepare the data
 
 Let's put together the data you would send back to the <span class="label-role verifier">verifier</span>, as the <span class="label-role claimer">claimer</span>.
 
-Create a new file `claim-with-proof.js`.
+Create a new file `claim-with-signed-nonce.js`.
 
-Paste the following code into it (make sure to replace `<challenge>` and `<attestedClaimJSON>` with the data you copied earlier):
+Paste the following code into it (make sure to replace `<nonce>` and `<attestedClaimJSON>` with the data you copied earlier):
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-// <challenge> = challenge received from the verifier = uuid you copied from above
-const challenge = <challenge>
+// <nonce> = nonce received from the verifier = uuid you copied from above
+const nonce = <nonce>
 
 // <claimer mnemonic> = claimer mnemonic generated in the Identity step
 const claimer = Kilt.Identity.buildFromMnemonic(<claimer mnemonic>)
-// sign the challenge as the claimer with your private identity
-const proof = claimer.signStr(challenge)
+// sign the nonce as the claimer with your private identity
+const signedNonce = claimer.signStr(nonce)
 
 // same data as in to the simple "Verification" step
 const attestedClaimStruct = JSON.parse(JSON.stringify(<attestedClaimJSON>));
 
 const dataToVerify = {
-  proof: proof,
+  signedNonce,
   attestedClaimStruct
 }
 
@@ -92,26 +96,26 @@ console.log('dataToVerifyJSON: ', JSON.stringify(dataToVerify))
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node claim-with-proof.js
+node claim-with-signed-nonce.js
 ```
 
 You should see in your logs the `dataToVerify`.
 
 Copy it, you'll need it in the next step.
 
-## As the <span class="label-role verifier">verifier</span>: verify the `proof` and `attestedClaim`
+## As the <span class="label-role verifier">verifier</span>: verify the `signedNonce` and `attestedClaim`
 
-Create a new file `verification-with-challenge.js`.
+Create a new file `verification-with-nonce.js`.
 
-Paste the following code into it (make sure to replace `<dataToVerify>` and `<challenge>` with the relevant objects):
+Paste the following code into it (make sure to replace `<dataToVerify>` and `<nonce>` with the relevant objects):
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const { proof, attestedClaimStruct } = JSON.parse(<dataToVerifyJSON>)
+const { signedNonce, attestedClaimStruct } = JSON.parse(<dataToVerifyJSON>)
 
-// verify the proof (<challenge> is the uuid you've generated as the verifier)
-const isSenderOwner = Kilt.Crypto.verify(<challenge>, proof, attestedClaimStruct.attestation.owner)
+// verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
+const isSenderOwner = Kilt.Crypto.verify(<nonce>, signedNonce, attestedClaimStruct.attestation.owner)
 console.log('isSenderOwner: ', isSenderOwner)
 
 // proceed with verifying the attestedClaim itself
@@ -121,7 +125,7 @@ console.log('isSenderOwner: ', isSenderOwner)
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node verification-with-challenge.js
+node verification-with-nonce.js
 ```
 
 You should see in your logs that `isSenderOwner` is `true`: this `attestedClaim` is not stolen.
@@ -131,9 +135,9 @@ Looking good!
 You can also see what would happen when a malicious actor presents a stolen `attestedClaim` to a <span class="label-role verifier">verifier</span>. Try this out:
 
 * Create another identity, let's refer to it as Mallory (= malicious);
-* Sign the challenge above with Mallory's identity, hence creating a new `proof`;
-* Create a new `invalidDataToVerify` object with this new proof and with Alice's `attestedClaim` we've been using so far;
-* As a <span class="label-role verifier">verifier</span>, verify the proof in `invalidDataToVerify` via `Crypto.verify`;
+* Sign the nonce above with Mallory's identity, hence creating a new `signedNonce`;
+* Create a new `invalidDataToVerify` object with this new `signedNonce` and with Alice's `attestedClaim` we've been using so far;
+* As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `Crypto.verify`;
 * You'll this that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
 
 [uuid]: https://www.npmjs.com/package/uuid
