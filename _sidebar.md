@@ -7,6 +7,7 @@
 - [💬 Claim](claim.md)
 - [🔖 Attestation](attestation.md)
 - [✅ Verification](verification.md)
+- [✅ Verification: the right way](verification-right.md)
 - [✨ Done](done.md)
 - [KILT SDK source code on GitHub](https://github.com/KILTprotocol/sdk-js)
 - [KILT SDK as an npm package](https://www.npmjs.com/package/@kiltprotocol/sdk-js)
