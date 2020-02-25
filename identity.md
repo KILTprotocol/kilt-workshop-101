@@ -19,7 +19,7 @@ All we need to create an identity is a mnemonic.
 
 ## Create a file
 
-Create a new file `generateMnemonic.js`.
+Create a new file `identity.js`.
 All of the code for this step needs to go into this file.
 
 ## Code
@@ -29,7 +29,7 @@ To generate an identity, two methods from the KILT SDK are needed:
 * `generateMnemonic`
 * `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
 
-Open `generateMnemonic.js` and paste the following code:
+Open `identity.js` and paste the following code:
 
 ```javascript
 // import the KILT SDK
@@ -49,7 +49,7 @@ You're now ready to generate an Identity.
 To generate an identity, run this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node generateMnemonic.js
+node identity.js
 ```
 
 Your output should look like this (but it won't be identical since the mnemonic is randomly generated):
