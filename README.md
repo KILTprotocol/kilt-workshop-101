@@ -1,20 +1,28 @@
-# KILT Tutorial  
+# KILT SDK Tutorial 101
 
-Welcome, curious mind!    
-KILT's [sdk-js](https://kiltprotocol.github.io/kilt-workshop-101/#/) is an SDK that helps you use verifiable claims in your application. 
+SDK version **0.17.1**.
 
-In this tutorial, you will:   
+> 📦 Topics: [KILT SDK][sdk-js] essentials, basic credential workflow.
+> 
+> ⏳ Duration: 15-45 minutes.
+> 
+> 🤓 Prerequisites: basic JavaScript or TypeScript knowledge.
+> 
+> ❓ Questions? Join our [developer community channel][cmy-channel]!
 
-✅ Get familiar with KILT's essential concepts: `CTYPE`, `Claim`, `Attester`, and `Verifier`;   
-✅ Learn how to create an identity;   
-✅ Use the SDK for three different cases: 
-* You'll create a claim as a <span class="label-role claimer">claimer</span>; 
-* Attest it as an <span class="label-role attester">attester</span>;
-* Verify it as a <span class="label-role verifier">verifier</span>.  
+**Welcome, curious mind!**
 
+In this tutorial, you will:
 
-Estimated time: **45 minutes**.   
+✔ Get familiar with the essential concepts in KILT: identities, CTYPEs, claims, attested claims and more.
 
-Let's go!   
-👉 [Step 0: prerequisites](https://kiltprotocol.github.io/kilt-workshop-101/#/prerequisites)
+✔ Use the KILT SDK to implement the basic flow of a KILT claim, from creation until verification. You'll create a claim as a <span class="label-role claimer">claimer</span>, attest it as an <span class="label-role attester">attester</span> and verify it as a <span class="label-role verifier">verifier</span>.
 
+✔ Use the KILT SDK to write onto and read from the KILT blockchain.
+
+Ready? Let's go!
+
+👉 [Step 0: Setup](verification)
+
+[sdk-js]: https://github.com/KILTprotocol/sdk-js
+[cmy-channel]: https://riot.im/app/#/room/#kilt-general:matrix.org

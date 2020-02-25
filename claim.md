@@ -1,85 +1,91 @@
 # 💬 Claim
 
-In this section, you'll play the role of a <span class="label-role claimer">claimer</span>:  
-* You'll make a claim about yourself;  
-* A claim in itself has no value; you'll have to request an attestation of your claim. For a claim to become valid in the eyes of <span class="label-role verifier">verifiers</span>, it needs to be attested by a trusted entity.
+In this section, you'll play the role of a <span class="label-role claimer">claimer</span>.
 
-Then an <span class="label-role attester">attester</span> will pick up your request and hopefully attest your claim. We'll look into this in the next steps - for now, let's just focus on our claim.    
+* You'll first make a claim about yourself in the form of a `Claim` object;
+* But a claim in itself has no value. To become valid in the eyes of <span class="label-role verifier">verifiers</span>, it needs to be attested by an entity that <span class="label-role verifier">verifiers</span> trust: an <span class="label-role attester">attester</span>. So you'll create a `RequestForAttestation` object from your `Claim` object, so that an <span class="label-role attester">attester</span> can attest it.
 
+We'll look into the attestation in the next steps - for now, let's just focus on your claim.
 
-> 💡 KILT is permissionless.   
-> Anyone/anything can make a claim about themselves.
+> 💡 KILT is an open system.
+> Anyone/anything can make a claim about themselves. But a claim only has value if the verifier trusts the attester.
 
-<!-- and a *RequestForAttestaion* object, which we will share with the other participants, so that they can attest it. -->
-  
-## Get your identity as a claimer  
-In the previous Identity step in this tutorial, you've generated two identities.    
-You'll need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.   
+## Create a file
 
-## Code: create file 
+Create a new file `2-claim.js`.
+All of the code for this step needs to go into this file.
 
-Create a new file `2-claim.js`. 
-All the following code needs to go into this file.  
+## Code: create a `Claim`
 
-## Code: create a claim
-We'll create a claim using the provided ctype and the claimer identity.  
-Paste the following in `2-claim.js` (make sure to replace the `<CLAIMER'S MNEMONIC>`).  
+In the previous step, you've generated two mnemonics and identities.
+You'll now need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.
 
-```javascript 
+We'll create a claim using the provided CTYPE and the <span class="label-role claimer">claimer</span> identity.  
+Paste the following in `2-claim.js`. Make sure to replace the `<CLAIMER'S MNEMONIC>`.
+
+```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
+
 // import the claim type file we've created previously
 const ctype = require('./ctype.json')
 
 // `<CLAIMER'S MNEMONIC>` is for example "gold upset segment cake universe carry demand comfort dawn invite element capital"
-const mnemonic = `<CLAIMER'S MNEMONIC>` 
+const mnemonic = `<CLAIMER'S MNEMONIC>`
 const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
-const rawClaim = {
+const claimContents = {
   name: 'Alice',
-  age: 29,
+  age: 25,
 }
 
 const claim = Kilt.Claim.fromCTypeAndClaimContents(
   ctype,
-  rawClaim,
+  claimContents,
   claimer.address,
   null
 );
 ```
 
-## Code: create the `RequestForAttestation` object  
+Don't run the code just yet; one more thing to add!
 
-We'd like our claim to be attested by a trusted entity.  
-To do so, we'll build a `RequestForAttestation` object, and send it to an attester.   
+## Code: create a `RequestForAttestation`
+
+Once your claim will be built, you will want to sign it and prepare it for the <span class="label-role attester">attester</span>.
+To do so, let's build a `RequestForAttestation` object from your `Claim`.
 
 Append the following code to `2-claim.js`:
 
 ```javascript
-/* RequestForAttestation needs 3 arguments: 
-* a claim
-* a claimer
-*/
 const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
   claim,
   claimer,
   []
 );
 
-// We will just log it out, to copy/paste it and send it to a fellow participant
+// log this so you can paste it locally
 console.log(JSON.stringify(requestForAttestation))
-``` 
+```
 
-## Run 
-Execute the file by running this command in your terminal (still within your `kilt-rocks` directory):
+## Run
+
+Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
+
 ```bash
 node 2-claim.js
 ```  
 
-And this outputs your `RequestForAttestation` object.  
-We'll need it in the next step, so make sure to copy/paste it somewhere.   
+This outputs your `RequestForAttestation` object.
 
-> The KILT-SDK relies on a 1:1 messaging system. So in this tutorial, we need to "simulate" it by exchanging our requests via other messaging systems: 
-> email, chat, or simply by pasting requests for attestations in this shared document for fellow participants: https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit  
+Copy and paste it somewhere: we'll need it in the next step to get it attested by an <span class="label-role attester">attester</span>.
 
-Now, you've made a claim as a <span class="label-role claimer">claimer</span> and requested an attestation.  
-Let's make this attestation happen!
+> In a real-life setup, the different actors - claimer, attester and verifier - communicate with each other via a messaging system and can rely on the KILT SDK's messaging capabilities.
+> 
+> We don't need to do this here.
+> 
+> If you're following this tutorial on your own, you're playing all three KILT roles: claimer, attester and verifier. So you can simply copy the outputs of the different functions you're calling and use them as inputs for the other actors.
+> 
+> If you're following this as a workshop, you can simulate message exchange by exchanging your requests via chat, email, or simply by pasting requests for attestations or attested claims in a shared document such as [this hackmd](https://hackmd.io/c6OBNgWWR8yWJhMj7WICUA?edit).
+
+OK, you've made a claim as a <span class="label-role claimer">claimer</span> and created a request for attestation.
+
+Let's switch roles and get this attested!
