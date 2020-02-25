@@ -48,8 +48,9 @@ npm install uuid
 Create a new file `nonce.js`, and paste the following code into it:
 
 ```javascript
-import { v4 as uuid } from 'uuid'
-const nonce = uuid()
+const uuid = require('uuid')
+
+const nonce = uuid.v4()
 console.log('nonce: ', nonce)
 ```
 
