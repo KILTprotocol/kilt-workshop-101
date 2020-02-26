@@ -1,4 +1,4 @@
-# KILT SDK Tutorial 101
+# KILT Tutorial 101
 
 SDK version **0.17.1**.
 
