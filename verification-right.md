@@ -78,8 +78,8 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // <nonce> = nonce received from the verifier = uuid you copied from above
 const nonce = <nonce>
 
-// <claimer mnemonic> = claimer mnemonic generated in the Identity step
-const claimer = Kilt.Identity.buildFromMnemonic(<claimer mnemonic>)
+// <claimerMnemonic> = claimer mnemonic generated in the Identity step
+const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
 // sign the nonce as the claimer with your private identity
 const signedNonce = claimer.signStr(nonce)
 

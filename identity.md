@@ -65,7 +65,7 @@ Copy and paste the two mnemonics and addresses somewhere, you'll need them soon.
 
 In the next steps, we'll refer to the so-generated identities as follows:
 
-* `<claimer mnemonic>` is the mnemonic you've generated on the first run of the command above, and `<claimer address>` the associated address;
-* `<attester mnemonic>` is the mnemonic you've generated on the second run of the command above, and `<attester address>` the associated address.
+* `<claimerMnemonic>` is the mnemonic you've generated on the first run of the command above, and `<claimerAddress>` the associated address;
+* `<attesterMnemonic>` is the mnemonic you've generated on the second run of the command above, and `<attesterAddress>` the associated address.
 
 That's it - You've successfully generated two new identities and their address!  

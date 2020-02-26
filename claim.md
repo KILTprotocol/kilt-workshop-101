@@ -18,10 +18,10 @@ All of the code for this step needs to go into this file.
 ## Code: create a `Claim`
 
 In the previous step, you've generated two mnemonics and identities.
-You'll now need the first mnemonic you've created; it's referred to as `<claimer mnemonic>` in the code snippet below.
+You'll now need the first mnemonic you've created; it's referred to as `<claimerMnemonic>` in the code snippet below.
 
 We'll create a claim using the provided CTYPE and the <span class="label-role claimer">claimer</span> identity.  
-Paste the following in `claim.js`. Make sure to replace the `<claimer mnemonic>`.
+Paste the following in `claim.js`. Make sure to replace the `<claimerMnemonic>`.
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
@@ -29,8 +29,8 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // import the claim type file we've created previously
 const ctype = require('./ctype.json')
 
-// <claimer mnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
-const mnemonic = <claimer mnemonic>
+// <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
+const mnemonic = '<claimerMnemonic>'
 const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
 const claimContents = {

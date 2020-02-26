@@ -12,7 +12,7 @@ In this section, you'll play the role of the <span class="label-role attester">a
 When writing the hash of attestations on the blockchain, <span class="label-role attester">attesters</span> have to pay the angel’s
 share (gas or transaction fee) in KILT Tokens. So you'll need tokens to attest a claim.
 
-Go to the [faucet] and request tokens for your `<attester address>`.
+Go to the [faucet] and request tokens for your `<attesterAddress>`.
 
 Sadly these are just play tokens, not real money.
 
@@ -32,13 +32,13 @@ In this tutorial, you can either:
 
 In the following, we'll refer to it as `<requestForAttestationJSON>`.  
 
-Paste the following code in `attestation.js` (make sure to replace `<attester mnemonic>` and `<requestForAttestationJSON>` with the relevant objects):  
+Paste the following code in `attestation.js` (make sure to replace `<attesterMnemonic>` and `<requestForAttestationJSONString>` with the relevant objects):  
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
 // use the attester mnemonic you've generated in the Identity step
-const attester = Kilt.Identity.buildFromMnemonic(<attester mnemonic>)
+const attester = Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
 
 const requestForAttestationStruct = JSON.parse(
   JSON.stringify(<requestForAttestationJSON>)
