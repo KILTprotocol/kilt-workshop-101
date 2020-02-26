@@ -15,38 +15,32 @@ You can either:
 * Take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
 * Or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
-In the following, we'll refer to it as `<attestedClaimJSON>`.
+In the following, we'll refer to it as `<attestedClaimJSONString>`.
 
 ## Create a file
 
-Create a new file `4-verification.js`.  
+Create a new file `verification.js`.  
 All of the code for this step needs to go into this file.
 
-## Code: verify the data
+## Code: verify
+
+Paste the following code in `verification.js`:
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const attestedClaimAsJson = '<attestedClaimJSON>'
-const attestedClaimObj = JSON.parse(JSON.stringify(attestedClaimAsJson));
+// create an attested claim from the JSON string
+const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
+const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct);
 
-// create an attested claim from the JSON object
-const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimObj);
-```
-
-## Code: verify on-chain
-
-Append the following code to `4-verification.js`:
-
-```javascript
 // connect to the KILT blockchain
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 
 // verify:
 // - verify that the data is valid for the given CTYPE;
 // - verify on-chain that the attestation hash is present and that the attestation is not revoked.
-attestedClaim.verify().then(isVerified => {
-  console.log('isVerified:', isVerified)
+attestedClaim.verify().then(isValid => {
+  console.log('isValid: ', isValid)
 }).finally(() => {
   Kilt.BlockchainApiConnection.getCached().then(blockchain => {
     blockchain.api.disconnect()
@@ -56,13 +50,15 @@ attestedClaim.verify().then(isVerified => {
 
 ## Run
 
-Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
+Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node 4-verification.js
+node verification.js
 ```
 
-In your logs, you should see chain queries and successful data verification (`isVerified: true`).
+In your logs, you should see chain queries and successful verification (`isValid: true`).
 
 That's it!
 You've successfully verified a claim as a <span class="label-role verifier">verifier</span>.
+
+Or... did you? 😈

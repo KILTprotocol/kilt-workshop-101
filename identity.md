@@ -19,7 +19,7 @@ All we need to create an identity is a mnemonic.
 
 ## Create a file
 
-Create a new file `1-generateMnemonic.js`.
+Create a new file `identity.js`.
 All of the code for this step needs to go into this file.
 
 ## Code
@@ -29,17 +29,17 @@ To generate an identity, two methods from the KILT SDK are needed:
 * `generateMnemonic`
 * `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
 
-Open `1-generateMnemonic.js` and paste the following code:
+Open `identity.js` and paste the following code:
 
 ```javascript
 // import the KILT SDK
 const Kilt = require('@kiltprotocol/sdk-js')
 
 const mnemonic = Kilt.Identity.generateMnemonic()
-console.log('mnemonic:', mnemonic)
+console.log('mnemonic: ', mnemonic)
 
 const identity = Kilt.Identity.buildFromMnemonic(mnemonic)
-console.log('address:', identity.address)
+console.log('address: ', identity.address)
 ```
 
 You're now ready to generate an Identity.
@@ -49,7 +49,7 @@ You're now ready to generate an Identity.
 To generate an identity, run this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node 1-generateMnemonic.js
+node identity.js
 ```
 
 Your output should look like this (but it won't be identical since the mnemonic is randomly generated):
@@ -65,8 +65,7 @@ Copy and paste the two mnemonics and addresses somewhere, you'll need them soon.
 
 In the next steps, we'll refer to the so-generated identities as follows:
 
-* `<CLAIMER'S MNEMONIC>` is the mnemonic you've generated on the first run of the command above, and `<CLAIMER'S ADDRESS>` the associated address;
-* `<ATTESTER'S MNEMONIC>` is the mnemonic you've generated on the second run of the command above, and `<ATTESTER'S ADDRESS>` the associated address.
+* `<claimerMnemonic>` is the mnemonic you've generated on the first run of the command above, and `<claimerAddress>` the associated address;
+* `<attesterMnemonic>` is the mnemonic you've generated on the second run of the command above, and `<attesterAddress>` the associated address.
 
 That's it - You've successfully generated two new identities and their address!  
-

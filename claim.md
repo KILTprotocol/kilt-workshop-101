@@ -12,16 +12,16 @@ We'll look into the attestation in the next steps - for now, let's just focus on
 
 ## Create a file
 
-Create a new file `2-claim.js`.
+Create a new file `claim.js`.
 All of the code for this step needs to go into this file.
 
 ## Code: create a `Claim`
 
 In the previous step, you've generated two mnemonics and identities.
-You'll now need the first mnemonic you've created; it's referred to as `<CLAIMER'S MNEMONIC>` in the code snippet below.
+You'll now need the first mnemonic you've created; it's referred to as `<claimerMnemonic>` in the code snippet below.
 
 We'll create a claim using the provided CTYPE and the <span class="label-role claimer">claimer</span> identity.  
-Paste the following in `2-claim.js`. Make sure to replace the `<CLAIMER'S MNEMONIC>`.
+Paste the following in `claim.js`. Make sure to replace the `<claimerMnemonic>`.
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
@@ -29,8 +29,8 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // import the claim type file we've created previously
 const ctype = require('./ctype.json')
 
-// `<CLAIMER'S MNEMONIC>` is for example "gold upset segment cake universe carry demand comfort dawn invite element capital"
-const mnemonic = `<CLAIMER'S MNEMONIC>`
+// <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
+const mnemonic = '<claimerMnemonic>'
 const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
 const claimContents = {
@@ -53,7 +53,7 @@ Don't run the code just yet; one more thing to add!
 Once your claim will be built, you will want to sign it and prepare it for the <span class="label-role attester">attester</span>.
 To do so, let's build a `RequestForAttestation` object from your `Claim`.
 
-Append the following code to `2-claim.js`:
+Append the following code to `claim.js`:
 
 ```javascript
 const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
@@ -63,15 +63,15 @@ const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
 );
 
 // log this so you can paste it locally
-console.log(JSON.stringify(requestForAttestation))
+console.log('requestForAttestationJSONString: ', JSON.stringify(requestForAttestation))
 ```
 
 ## Run
 
-Execute the file by running this command in your terminal, still within your `kilt-rocks` directory:
+Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
 
 ```bash
-node 2-claim.js
+node claim.js
 ```  
 
 This outputs your `RequestForAttestation` object.
