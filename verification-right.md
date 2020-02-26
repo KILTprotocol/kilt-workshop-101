@@ -70,13 +70,13 @@ Let's put together the data you would send back to the <span class="label-role v
 
 Create a new file `claim-with-signed-nonce.js`.
 
-Paste the following code into it (make sure to replace `<nonce>` and `<attestedClaimJSON>` with the data you copied earlier):
+Paste the following code into it (make sure to replace `<nonce>` and `<attestedClaimJSONString>` with the data you copied earlier):
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
 // <nonce> = nonce received from the verifier = uuid you copied from above
-const nonce = <nonce>
+const nonce = '<nonce>'
 
 // <claimerMnemonic> = claimer mnemonic generated in the Identity step
 const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
@@ -84,14 +84,14 @@ const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
 const signedNonce = claimer.signStr(nonce)
 
 // same data as in to the simple "Verification" step
-const attestedClaimStruct = JSON.parse(JSON.stringify(<attestedClaimJSON>));
+const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
 
 const dataToVerify = {
   signedNonce,
   attestedClaimStruct
 }
 
-console.log('dataToVerifyJSON: ', JSON.stringify(dataToVerify))
+console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify))
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
@@ -108,15 +108,15 @@ Copy it, you'll need it in the next step.
 
 Create a new file `verification-with-nonce.js`.
 
-Paste the following code into it (make sure to replace `<dataToVerify>` and `<nonce>` with the relevant objects):
+Paste the following code into it (make sure to replace `<dataToVerifyJSONString>` and `<nonce>` with the relevant objects):
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const { signedNonce, attestedClaimStruct } = JSON.parse(<dataToVerifyJSON>)
+const { signedNonce, attestedClaimStruct } = JSON.parse('<dataToVerifyJSONString>')
 
 // verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
-const isSenderOwner = Kilt.Crypto.verify(<nonce>, signedNonce, attestedClaimStruct.request.claim.owner)
+const isSenderOwner = Kilt.Crypto.verify('<nonce>', signedNonce, attestedClaimStruct.request.claim.owner)
 console.log('isSenderOwner: ', isSenderOwner)
 
 // proceed with verifying the attestedClaim itself

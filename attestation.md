@@ -30,7 +30,7 @@ In this tutorial, you can either:
 * Take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
 * Or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
 
-In the following, we'll refer to it as `<requestForAttestationJSON>`.  
+In the following, we'll refer to it as `<requestForAttestationJSONString>`.  
 
 Paste the following code in `attestation.js` (make sure to replace `<attesterMnemonic>` and `<requestForAttestationJSONString>` with the relevant objects):  
 
@@ -40,9 +40,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 // use the attester mnemonic you've generated in the Identity step
 const attester = Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
 
-const requestForAttestationStruct = JSON.parse(
-  JSON.stringify(<requestForAttestationJSON>)
-);
+const requestForAttestationStruct = JSON.parse('<requestForAttestationJSONString>');
 const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
   requestForAttestationStruct
 );
@@ -83,7 +81,7 @@ attestation.store(attester).then(data => {
       attestation
     );
   // log the attestedClaim so you can copy/send it back to the claimer
-  console.log('attestedClaimJSON: ', JSON.stringify(attestedClaim))
+  console.log('attestedClaimJSONString: ', JSON.stringify(attestedClaim))
 }).catch(e => {
   console.log(e)
 }).finally(() => {

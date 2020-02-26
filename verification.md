@@ -15,7 +15,7 @@ You can either:
 * Take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
 * Or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
 
-In the following, we'll refer to it as `<attestedClaimJSON>`.
+In the following, we'll refer to it as `<attestedClaimJSONString>`.
 
 ## Create a file
 
@@ -29,10 +29,10 @@ Paste the following code in `verification.js`:
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const attestedClaimStruct = JSON.parse(JSON.stringify(<attestedClaimJSON>));
-
-// create an attested claim from the JSON object
+// create an attested claim from the JSON string
+const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
 const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct);
+
 // connect to the KILT blockchain
 Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 

@@ -63,7 +63,7 @@ const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
 );
 
 // log this so you can paste it locally
-console.log('requestForAttestationJSON: ', JSON.stringify(requestForAttestation))
+console.log('requestForAttestationJSONString: ', JSON.stringify(requestForAttestation))
 ```
 
 ## Run
