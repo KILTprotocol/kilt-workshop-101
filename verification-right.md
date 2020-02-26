@@ -116,7 +116,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 const { signedNonce, attestedClaimStruct } = JSON.parse(<dataToVerifyJSON>)
 
 // verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
-const isSenderOwner = Kilt.Crypto.verify(<nonce>, signedNonce, attestedClaimStruct.attestation.owner)
+const isSenderOwner = Kilt.Crypto.verify(<nonce>, signedNonce, attestedClaimStruct.request.claim.owner)
 console.log('isSenderOwner: ', isSenderOwner)
 
 // proceed with verifying the attestedClaim itself
