@@ -139,6 +139,6 @@ You can also see what would happen when a malicious actor presents a stolen `att
 * Sign the nonce above with Mallory's identity, hence creating a new `signedNonce`;
 * Create a new `invalidDataToVerify` object with this new `signedNonce` and with Alice's `attestedClaim` we've been using so far;
 * As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `Crypto.verify`;
-* You'll this that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
+* You'll see that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
 
 [uuid]: https://www.npmjs.com/package/uuid
