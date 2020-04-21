@@ -85,9 +85,7 @@ attestation.store(attester).then(data => {
 }).catch(e => {
   console.log(e)
 }).finally(() => {
-  Kilt.BlockchainApiConnection.getCached().then(blockchain => {
-    blockchain.api.disconnect()
-  })
+  Kilt.default.disconnect()
 })
 ```
 
