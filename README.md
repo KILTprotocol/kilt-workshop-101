@@ -22,7 +22,7 @@ In this tutorial, you will:
 
 Ready? Let's go!
 
-👉 [Step 0: Setup](setup)
+👉 [Step 0: Setup](setup.md)
 
 [sdk-js]: https://github.com/KILTprotocol/sdk-js
 [cmy-channel]: https://riot.im/app/#/room/#kilt-general:matrix.org
