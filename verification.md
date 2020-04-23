@@ -42,9 +42,7 @@ Kilt.default.connect('wss://full-nodes.kilt.io:9944')
 attestedClaim.verify().then(isValid => {
   console.log('isValid: ', isValid)
 }).finally(() => {
-  Kilt.BlockchainApiConnection.getCached().then(blockchain => {
-    blockchain.api.disconnect()
-  })
+  Kilt.default.disconnect()
 })
 ```
 
