@@ -1,4 +1,4 @@
-# 🎒 Setup  
+# 🎒 Setup
 
 ## Node.js
 

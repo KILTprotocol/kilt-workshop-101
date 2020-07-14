@@ -2,10 +2,10 @@
 
 In this section, you'll play the role of the <span class="label-role attester">attester</span>:
 
-* You'll take a `RequestForAttestation` object;
-* Attest it;
-* Store the attestation on the chain (more specifically only its hash, we'll get to that);
-* Build the `AttestedClaim` object which will be send back to the <span class="label-role claimer">claimer</span>.
+- You'll take a `RequestForAttestation` object;
+- Attest it;
+- Store the attestation on the chain (more specifically only its hash, we'll get to that);
+- Build the `AttestedClaim` object which will be send back to the <span class="label-role claimer">claimer</span>.
 
 ## Request KILT tokens
 
@@ -23,70 +23,87 @@ All of the code for this step needs to go into this file.
 
 ## Code: validate the `RequestForAttestation` object
 
-In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a  <span class="label-role claimer">claimer</span>.  
+In a real-life setup, as an <span class="label-role attester">attester</span> you would directly receive a `RequestForAttestation` from a <span class="label-role claimer">claimer</span>.
 
 In this tutorial, you can either:
 
-* Take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
-* Or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.  
+- Take the `RequestForAttestation` object you've generated in the previous step as a <span class="label-role claimer">claimer</span>;
+- Or if you're in a workshop, ask another participant to send you their `RequestForAttestation` object.
 
-In the following, we'll refer to it as `<requestForAttestationJSONString>`.  
+In the following, we'll refer to it as `<requestForAttestationJSONString>`.
 
-Paste the following code in `attestation.js` (make sure to replace `<attesterMnemonic>` and `<requestForAttestationJSONString>` with the relevant objects):  
+Paste the following code in `attestation.js` (make sure to replace `<attesterMnemonic>` and `<requestForAttestationJSONString>` with the relevant objects):
+
+[comment]: <copy and paste 1️⃣ requestForAttestation_example from 4_attestation.ts>
+[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js')
+const Kilt = require('@kiltprotocol/sdk-js');
 
-// use the attester mnemonic you've generated in the Identity step
-const attester = Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
+async function main() {
+  // use the attester mnemonic you've generated in the Identity step
+  const attester = await Kilt.Identity.buildFromMnemonic('<attesterMnemonic>');
 
-const requestForAttestationStruct = JSON.parse('<requestForAttestationJSONString>');
-const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
-  requestForAttestationStruct
-);
+  const requestForAttestationStruct = JSON.parse(
+    '<requestForAttestationJSONString>'
+  );
+  const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
+    requestForAttestationStruct
+  );
+}
+
+// execute calls
+main();
 ```
 
 To check if the object is valid, you can check the data against the CTYPE
 and check if the signature is valid.
 
+[comment]: <copy and paste 2️⃣ attestationVerify_example from 4_attestation.ts>
+
 ```javascript
-const isDataValid = requestForAttestation.verifyData()
-const isSignatureValid = requestForAttestation.verifySignature()
-console.log('isDataValid: ', isDataValid)
-console.log('isSignatureValid: ', isSignatureValid)
+const isDataValid = requestForAttestation.verifyData();
+const isSignatureValid = requestForAttestation.verifySignature();
+console.log('isDataValid: ', isDataValid);
+console.log('isSignatureValid: ', isSignatureValid);
 ```
 
-## Code: create an `Attestation`  
+## Code: create an `Attestation`
 
-Now is time to interact with the chain, in order to store an attestation on there.   
-Append the following code to `attestation.js`.
+Now is time to interact with the chain, in order to store an attestation on there.  
+Append the following code to your `main` function inside `attestation.js`.
+
+[comment]: <copy and paste 3️⃣ attestClaim_example from 4_attestation.ts>
 
 ```javascript
-// build the Attestation object
-const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
+// build the attestation object
+const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
   requestForAttestation,
   attester.getPublicIdentity()
 );
 
-// connect to the chain (this is one KILT test node)
-Kilt.default.connect('wss://full-nodes.kilt.io:9944')
+// connect to the chain (this is one KILT devnet node)
+await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944');
+console.log(
+  'Successfully connected to KILT devnet, storing attestation next...'
+);
 
 // store the attestation on chain
-attestation.store(attester).then(data => {
-  console.log('attestation: ', attestation)
-}).then(() => {
-  // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
-    const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
-      requestForAttestation,
-      attestation
-    );
-  // log the attestedClaim so you can copy/send it back to the claimer
-  console.log('attestedClaimJSONString: ', JSON.stringify(attestedClaim))
-}).catch(e => {
-  console.log(e)
-}).finally(() => {
-  Kilt.default.disconnect()
-})
+const submittableExtrinsic = await attestation.store(attester);
+if (submittableExtrinsic.isFinalized) {
+  console.log('Attestation stored');
+}
+// the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
+const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
+  requestForAttestation,
+  attestation
+);
+// log the attestedClaim so you can copy/send it back to the claimer
+console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim));
+
+// disconnect from the chain
+await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944');
+console.log('Disconnected from KILT devnet');
 ```
 
 ## Run
@@ -99,9 +116,9 @@ node attestation.js
 
 You should see in your logs:
 
-* `true` and `true` if the signature and data are valid (they should be);
-* The blockchain transaction status `TxStatus`, which should be `Finalized`;
-* The `AttestedClaim` object.
+- `true` and `true` if the signature and data are valid (they should be);
+- The block hash in which the transaction was finalized;
+- The `AttestedClaim` object.
 
 Copy the `AttestedClaim` object, you'll need it soon.
 
