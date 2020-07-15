@@ -1,6 +1,6 @@
 # How to update code examples in KILT workshop
 
-Please see [here](https://github.com/KILTprotocol/organizational/wiki/How-to-update-code-example-in-the-KILT-workshop). To be aware of breaking changes to the workshop code snippets, we execute each snippet in the workshop CI pipeline `integration_test`.
+Please see [here](https://github.com/KILTprotocol/organizational/wiki/How-to-update-code-examples-in-the-KILT-workshop). To be aware of breaking changes to the workshop code snippets, we execute each snippet in the workshop CI pipeline `integration_test`.
 
 - [Apply changes from CI tests to workshop](#1-apply-changes-from-ci-tests-to-workshop)
 - [Apply changes from workshop to CI tests](#2-apply-changes-from-workshop-to-ci-tests)
