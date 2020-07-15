@@ -1,0 +1,76 @@
+name: Test
+
+on:
+  registry_package:
+    owner: kiltprotocol
+    repo: sdk-js
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: yarn install, build and test
+        run: |
+          yarn install --frozen-lockfile
+          yarn lint
+          yarn test:ci
+          yarn build
+        env:
+          CI: true
+
+  integration_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Use Node.js 10
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: yarn install
+        run: yarn install
+        working-directory: ./tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: test workshop
+        timeout-minutes: 20
+        working-directory: ./tests
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: kilt/prototype-chain
+          IMAGE_TAG: latest-develop
+        run: |
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker run -d --rm -p 9944:9944 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./target/release/mashnet-node --dev --ws-port 9944 --ws-external
+          yarn ts-node 1_identity.ts
+          yarn ts-node 2_ctypeFromSchema.ts
+          yarn ts-node 3_claim.ts
+          yarn ts-node 4_attestation.ts
+          yarn ts-node 5_verification.ts
+          yarn ts-node 6_verification-with-nonce.ts
+          docker stop $(docker ps -f ancestor=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -q)
