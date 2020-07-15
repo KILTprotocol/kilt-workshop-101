@@ -100,7 +100,6 @@ Normally, you would start with a schema which does not have a defined `$id` yet:
 const Kilt = require('@kiltprotocol/sdk-js')
 
 const ctype = Kilt.CType.fromSchema({
-  $id: 'kilt:ctype:0x1',
   $schema: 'http://kilt-protocol.org/draft-01/ctype#',
   title: 'Drivers License',
   properties: {
