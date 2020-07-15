@@ -7,28 +7,6 @@ on:
     types: [published]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x]
-
-    steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: yarn install, build and test
-        run: |
-          yarn install --frozen-lockfile
-          yarn lint
-          yarn test:ci
-          yarn build
-        env:
-          CI: true
-
   integration_test:
     runs-on: ubuntu-latest
 
@@ -74,3 +52,11 @@ jobs:
           yarn ts-node 5_verification.ts
           yarn ts-node 6_verification-with-nonce.ts
           docker stop $(docker ps -f ancestor=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -q)
+
+      - name: create issue on failure
+        if: failure()
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          title: fix code snippets after sdk-js upgrade {{ date | date('YYYY-MM-D')}}
+          labels: bug
