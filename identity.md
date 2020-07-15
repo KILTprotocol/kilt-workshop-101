@@ -8,10 +8,11 @@ An identity contains multiple properties.
 One of them is the `address` : it's the entity's unique and public identifier.
 
 > 💡 A KILT identity is a set of cryptographic elements:
-> 
-> * A signing keypair, used to sign claims;
-> * The address, which is generated from the signing public key;
-> * An encryption keypair, used to encrypt messages between participants of the system;
+>
+> - A signing keypair, used to sign claims;
+> - The address, which is generated from the signing public key;
+> - An encryption keypair, used to encrypt messages between participants of the system;
+> - A user secret, used for privacy enhanced attestations;
 
 All we need to create an identity is a mnemonic.
 
@@ -26,20 +27,31 @@ All of the code for this step needs to go into this file.
 
 To generate an identity, two methods from the KILT SDK are needed:
 
-* `generateMnemonic`
-* `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.  
+- `generateMnemonic`
+- `buildFromMnemonic` // takes a mnemonic as an input, and outputs an `Identity` instance.
+
+In version [0.19.0](https://github.com/KILTprotocol/sdk-js/releases/tag/0.19.0) we added the privacy feature among other things. Unfortunately, this made some calls (like creating an identity) asynchronous. Therefore, you have to wrap your functions inside an `async` function to execute them properly. But don't worry, the tutorial will tell you what to do 😇
 
 Open `identity.js` and paste the following code:
+
+[comment]: <copy and paste 🚧 1️⃣ identity_example from 1_identity.ts>
+[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
 
 ```javascript
 // import the KILT SDK
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const mnemonic = Kilt.Identity.generateMnemonic()
-console.log('mnemonic: ', mnemonic)
+// wrap call inside async function
+async function main() {
+  const mnemonic = Kilt.Identity.generateMnemonic()
+  console.log('mnemonic:', mnemonic)
 
-const identity = Kilt.Identity.buildFromMnemonic(mnemonic)
-console.log('address: ', identity.address)
+  const identity = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  console.log('address:', identity.address)
+}
+
+// execute calls
+main()
 ```
 
 You're now ready to generate an Identity.
@@ -61,11 +73,35 @@ address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
 
 You want to run this command twice, in order to generate 2 identities: the <span class="label-role attester">attester</span>'s and the <span class="label-role claimer">claimer</span>'s.
 
-Copy and paste the two mnemonics and addresses somewhere, you'll need them soon.  
+[comment]: <copy and paste 🚧 2️⃣ identities_example from 1_identity.ts>
+[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+
+```javascript
+// import the KILT SDK
+const Kilt = require('@kiltprotocol/sdk-js')
+
+// wrap call inside async function
+async function identities() {
+  const claimerMnemonic = Kilt.Identity.generateMnemonic()
+  console.log('claimer mnemonic:', claimerMnemonic)
+  const claimer = await Kilt.Identity.buildFromMnemonic(claimerMnemonic)
+  console.log('claimer address:', claimer.address)
+
+  const attesterMnemonic = Kilt.Identity.generateMnemonic()
+  console.log('attester mnemonic:', attesterMnemonic)
+  const attester = await Kilt.Identity.buildFromMnemonic(attesterMnemonic)
+  console.log('attester address:', attester.address)
+}
+
+// execute calls
+identities()
+```
+
+Copy and paste the two mnemonics and addresses somewhere, you'll need them soon.
 
 In the next steps, we'll refer to the so-generated identities as follows:
 
-* `<claimerMnemonic>` is the mnemonic you've generated on the first run of the command above, and `<claimerAddress>` the associated address;
-* `<attesterMnemonic>` is the mnemonic you've generated on the second run of the command above, and `<attesterAddress>` the associated address.
+- `<claimerMnemonic>` is the mnemonic for the claimer and `<claimerAddress>` their associated address;
+- `<attesterMnemonic>` is the mnemonic for the attester and `<attesterAddress>` their associated address.
 
-That's it - You've successfully generated two new identities and their address!  
+That's it - You've successfully generated two new identities and their address!
