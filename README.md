@@ -20,7 +20,7 @@ In this tutorial, you will:
 
 ✔ Use the KILT SDK to write onto and read from the KILT blockchain.
 
-❌ Not get in touch with our KILT anonymous credentials. But don't worry: There will be a tutorial for this very soon!
+❌ We will not introduce our KILT anonymous credentials just yet. But don't worry: There will be a tutorial for this very soon!
 
 Ready? Let's go!
 
