@@ -29,28 +29,28 @@ Paste the following in `claim.js`. Make sure to replace the `<claimerMnemonic>`.
 
 ```javascript
 // import the claim type file we've created previously
-const ctype = require('./ctype.json');
+const ctype = require('./ctype.json')
 
 // wrap call inside async function
 async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
-  const mnemonic = '<claimerMnemonic>';
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic);
+  const mnemonic = '<claimerMnemonic>'
+  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',
     age: 25,
-  };
+  }
 
   const claim = Kilt.Claim.fromCTypeAndClaimContents(
     ctype,
     claimContents,
     claimer.getAddress()
-  );
+  )
 }
 
 // execute calls
-main();
+main()
 ```
 
 Don't run the code just yet; one more thing to add!
@@ -70,13 +70,13 @@ Append the following code to your `main` function inside `claim.js`:
 ```javascript
 const {
   message: requestForAttestation,
-} = await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer);
+} = await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
 
 // log this so you can paste it locally
 console.log(
   'requestForAttestationJSONString: ',
   JSON.stringify(requestForAttestation)
-);
+)
 ```
 
 ## Run

@@ -29,32 +29,32 @@ Paste the following code in `verification.js`:
 [comment]: <copy and paste verifyClaim_example from 5_verification.ts>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
   // create an attested claim from the JSON string
-  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
+  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
   const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(
     attestedClaimStruct
-  );
+  )
 
-  await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944');
+  await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944')
   console.log(
     'Successfully connected to KILT devnet, verifying attested claim next...'
-  );
+  )
 
   // 1. verify that the data is valid for the given CTYPE
   // 2. verify on-chain that the attestation hash is present and that the attestation has not been revoked
-  const isValid = await attestedClaim.verify();
-  console.log('Is the attested claim valid?', isValid);
+  const isValid = await attestedClaim.verify()
+  console.log('Is the attested claim valid?', isValid)
 
   // disconnect from the chain
-  await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944');
-  console.log('Disconnected from KILT devnet');
+  await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944')
+  console.log('Disconnected from KILT devnet')
 }
 
 // execute calls
-main();
+main()
 ```
 
 ## Run

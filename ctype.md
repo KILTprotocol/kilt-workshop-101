@@ -97,7 +97,7 @@ Normally, you would start with a schema which does not have a defined `$id` yet:
 [comment]: <copy and paste 🚧 ctypeFromSchema_example from 2_ctypeFromSchema.ts>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
 const ctype = Kilt.CType.fromSchema({
   $id: 'kilt:ctype:0x1',
@@ -112,5 +112,5 @@ const ctype = Kilt.CType.fromSchema({
     },
   },
   type: 'object',
-});
+})
 ```

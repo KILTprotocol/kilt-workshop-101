@@ -48,10 +48,10 @@ npm install uuid
 Create a new file `nonce.js`, and paste the following code into it:
 
 ```javascript
-const uuid = require('uuid');
+const uuid = require('uuid')
 
-const nonce = uuid.v4();
-console.log('nonce: ', nonce);
+const nonce = uuid.v4()
+console.log('nonce: ', nonce)
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
@@ -76,31 +76,31 @@ Paste the following code into it (make sure to replace `<nonce>` and `<attestedC
 [comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
   // <nonce> = nonce received from the verifier = uuid you copied from above
-  const nonce = '<nonce>';
+  const nonce = '<nonce>'
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
-  const claimer = await Kilt.Identity.buildFromMnemonic('claimerMnemonic');
+  const claimer = await Kilt.Identity.buildFromMnemonic('claimerMnemonic')
   // sign the nonce as the claimer with your private identity
-  const signedNonce = claimer.signStr(nonce);
+  const signedNonce = claimer.signStr(nonce)
 
   // same data as in to the simple "Verification" step
-  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
+  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
 
   const dataToVerify = {
     signedNonce,
     attestedClaimStruct,
-  };
+  }
 
-  console.log('attestedClaimStruct', attestedClaimStruct.request.claim.owner);
-  console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify));
+  console.log('attestedClaimStruct', attestedClaimStruct.request.claim.owner)
+  console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify))
 }
 
 // execute calls
-main();
+main()
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
@@ -123,19 +123,19 @@ Paste the following code into it (make sure to replace `<dataToVerifyJSONString>
 [comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
 const { signedNonce, attestedClaimStruct } = JSON.parse(
   '<dataToVerifyJSONString>'
-);
+)
 
 // verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
 const isSenderOwner = Kilt.Crypto.verify(
   nonce,
   signedNonce,
   attestedClaimStruct.request.claim.owner
-);
-console.log('isSenderOwner: ', isSenderOwner);
+)
+console.log('isSenderOwner: ', isSenderOwner)
 
 // proceed with verifying the attestedClaim itself
 // --> see simple "Verification" step in this tutorial

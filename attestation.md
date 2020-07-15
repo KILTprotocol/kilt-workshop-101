@@ -38,22 +38,22 @@ Paste the following code in `attestation.js` (make sure to replace `<attesterMne
 [comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js');
+const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
   // use the attester mnemonic you've generated in the Identity step
-  const attester = await Kilt.Identity.buildFromMnemonic('<attesterMnemonic>');
+  const attester = await Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
 
   const requestForAttestationStruct = JSON.parse(
     '<requestForAttestationJSONString>'
-  );
+  )
   const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
     requestForAttestationStruct
-  );
+  )
 }
 
 // execute calls
-main();
+main()
 ```
 
 To check if the object is valid, you can check the data against the CTYPE
@@ -62,10 +62,10 @@ and check if the signature is valid.
 [comment]: <copy and paste 2️⃣ attestationVerify_example from 4_attestation.ts>
 
 ```javascript
-const isDataValid = requestForAttestation.verifyData();
-const isSignatureValid = requestForAttestation.verifySignature();
-console.log('isDataValid: ', isDataValid);
-console.log('isSignatureValid: ', isSignatureValid);
+const isDataValid = requestForAttestation.verifyData()
+const isSignatureValid = requestForAttestation.verifySignature()
+console.log('isDataValid: ', isDataValid)
+console.log('isSignatureValid: ', isSignatureValid)
 ```
 
 ## Code: create an `Attestation`
@@ -80,30 +80,30 @@ Append the following code to your `main` function inside `attestation.js`.
 const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
   requestForAttestation,
   attester.getPublicIdentity()
-);
+)
 
 // connect to the chain (this is one KILT devnet node)
-await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944');
+await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944')
 console.log(
   'Successfully connected to KILT devnet, storing attestation next...'
-);
+)
 
 // store the attestation on chain
-const submittableExtrinsic = await attestation.store(attester);
+const submittableExtrinsic = await attestation.store(attester)
 if (submittableExtrinsic.isFinalized) {
-  console.log('Attestation stored');
+  console.log('Attestation stored')
 }
 // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
 const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
   requestForAttestation,
   attestation
-);
+)
 // log the attestedClaim so you can copy/send it back to the claimer
-console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim));
+console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim))
 
 // disconnect from the chain
-await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944');
-console.log('Disconnected from KILT devnet');
+await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944')
+console.log('Disconnected from KILT devnet')
 ```
 
 ## Run

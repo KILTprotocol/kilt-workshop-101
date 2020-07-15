@@ -42,7 +42,7 @@ The following helpers don't need any explanation. They tell you what to copy-pas
 #### 2. Remove lines
 
 ```javascript
-const { requestForAttestationStruct } = await setupWithoutChain(); // ❗️ REMOVE-LINE in workshop ❗️
+const { requestForAttestationStruct } = await setupWithoutChain() // ❗️ REMOVE-LINE in workshop ❗️
 ```
 
 #### 3. Uncomment lines
