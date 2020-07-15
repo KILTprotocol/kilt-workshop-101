@@ -4,10 +4,10 @@ Did you notice anything wrong with our verification in the previous step?
 
 Nothing? Let's see:
 
-* You've checked that the `attestedClaim` data is valid and you've verified that the corresponding attestation is on chain and not revoked. All good.
+- You've checked that the `attestedClaim` data is valid and you've verified that the corresponding attestation is on chain and not revoked. All good.
 
-* But: are you sure that the entity/person that sent you the `attestedClaim` owns it?
-What if a malicious actor stole this `attestedClaim` and is now presenting it to you as theirs? We'll see how to mitigate this.
+- But: are you sure that the entity/person that sent you the `attestedClaim` owns it?
+  What if a malicious actor stole this `attestedClaim` and is now presenting it to you as theirs? We'll see how to mitigate this.
 
 ## Understand credential theft mitigation
 
@@ -24,8 +24,8 @@ Here's how it works:
 1. The <span class="label-role verifier">verifier</span> sends a nonce to the <span class="label-role claimer">claimer</span>.
 2. The <span class="label-role claimer">claimer</span> sends back this nonce signed with their **private** key, together with their `attestedClaim`.
 3. The <span class="label-role verifier">verifier</span> checks the following:
-   * Does the signature on the nonce match the public key contained in the `attestedClaim`? If so: the entity/person who just sent the `attestedClaim` plus the signed nonce is also the owner of this `attestedClaim`. If not: the `attestedClaim` might be stolen.
-   * Is the data valid? Is the attestation on-chain and not revoked? See the simple [Verification](verification).
+   - Does the signature on the nonce match the public key contained in the `attestedClaim`? If so: the entity/person who just sent the `attestedClaim` plus the signed nonce is also the owner of this `attestedClaim`. If not: the `attestedClaim` might be stolen.
+   - Is the data valid? Is the attestation on-chain and not revoked? See the simple [Verification](verification).
 
 OK, let's see this in action.
 
@@ -34,7 +34,7 @@ OK, let's see this in action.
 To generate a random, unique piece of data, we'll use a package called [uuid].
 A UUID is **random and unique**, which are the most important properties of a **nonce**.
 
-(A UUID is not *strictly* a nonce, because it's not a number, but here we'll refer to it as nonce).
+(A UUID is not _strictly_ a nonce, because it's not a number, but here we'll refer to it as nonce).
 
 Install it:
 
@@ -72,26 +72,35 @@ Create a new file `claim-with-signed-nonce.js`.
 
 Paste the following code into it (make sure to replace `<nonce>` and `<attestedClaimJSONString>` with the data you copied earlier):
 
+[comment]: <copy and paste 1️⃣ signNonce_example from 6_verification-with-nonce.ts>
+[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-// <nonce> = nonce received from the verifier = uuid you copied from above
-const nonce = '<nonce>'
+async function main() {
+  // <nonce> = nonce received from the verifier = uuid you copied from above
+  const nonce = '<nonce>'
 
-// <claimerMnemonic> = claimer mnemonic generated in the Identity step
-const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
-// sign the nonce as the claimer with your private identity
-const signedNonce = claimer.signStr(nonce)
+  // <claimerMnemonic> = claimer mnemonic generated in the Identity step
+  const claimer = await Kilt.Identity.buildFromMnemonic('claimerMnemonic')
+  // sign the nonce as the claimer with your private identity
+  const signedNonce = claimer.signStr(nonce)
 
-// same data as in to the simple "Verification" step
-const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
+  // same data as in to the simple "Verification" step
+  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
 
-const dataToVerify = {
-  signedNonce,
-  attestedClaimStruct
+  const dataToVerify = {
+    signedNonce,
+    attestedClaimStruct,
+  }
+
+  console.log('attestedClaimStruct', attestedClaimStruct.request.claim.owner)
+  console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify))
 }
 
-console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify))
+// execute calls
+main()
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
@@ -110,13 +119,22 @@ Create a new file `verification-with-nonce.js`.
 
 Paste the following code into it (make sure to replace `<dataToVerifyJSONString>` and `<nonce>` with the relevant objects):
 
+[comment]: <copy and paste 2️⃣ verifyNonce_example from 6_verification-with-nonce.ts>
+[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-const { signedNonce, attestedClaimStruct } = JSON.parse('<dataToVerifyJSONString>')
+const { signedNonce, attestedClaimStruct } = JSON.parse(
+  '<dataToVerifyJSONString>'
+)
 
 // verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
-const isSenderOwner = Kilt.Crypto.verify('<nonce>', signedNonce, attestedClaimStruct.request.claim.owner)
+const isSenderOwner = Kilt.Crypto.verify(
+  nonce,
+  signedNonce,
+  attestedClaimStruct.request.claim.owner
+)
 console.log('isSenderOwner: ', isSenderOwner)
 
 // proceed with verifying the attestedClaim itself
@@ -135,10 +153,10 @@ Looking good!
 
 You can also see what would happen when a malicious actor presents a stolen `attestedClaim` to a <span class="label-role verifier">verifier</span>. Try this out:
 
-* Create another identity, let's refer to it as Mallory (= malicious);
-* Sign the nonce above with Mallory's identity, hence creating a new `signedNonce`;
-* Create a new `invalidDataToVerify` object with this new `signedNonce` and with Alice's `attestedClaim` we've been using so far;
-* As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `Crypto.verify`;
-* You'll see that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
+- Create another identity, let's refer to it as Mallory (= malicious);
+- Sign the nonce above with Mallory's identity, hence creating a new `signedNonce`;
+- Create a new `invalidDataToVerify` object with this new `signedNonce` and with Alice's `attestedClaim` we've been using so far;
+- As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `Crypto.verify`;
+- You'll see that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
 
 [uuid]: https://www.npmjs.com/package/uuid

@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <title>KILT Tutorial 101</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="KILT Protocol for self-sovereign credentials: Tutorial 101" />
+    <meta
+      name="description"
+      content="KILT Protocol for self-sovereign credentials: Tutorial 101"
+    />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
@@ -32,35 +35,35 @@
       // this solves https://github.com/docsifyjs/docsify/issues/504
       function makeid(len) {
         const text = new Array(len);
-        const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         for (let i = 0; i < len; i++)
           text[i] = possible.charAt(
             Math.floor(Math.random() * possible.length)
           );
-        return text.join("");
+        return text.join('');
       }
 
       var mermaidCount = 0;
       window.$docsify = {
-        repo: "https://github.com/KILTprotocol/sdk-js",
+        repo: 'https://github.com/KILTprotocol/sdk-js',
         loadSidebar: true,
         themeable: {
-          responsiveTables: true
+          responsiveTables: true,
         },
         markdown: {
           renderer: {
-            code: function(code, lang) {
-              if (lang === "mermaid") {
+            code: function (code, lang) {
+              if (lang === 'mermaid') {
                 const id = makeid(10);
                 const svg = mermaid.render(id, code);
-                return '<div class="mermaid">' + svg + "</div>";
+                return '<div class="mermaid">' + svg + '</div>';
               }
               return this.origin.code.apply(this, arguments);
-            }
-          }
+            },
+          },
         },
         // reset scroll position on navigate
-        auto2top: true
+        auto2top: true,
       };
     </script>
     <!-- docsify -->
@@ -76,10 +79,11 @@
     <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
       mermaid.initialize({
-        securityLevel: "strict",
+        securityLevel: 'strict',
         startOnLoad: true,
-        theme: "dark",
-        themeCSS: ".node rect { fill: var(--base-background-color); stroke: var(--txt-color);} rect.actor{fill: var(--base-background-color) !important; stroke: var(--txt-color);} tspan { fill: var(--txt-color); font-size: 1rem; }"
+        theme: 'dark',
+        themeCSS:
+          '.node rect { fill: var(--base-background-color); stroke: var(--txt-color);} rect.actor{fill: var(--base-background-color) !important; stroke: var(--txt-color);} tspan { fill: var(--txt-color); font-size: 1rem; }',
       });
     </script>
   </body>

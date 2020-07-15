@@ -2,18 +2,18 @@
 
 In this section, you'll play the role of a <span class="label-role verifier">verifier</span>:
 
-* You'll take an `AttestedClaim` object given to you by a <span class="label-role claimer">claimer</span>;
-* You'll verify that its data is correct;
-* You'll verify that the attestation is valid (= its hash exists on-chain and the attestation is not revoked).
+- You'll take an `AttestedClaim` object given to you by a <span class="label-role claimer">claimer</span>;
+- You'll verify that its data is correct;
+- You'll verify that the attestation is valid, i.e. its hash exists on-chain and the attestation has not been revoked.
 
-> 💡 An `AttestedClaim` object is also called a Credential: it is what <span class="label-role claimer">claimers</span> present to <span class="label-role verifier">verifiers</span> upon request.
+> 💡 An `AttestedClaim` object is also called a Credential: It is what <span class="label-role claimer">claimers</span> present to <span class="label-role verifier">verifiers</span> upon request.
 
 ## Get an `AttestedClaim` object
 
 You can either:
 
-* Take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
-* Or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.  
+- Take the `AttestedClaim` object you've generated in the previous step as an <span class="label-role attester">attester</span>;
+- Or if you're in a workshop, ask another participant to send you their `AttestedClaim` object.
 
 In the following, we'll refer to it as `<attestedClaimJSONString>`.
 
@@ -26,24 +26,35 @@ All of the code for this step needs to go into this file.
 
 Paste the following code in `verification.js`:
 
+[comment]: <copy and paste verifyClaim_example from 5_verification.ts>
+
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
 
-// create an attested claim from the JSON string
-const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>');
-const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct);
+async function main() {
+  // create an attested claim from the JSON string
+  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
+  const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(
+    attestedClaimStruct
+  )
 
-// connect to the KILT blockchain
-Kilt.default.connect('wss://full-nodes.kilt.io:9944')
+  await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944')
+  console.log(
+    'Successfully connected to KILT devnet, verifying attested claim next...'
+  )
 
-// verify:
-// - verify that the data is valid for the given CTYPE;
-// - verify on-chain that the attestation hash is present and that the attestation is not revoked.
-attestedClaim.verify().then(isValid => {
-  console.log('isValid: ', isValid)
-}).finally(() => {
-  Kilt.default.disconnect()
-})
+  // 1. verify that the data is valid for the given CTYPE
+  // 2. verify on-chain that the attestation hash is present and that the attestation has not been revoked
+  const isValid = await attestedClaim.verify()
+  console.log('Is the attested claim valid?', isValid)
+
+  // disconnect from the chain
+  await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944')
+  console.log('Disconnected from KILT devnet')
+}
+
+// execute calls
+main()
 ```
 
 ## Run
