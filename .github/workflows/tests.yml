@@ -1,10 +1,8 @@
 name: Test
 
 on:
-  registry_package:
-    owner: kiltprotocol
-    repo: sdk-js
-    types: [published]
+  repository_dispatch:
+    types: [sdk-update]
 
 jobs:
   integration_test:
@@ -54,9 +52,12 @@ jobs:
           docker stop $(docker ps -f ancestor=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -q)
 
       - name: create issue on failure
-        if: failure()
+        if: ${{ failure() }}
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          title: fix code snippets after sdk-js upgrade {{ date | date('YYYY-MM-D')}}
+          title: fix code snippets after sdk-js upgrade
           labels: bug
+          assignees: ${{ github.event.client_payload.github.sender.login }}
+          SHA: ${{ github.event.client_payload.github.sha }}
+          URL: https://github.com/KILTprotocol/sdk-js/commit/${{ github.event.client_payload.github.sha }}
