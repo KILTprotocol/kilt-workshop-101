@@ -12,7 +12,7 @@ async function main() {
   console.log('mnemonic:', mnemonic)
 
   const identity = await Kilt.Identity.buildFromMnemonic(mnemonic)
-  console.log('address:', identity.getAddress())
+  console.log('address:', identity.address)
 }
 
 // execute calls
@@ -28,12 +28,12 @@ async function identities() {
   const claimerMnemonic = Kilt.Identity.generateMnemonic()
   console.log('claimer mnemonic:', claimerMnemonic)
   const claimer = await Kilt.Identity.buildFromMnemonic(claimerMnemonic)
-  console.log('claimer address:', claimer.getAddress())
+  console.log('claimer address:', claimer.address)
 
   const attesterMnemonic = Kilt.Identity.generateMnemonic()
   console.log('attester mnemonic:', attesterMnemonic)
   const attester = await Kilt.Identity.buildFromMnemonic(attesterMnemonic)
-  console.log('attester address:', attester.getAddress())
+  console.log('attester address:', attester.address)
 }
 
 // execute calls

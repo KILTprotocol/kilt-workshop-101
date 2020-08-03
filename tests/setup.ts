@@ -61,7 +61,7 @@ export async function setup(): Promise<{
   const claim = Kilt.Claim.fromCTypeAndClaimContents(
     ctype,
     claimContents,
-    claimer.getAddress()
+    claimer.address
   )
 
   // request for attestation

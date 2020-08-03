@@ -27,7 +27,7 @@ async function main() {
   const claim = Kilt.Claim.fromCTypeAndClaimContents(
     ctype,
     claimContents,
-    claimer.getAddress()
+    claimer.address
   )
 }
 
@@ -48,7 +48,7 @@ async function main2() {
   const claim = Kilt.Claim.fromCTypeAndClaimContents(
     ctype,
     claimContents,
-    claimer.getAddress()
+    claimer.address
   )
   /* 🚧 2️⃣ COPY_START for requestForAttestation_example (below this comment) 🚧 */
   const {
