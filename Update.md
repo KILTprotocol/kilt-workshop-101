@@ -25,8 +25,9 @@ Above each workshop code snippet, there is a markdown comment telling you where 
 #### Workshop comment example
 
 ```markdown
-[comment]: <copy and paste 1️⃣ requestForAttestation_example from 4_attestation.ts>
-[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 1️⃣ requestForAttestation_example from 4_attestation.ts -->
+
+<!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 ```
 
 ### test-snippet (3 helpers)

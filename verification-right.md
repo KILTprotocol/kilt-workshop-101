@@ -72,8 +72,9 @@ Create a new file `claim-with-signed-nonce.js`.
 
 Paste the following code into it (make sure to replace `<nonce>` and `<attestedClaimJSONString>` with the data you copied earlier):
 
-[comment]: <copy and paste 1️⃣ signNonce_example from 6_verification-with-nonce.ts>
-[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 1️⃣ signNonce_example from 6_verification-with-nonce.ts -->
+
+<!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
@@ -119,8 +120,9 @@ Create a new file `verification-with-nonce.js`.
 
 Paste the following code into it (make sure to replace `<dataToVerifyJSONString>` and `<nonce>` with the relevant objects):
 
-[comment]: <copy and paste 2️⃣ verifyNonce_example from 6_verification-with-nonce.ts>
-[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 2️⃣ verifyNonce_example from 6_verification-with-nonce.ts -->
+
+<!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')

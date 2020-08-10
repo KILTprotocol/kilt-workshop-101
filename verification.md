@@ -26,7 +26,7 @@ All of the code for this step needs to go into this file.
 
 Paste the following code in `verification.js`:
 
-[comment]: <copy and paste verifyClaim_example from 5_verification.ts>
+<!-- copy and paste verifyClaim_example from 5_verification.ts -->
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')

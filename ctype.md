@@ -7,7 +7,7 @@ A CTYPE defines the structure of a claim. You can think of it as the data model 
 
 For example, a very basic CTYPE for a driver's license could look like this:
 
-[comment]: <copy and paste 🚧 full content of ctype.json>
+<!-- copy and paste 🚧 full content of ctype.json -->
 
 ```json
 {
@@ -62,7 +62,7 @@ Create a new file `ctype.json`.
 
 Open it and paste the following:
 
-[comment]: <copy and paste 🚧 full content of ctype.json>
+<!-- copy and paste 🚧 full content of ctype.json -->
 
 ```json
 {
@@ -94,7 +94,7 @@ Let's move on!
 This step is **not part of the tutorial** and should be regarded as additional information on how to create a CType in the first place.
 Normally, you would start with a schema which does not have a defined `$id` yet:
 
-[comment]: <copy and paste 🚧 ctypeFromSchema_example from 2_ctypeFromSchema.ts>
+<!-- copy and paste 🚧 ctypeFromSchema_example from 2_ctypeFromSchema.ts -->
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')

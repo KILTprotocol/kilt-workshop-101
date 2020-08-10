@@ -34,8 +34,9 @@ In the following, we'll refer to it as `<requestForAttestationJSONString>`.
 
 Paste the following code in `attestation.js` (make sure to replace `<attesterMnemonic>` and `<requestForAttestationJSONString>` with the relevant objects):
 
-[comment]: <copy and paste 1️⃣ requestForAttestation_example from 4_attestation.ts>
-[comment]: <IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 1️⃣ requestForAttestation_example from 4_attestation.ts -->
+
+<!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 const Kilt = require('@kiltprotocol/sdk-js')
@@ -59,7 +60,7 @@ main()
 To check if the object is valid, you can check the data against the CTYPE
 and check if the signature is valid.
 
-[comment]: <copy and paste 2️⃣ attestationVerify_example from 4_attestation.ts>
+<!-- copy and paste 2️⃣ attestationVerify_example from 4_attestation.ts -->
 
 ```javascript
 const isDataValid = requestForAttestation.verifyData()
@@ -73,7 +74,7 @@ console.log('isSignatureValid: ', isSignatureValid)
 Now is time to interact with the chain, in order to store an attestation on there.  
 Append the following code to your `main` function inside `attestation.js`.
 
-[comment]: <copy and paste 3️⃣ attestClaim_example from 4_attestation.ts>
+<!-- copy and paste 3️⃣ attestClaim_example from 4_attestation.ts -->
 
 ```javascript
 // build the attestation object

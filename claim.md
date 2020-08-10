@@ -24,8 +24,9 @@ You'll now need the first mnemonic you've created; it's referred to as `<claimer
 We'll create a claim using the provided CTYPE and the <span class="label-role claimer">claimer</span> identity.  
 Paste the following in `claim.js`. Make sure to replace the `<claimerMnemonic>`.
 
-[comment]: <copy and paste 🚧 1️⃣ claim_example from 3_claim.ts>
-[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 🚧 1️⃣ claim_example from 3_claim.ts -->
+
+<!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 // import the claim type file we've created previously
@@ -64,8 +65,9 @@ Since this tutorial does not include the _privacy enhanced_ case, you can forgot
 
 Append the following code to your `main` function inside `claim.js`:
 
-[comment]: <copy and paste 🚧 2️⃣ requestForAttestation_example from 3_claim.ts>
-[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 🚧 2️⃣ requestForAttestation_example from 3_claim.ts -->
+
+<!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 const {

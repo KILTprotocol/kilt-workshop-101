@@ -34,8 +34,9 @@ In version [0.19.0](https://github.com/KILTprotocol/sdk-js/releases/tag/0.19.0) 
 
 Open `identity.js` and paste the following code:
 
-[comment]: <copy and paste 🚧 1️⃣ identity_example from 1_identity.ts>
-[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 🚧 1️⃣ identity_example from 1_identity.ts -->
+
+<!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 // import the KILT SDK
@@ -73,8 +74,9 @@ address: 5CUoo2vAegeaZHPNdxZyuMesR3RWYBKHj4jfVyj4FXzpXPuR
 
 You want to run this command twice, in order to generate 2 identities: the <span class="label-role attester">attester</span>'s and the <span class="label-role claimer">claimer</span>'s.
 
-[comment]: <copy and paste 🚧 2️⃣ identities_example from 1_identity.ts>
-[comment]: <IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments>
+<!-- copy and paste 🚧 2️⃣ identities_example from 1_identity.ts -->
+
+<!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
 // import the KILT SDK
