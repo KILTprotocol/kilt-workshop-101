@@ -29,6 +29,8 @@ Paste the following in `claim.js`. Make sure to replace the `<claimerMnemonic>`.
 <!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
+const Kilt = require('@kiltprotocol/sdk-js')
+
 // import the claim type file we've created previously
 const ctype = require('./ctype.json')
 
@@ -36,7 +38,7 @@ const ctype = require('./ctype.json')
 async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   const mnemonic = '<claimerMnemonic>'
-  const claimer = await Kilt.Identy.buildFromMnemonic(mnemonic)
+  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',
