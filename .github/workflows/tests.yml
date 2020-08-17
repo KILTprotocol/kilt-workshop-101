@@ -28,7 +28,7 @@ jobs:
           node-version: 10
 
       - name: yarn install
-        run: yarn install
+        run: yarn install && yarn upgrade
         working-directory: ./tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,6 +40,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: kilt/prototype-chain
           IMAGE_TAG: latest-develop
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker run -d --rm -p 9944:9944 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./target/release/mashnet-node --dev --ws-port 9944 --ws-external
