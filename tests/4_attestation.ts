@@ -56,7 +56,9 @@ async function attestClaim(
   )
 
   // store the attestation on chain
-  const submittableExtrinsic = await attestation.store(attester)
+  const submittableExtrinsic = await attestation
+    .store(attester)
+    .then((tx) => Kilt.Blockchain.submitSignedTx(tx))
   if (submittableExtrinsic.isFinalized) {
     console.log('Attestation stored')
   }
