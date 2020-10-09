@@ -55,7 +55,7 @@ async function attestClaim(
     'Successfully connected to KILT devnet, storing attestation next...'
   )
 
-  // store the attestation on chain
+  // store the attestation on chain. Writes like this one will cost you some tokens
   const submittableExtrinsic = await attestation
     .store(attester)
     .then((tx) => Kilt.Blockchain.submitSignedTx(tx))
