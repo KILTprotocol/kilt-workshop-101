@@ -8,6 +8,7 @@
  */
 
 import * as Kilt from '@kiltprotocol/sdk-js'
+import { IS_IN_BLOCK } from '@kiltprotocol/sdk-js/build/blockchain/Blockchain'
 import { getOwner } from '@kiltprotocol/sdk-js/build/ctype/CType.chain'
 import ctype from './2_ctypeFromSchema'
 
@@ -78,7 +79,11 @@ export async function setup(): Promise<{
 
   if (!(await CtypeOnChain(ctype))) {
     console.log('Missing CTPYE on chain, storing now...')
-    await ctype.store(attester)
+    await ctype
+      .store(attester)
+      .then((tx) =>
+        Kilt.Blockchain.submitSignedTx(tx, { resolveOn: IS_IN_BLOCK })
+      )
   }
 
   const isDataValid = requestForAttestation.verifyData()
