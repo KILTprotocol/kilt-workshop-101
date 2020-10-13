@@ -1,6 +1,6 @@
 # KILT Tutorial 101
 
-SDK version **0.17.1**.
+SDK version **0.19.0**.
 
 > 📦 Topics: [KILT SDK][sdk-js] essentials, basic credential workflow without privacy enhancement. This includes creating a CTYPE and a claim; attesting a claim; and finally verifying the attested claim.
 >
@@ -24,7 +24,10 @@ In this tutorial, you will:
 
 Ready? Let's go!
 
-👉 [Step 0: Setup](setup.md)
+👉 [Step 0: Setup](https://kiltprotocol.github.io/kilt-workshop-101/#/setup)
 
-[sdk-js]: https://github.com/KILTprotocol/sdk-js
-[cmy-channel]: https://riot.im/app/#/room/#kilt-general:matrix.org
+[sdk-js](https://github.com/KILTprotocol/sdk-js)
+[cmy-channel](https://riot.im/app/#/room/#kilt-general:matrix.org)
+
+🛑 Please note that we expect you to go through the tutorial on our [Github page](https://kiltprotocol.github.io/kilt-workshop-101).
+Therefore, you do not need to clone this repo.
