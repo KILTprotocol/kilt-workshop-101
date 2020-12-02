@@ -30,8 +30,6 @@ jobs:
       - name: yarn install
         run: yarn install && yarn upgrade @kiltprotocol/sdk-js@dev
         working-directory: ./tests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: test workshop
         timeout-minutes: 20
