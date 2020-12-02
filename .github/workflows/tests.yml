@@ -28,7 +28,7 @@ jobs:
           node-version: 10
 
       - name: yarn install
-        run: yarn install && yarn upgrade
+        run: yarn install && yarn upgrade @kiltprotocol/sdk-js@dev
         working-directory: ./tests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
