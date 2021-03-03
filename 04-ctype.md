@@ -50,11 +50,11 @@ Let's have a look at these attributes.
 | `hash`                  | Most important attribute, the hash is the CTYPE's **digital footprint**. |
 
 A CTYPE is stored on the KILT blockchain - more exactly, the CTYPE's hash is stored on the KILT blockchain.
-The full CTYPE can be stored in a regular web service.
+The full CTYPE can be stored elsewhere, e.g., on a regular web service.
 
 In a real-life setup, a user would simply retrieve an existing CTYPE from a repository of CTYPEs for example via a REST API.
 
-In this tutorial, to keep it simple we'll use a CTYPE that we already know exists on the KILT blockchain.
+In this tutorial, to keep it simple we'll use a CTYPE that we already know exists on the KILT development blockchain.
 
 ## Code
 
@@ -62,26 +62,28 @@ Create a new file `ctype.json`.
 
 Open it and paste the following:
 
+<!--TODO: This needs to be updated with the correct CTYPE saved on the devnet after it is restarted. -->
+
 <!-- copy and paste 🚧 full content of ctype.json -->
 
 ```json
 {
   "schema": {
-    "$id": "kilt:ctype:0xd8ad043d91d8fdbc382ee0ce33dc96af4ee62ab2d20f7980c49d3e577d80e5f5",
-    "$schema": "http://kilt-protocol.org/draft-01/ctype#",
-    "title": "Drivers License",
-    "properties": {
-      "name": {
-        "type": "string"
+      "$id": "kilt:ctype:0xd8ad043d91d8fdbc382ee0ce33dc96af4ee62ab2d20f7980c49d3e577d80e5f5",
+      "$schema": "http://kilt-protocol.org/draft-01/ctype#",
+      "title": "Drivers License",
+      "properties": {
+          "name": {
+              "type": "string"
+          },
+          "age": {
+              "type": "integer"
+          }
       },
-      "age": {
-        "type": "integer"
-      }
-    },
-    "type": "object"
+      "type": "object"
   },
   "owner": "5DD7fAZKSpgctg1ZQigAYuk3ypBtr2Q9RPKJBx5UpUwQw4vB",
-  "hash": "0xd8ad043d91d8fdbc382ee0ce33dc96af4ee62ab2d20f7980c49d3e577d80e5f5"
+  "hash": "4ova3hGbw6129rp1B4bzV5WckCUd3BbLHGotpD3zmmYDHfr9"
 }
 ```
 

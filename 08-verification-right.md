@@ -22,16 +22,16 @@ What piece of data should be signed? It doesn't really matter; it can be an arbi
 Here's how it works:
 
 1. The <span class="label-role verifier">verifier</span> sends a nonce to the <span class="label-role claimer">claimer</span>.
-2. The <span class="label-role claimer">claimer</span> sends back this nonce signed with their **private** key, together with their `attestedClaim`.
+2. The <span class="label-role claimer">claimer</span> sends back this nonce signed with his/her **private** key, together with the `attestedClaim`.
 3. The <span class="label-role verifier">verifier</span> checks the following:
    - Does the signature on the nonce match the public key contained in the `attestedClaim`? If so: the entity/person who just sent the `attestedClaim` plus the signed nonce is also the owner of this `attestedClaim`. If not: the `attestedClaim` might be stolen.
-   - Is the data valid? Is the attestation on-chain and not revoked? See the simple [Verification](verification).
+   - Is the data valid? Is the attestation on-chain and not revoked? See the simple [Verification](07-verification) for more information about the validation logic.
 
 OK, let's see this in action.
 
 ## As the <span class="label-role verifier">verifier</span>: create a nonce
 
-To generate a random, unique piece of data, we'll use a package called [uuid].
+To generate a random, unique piece of data, we'll use the `@kiltprotocol/utils` package provided by Kilt to generate secure UUIDs.
 A UUID is **random and unique**, which are the most important properties of a **nonce**.
 
 (A UUID is not _strictly_ a nonce, because it's not a number, but here we'll refer to it as nonce).
@@ -40,18 +40,18 @@ Install it:
 
 ```bash
 # with yarn
-yarn add uuid
+yarn add @kiltprotocol/utils
 # or with npm
-npm install uuid
+npm install @kiltprotocol/utils
 ```
 
 Create a new file `nonce.js`, and paste the following code into it:
 
 ```javascript
-const uuid = require('uuid')
+const KiltUtils = require('@kiltprotocol/utils')
 
-const nonce = uuid.v4()
-console.log('nonce: ', nonce)
+const nonce = KiltUtils.UUID.generate()
+console.log('Nonce: ', nonce)
 ```
 
 Run the code by running this command in your terminal, still within your `kilt-rocks` directory:
@@ -60,7 +60,7 @@ Run the code by running this command in your terminal, still within your `kilt-r
 node nonce.js
 ```
 
-You should see in your logs the `uuid`, that will be used as a nonce; it should look like something like this: `9dbbad48-aad0-4280-aeca-4c4072c82625`.
+You should see in your logs the UUID encoded as an HEX string, that will be used as a nonce; it should look like something like this: `0x942ab89b01671faeec84a76f4a8eae9b57ec12bf06157f8a87315cd29a5e0d25`.
 
 Copy it, you'll need it in the next step.
 
@@ -80,24 +80,25 @@ Paste the following code into it (make sure to replace `<nonce>` and `<attestedC
 const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
-  // <nonce> = nonce received from the verifier = uuid you copied from above
+  // <nonce> = nonce received from the verifier = UUID you copied from above
   const nonce = '<nonce>'
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
-  const claimer = await Kilt.Identity.buildFromMnemonic('claimerMnemonic')
-  // sign the nonce as the claimer with your private identity
+  const claimer = await Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
+  // sign the nonce as the claimer with the claimer's private key
   const signedNonce = claimer.signStr(nonce)
 
   // same data as in to the simple "Verification" step
   const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
 
+  // this is the message to send to the verifier
   const dataToVerify = {
     signedNonce,
     attestedClaimStruct,
   }
 
-  console.log('attestedClaimStruct', attestedClaimStruct.request.claim.owner)
-  console.log('dataToVerifyJSONString: ', JSON.stringify(dataToVerify))
+  console.log('Attested claim:\n', attestedClaimStruct.request.claim)
+  console.log('dataToVerifyJSONString:\n', JSON.stringify(dataToVerify))
 }
 
 // execute calls
@@ -110,7 +111,7 @@ Run the code by running this command in your terminal, still within your `kilt-r
 node claim-with-signed-nonce.js
 ```
 
-You should see in your logs the `dataToVerify`.
+You should see in your logs the `dataToVerifyJSONString`, which is a string representation of the data to verify.
 
 Copy it, you'll need it in the next step.
 
@@ -118,21 +119,19 @@ Copy it, you'll need it in the next step.
 
 Create a new file `verification-with-nonce.js`.
 
-Paste the following code into it (make sure to replace `<dataToVerifyJSONString>` and `<nonce>` with the relevant objects):
+Paste the following code into it (make sure to replace `<dataToVerifyJSONString>` and `<nonce>` with the values obtained in the previous steps):
 
 <!-- copy and paste 2️⃣ verifyNonce_example from 6_verification-with-nonce.ts -->
 
 <!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
-const Kilt = require('@kiltprotocol/sdk-js')
+const KiltUtils = require('@kiltprotocol/utils')
 
-const { signedNonce, attestedClaimStruct } = JSON.parse(
-  '<dataToVerifyJSONString>'
-)
+const { signedNonce, attestedClaimStruct } = JSON.parse('<dataToVerifyJSONString>')
 
 // verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
-const isSenderOwner = Kilt.Crypto.verify(
+const isSenderOwner = KiltUtils.Crypto.verify(
   nonce,
   signedNonce,
   attestedClaimStruct.request.claim.owner
@@ -149,7 +148,7 @@ Run the code by running this command in your terminal, still within your `kilt-r
 node verification-with-nonce.js
 ```
 
-You should see in your logs that `isSenderOwner` is `true`: this `attestedClaim` is not stolen.
+You should see in your logs that `isSenderOwner` is `true`: this means that the claimer presenting the `attestedClaim` is the same that owns it, so it has not been stolen or compromised.
 
 Looking good!
 
@@ -158,7 +157,7 @@ You can also see what would happen when a malicious actor presents a stolen `att
 - Create another identity, let's refer to it as Mallory (= malicious);
 - Sign the nonce above with Mallory's identity, hence creating a new `signedNonce`;
 - Create a new `invalidDataToVerify` object with this new `signedNonce` and with Alice's `attestedClaim` we've been using so far;
-- As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `Crypto.verify`;
+- As a <span class="label-role verifier">verifier</span>, verify the `signedNonce` in `invalidDataToVerify` via `KiltUtils.Crypto.verify`;
 - You'll see that this verification will return `false`: the <span class="label-role verifier">verifier</span> will know that this credential is not owned by Mallory.
 
 [uuid]: https://www.npmjs.com/package/uuid
