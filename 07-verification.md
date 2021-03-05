@@ -38,18 +38,20 @@ async function main() {
     attestedClaimStruct
   )
 
-  await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944')
+  await Kilt.init({address: "wss://full-nodes-lb.devnet.kilt.io"})
+  await Kilt.connect()
   console.log(
     'Successfully connected to KILT devnet, verifying attested claim next...'
   )
 
-  // 1. verify that the data is valid for the given CTYPE
-  // 2. verify on-chain that the attestation hash is present and that the attestation has not been revoked
+  // The `verify()` method does two things:
+  // 1. verifies that the data is valid for the given CTYPE
+  // 2. verifies that the attestation hash is present on the Kilt blockchain and that the attestation has not been revoked
   const isValid = await attestedClaim.verify()
   console.log('Is the attested claim valid?', isValid)
 
   // disconnect from the chain
-  await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944')
+  await Kilt.disconnect()
   console.log('Disconnected from KILT devnet')
 }
 

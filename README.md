@@ -2,13 +2,13 @@
 
 SDK version **0.19.0**.
 
-> 📦 Topics: [KILT SDK][sdk-js] essentials, basic credential workflow without privacy enhancement. This includes creating a CTYPE and a claim; attesting a claim; and finally verifying the attested claim.
+> 📦 Topics: <a href="https://github.com/KILTprotocol/sdk-js">KILT SDK</a> essentials, basic credential workflow without privacy enhancement. This includes creating a CTYPE and a claim; attesting a claim; and finally verifying the attested claim.
 >
 > ⏳ Duration: 15-45 minutes.
 >
 > 🤓 Prerequisites: basic JavaScript or TypeScript knowledge.
 >
-> ❓ Questions? Join our [developer community channel][cmy-channel]!
+> ❓ Questions? Join our <a href="https://riot.im/app/#/group/+kilt-community:matrix.org">developer community channel</a>!
 
 **Welcome, curious mind!**
 
@@ -20,14 +20,9 @@ In this tutorial, you will:
 
 ✔ Use the KILT SDK to write onto and read from the KILT blockchain.
 
-❌ We will not introduce our KILT anonymous credentials just yet. But don't worry: There will be a tutorial for this very soon!
-
 Ready? Let's go!
 
-👉 [Step 0: Setup](https://kiltprotocol.github.io/kilt-workshop-101/#/setup)
-
-[sdk-js](https://github.com/KILTprotocol/sdk-js)
-[cmy-channel](https://riot.im/app/#/room/#kilt-general:matrix.org)
+👉 [Step 0: Setup](https://kiltprotocol.github.io/kilt-workshop-101/#/01-setup)
 
 🛑 Please note that we expect you to go through the tutorial on our [Github page](https://kiltprotocol.github.io/kilt-workshop-101).
 Therefore, you do not need to clone this repo.

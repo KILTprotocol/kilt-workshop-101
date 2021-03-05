@@ -43,8 +43,9 @@ const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
   // use the attester mnemonic you've generated in the Identity step
-  const attester = await Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
+  const attester = Kilt.Identity.buildFromMnemonic('<attesterMnemonic>')
 
+  // use the JSON string representation of the request attestation generated in the previous step
   const requestForAttestationStruct = JSON.parse(
     '<requestForAttestationJSONString>'
   )
@@ -84,16 +85,19 @@ const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
 )
 
 // connect to the chain (this is one KILT devnet node)
-await Kilt.default.connect('ws://full-nodes.devnet.kilt.io:9944')
+await Kilt.init({address: 'wss://full-nodes-lb.devnet.kilt.io'})
+await Kilt.connect()
 console.log(
   'Successfully connected to KILT devnet, storing attestation next...'
 )
 
 // store the attestation on chain
-const submittableExtrinsic = await attestation.store(attester)
-if (submittableExtrinsic.isFinalized) {
-  console.log('Attestation stored')
-}
+await attestation.store(attester).then((tx) => {
+  await Kilt.BlockchainUtils.submitSignedTx(tx, {
+    resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
+    })
+  console.log('Attestation saved on chain.')
+})
 // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
 const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
   requestForAttestation,
@@ -103,7 +107,7 @@ const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
 console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim))
 
 // disconnect from the chain
-await Kilt.default.disconnect('ws://full-nodes.devnet.kilt.io:9944')
+await Kilt.disconnect()
 console.log('Disconnected from KILT devnet')
 ```
 
@@ -125,4 +129,4 @@ Copy the `AttestedClaim` object, you'll need it soon.
 
 Your job as an <span class="label-role attester">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the <span class="label-role claimer">claimer</span>.
 
-[faucet]: https://faucet.kilt.io/
+[faucet]: https://faucet-devnet.kilt.io/

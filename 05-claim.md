@@ -38,7 +38,7 @@ const ctype = require('./ctype.json')
 async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   const mnemonic = '<claimerMnemonic>'
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',
@@ -54,16 +54,15 @@ async function main() {
 
 // execute calls
 main()
+
 ```
 
-Don't run the code just yet; one more thing to add!
+**Don't run the code just yet!** One more thing to add...
 
 ## Code: create a `RequestForAttestation`
 
 Once your claim will be built, you will want to sign it and prepare it for the <span class="label-role attester">attester</span>.
 To do so, let's build a `RequestForAttestation` object from your `Claim`.
-This object is divided into `session` and a `message` whereas the latter actually is the `Claim`.
-Since this tutorial does not include the _privacy enhanced_ case, you can forgot about the `session` object for now.
 
 Append the following code to your `main` function inside `claim.js`:
 
@@ -72,13 +71,11 @@ Append the following code to your `main` function inside `claim.js`:
 <!-- IMPORTANT ❗️ Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
-const {
-  message: requestForAttestation,
-} = await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
+const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
 
 // log this so you can paste it locally
 console.log(
-  'requestForAttestationJSONString: ',
+  'requestForAttestationJSONString:\n',
   JSON.stringify(requestForAttestation)
 )
 ```

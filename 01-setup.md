@@ -23,7 +23,7 @@ Or with `npm`:
 
 ```bash
 npm init -y
-npm i @kiltprotocol/sdk-js
+npm install @kiltprotocol/sdk-js
 ```
 
 That's it for the basic setup - We're good to go!
