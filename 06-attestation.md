@@ -85,7 +85,7 @@ const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
 )
 
 // connect to the chain (this is one KILT devnet node)
-Kilt.config({address: 'wss://full-nodes-lb.devnet.kilt.io'})
+await Kilt.init({address: 'wss://full-nodes-lb.devnet.kilt.io'})
 await Kilt.connect()
 console.log(
   'Successfully connected to KILT devnet, storing attestation next...'
@@ -93,16 +93,16 @@ console.log(
 
 // store the attestation on chain
 await attestation.store(attester).then((tx) => {
-  await Kilt.default.BlockchainUtils.submitSignedTx(tx, {
-    resolveOn: Kilt.default.BlockchainUtils.IS_IN_BLOCK,
+  await Kilt.BlockchainUtils.submitSignedTx(tx, {
+    resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
     })
   console.log('Attestation saved on chain.')
 })
 // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
-const attestedClaim = new Kilt.AttestedClaim({
-  request: requestForAttestation,
+const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
+  requestForAttestation,
   attestation
-})
+)
 // log the attestedClaim so you can copy/send it back to the claimer
 console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim))
 

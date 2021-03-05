@@ -22,7 +22,7 @@ What piece of data should be signed? It doesn't really matter; it can be an arbi
 Here's how it works:
 
 1. The <span class="label-role verifier">verifier</span> sends a nonce to the <span class="label-role claimer">claimer</span>.
-2. The <span class="label-role claimer">claimer</span> sends back this nonce signed with his/her **private** key, together with the `attestedClaim`.
+2. The <span class="label-role claimer">claimer</span> sends back this nonce signed with their **private** key, together with their `attestedClaim`.
 3. The <span class="label-role verifier">verifier</span> checks the following:
    - Does the signature on the nonce match the public key contained in the `attestedClaim`? If so: the entity/person who just sent the `attestedClaim` plus the signed nonce is also the owner of this `attestedClaim`. If not: the `attestedClaim` might be stolen.
    - Is the data valid? Is the attestation on-chain and not revoked? See the simple [Verification](07-verification) for more information about the validation logic.
@@ -98,7 +98,7 @@ async function main() {
   }
 
   console.log('Attested claim:\n', attestedClaimStruct.request.claim)
-  console.log('dataToVerifyJSONString:\n', JSON.stringify(dataToVerify))
+  console.log('dataToVerifyJSONString:\n', JSON.stringify(dataToVerify, undefined, 2))
 }
 
 // execute calls

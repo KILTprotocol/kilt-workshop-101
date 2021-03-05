@@ -63,8 +63,6 @@ main()
 
 Once your claim will be built, you will want to sign it and prepare it for the <span class="label-role attester">attester</span>.
 To do so, let's build a `RequestForAttestation` object from your `Claim`.
-This object is divided into `session` and a `message`, with the latter being the actual `Claim`.
-Since this tutorial does not include the _privacy enhanced_ case, you can forget about the `session` object for now.
 
 Append the following code to your `main` function inside `claim.js`:
 

@@ -38,7 +38,7 @@ async function main() {
     attestedClaimStruct
   )
 
-  Kilt.config({address: "wss://full-nodes-lb.devnet.kilt.io"})
+  await Kilt.init({address: "wss://full-nodes-lb.devnet.kilt.io"})
   await Kilt.connect()
   console.log(
     'Successfully connected to KILT devnet, verifying attested claim next...'
@@ -51,7 +51,7 @@ async function main() {
   console.log('Is the attested claim valid?', isValid)
 
   // disconnect from the chain
-  await Kilt.default.disconnect()
+  await Kilt.disconnect()
   console.log('Disconnected from KILT devnet')
 }
 

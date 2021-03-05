@@ -23,6 +23,6 @@ requestForAttestatIon --> attestedClaim[attestedClaim]
 That's a mouthful, but don't worry - we'll dig deeper in the elements of this diagram in the next steps! For now, just keep in mind:
 
 - A credential has a certain type (CTYPE);
-- Obtaining a credential is a multiple-step process that involves a <span class="label-role claimer">claimer</span> - such as a citizen who makes a claim about himself - and an <span class="label-role attester">attester</span> - such as a government agency that certifies this claim. A <span class="label-role verifier">verifier</span> - such as a government officer - will later on check the validity of the credential.
+- Obtaining a credential is a multiple-step process that involves a <span class="label-role claimer">claimer</span> - such as a citizen who makes a claim about themselves - and an <span class="label-role attester">attester</span> - such as a government agency that certifies this claim. A <span class="label-role verifier">verifier</span> - such as a government officer - will later on check the validity of the credential.
 
 OK, let's start by generating KILT identities, and then we'll go on and create a claim.

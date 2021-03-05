@@ -69,7 +69,7 @@ Open it and paste the following:
 ```json
 {
   "schema": {
-      "$id": "kilt:ctype:0xd8ad043d91d8fdbc382ee0ce33dc96af4ee62ab2d20f7980c49d3e577d80e5f5",
+      "$id": "kilt:ctype:0x4ova3hGbw6129rp1B4bzV5WckCUd3BbLHGotpD3zmmYDHfr9",
       "$schema": "http://kilt-protocol.org/draft-01/ctype#",
       "title": "Drivers License",
       "properties": {
@@ -83,7 +83,7 @@ Open it and paste the following:
       "type": "object"
   },
   "owner": "5DD7fAZKSpgctg1ZQigAYuk3ypBtr2Q9RPKJBx5UpUwQw4vB",
-  "hash": "4ova3hGbw6129rp1B4bzV5WckCUd3BbLHGotpD3zmmYDHfr9"
+  "hash": "0x4ova3hGbw6129rp1B4bzV5WckCUd3BbLHGotpD3zmmYDHfr9"
 }
 ```
 

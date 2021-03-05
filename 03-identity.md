@@ -104,4 +104,4 @@ In the next steps, we'll refer to the so-generated identities as follows:
 - `<claimerMnemonic>` is the mnemonic for the claimer and `<claimerAddress>` the claimer's associated address;
 - `<attesterMnemonic>` is the mnemonic for the attester and `<attesterAddress>` the attester's associated address.
 
-That's it - You've successfully generated two new identities and their associated address!
+That's it - You've successfully generated two new identities and their associated addresses!
