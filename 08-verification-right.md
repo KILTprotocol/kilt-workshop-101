@@ -31,26 +31,15 @@ OK, let's see this in action.
 
 ## As the <span class="label-role verifier">verifier</span>: create a nonce
 
-To generate a random, unique piece of data, we'll use the `@kiltprotocol/utils` package provided by Kilt to generate secure UUIDs.
-A UUID is **random and unique**, which are the most important properties of a **nonce**.
-
-(A UUID is not _strictly_ a nonce, because it's not a number, but here we'll refer to it as nonce).
-
-Install it:
-
-```bash
-# with yarn
-yarn add @kiltprotocol/utils
-# or with npm
-npm install @kiltprotocol/utils
-```
+To generate a random, unique piece of data, we'll use the Kilt SDK to generate secure nonces starting from a randomly generated [UUID].
+The most important properties of nonces are **randomness** and **uniqueness**.
 
 Create a new file `nonce.js`, and paste the following code into it:
 
 ```javascript
-const KiltUtils = require('@kiltprotocol/utils')
+const Kilt = require('@kiltprotocol/sdk-js')
 
-const nonce = KiltUtils.UUID.generate()
+const nonce = Kilt.Utils.UUID.generate()
 console.log('Nonce: ', nonce)
 ```
 
@@ -60,7 +49,7 @@ Run the code by running this command in your terminal, still within your `kilt-r
 node nonce.js
 ```
 
-You should see in your logs the UUID encoded as an HEX string, that will be used as a nonce; it should look like something like this: `0x942ab89b01671faeec84a76f4a8eae9b57ec12bf06157f8a87315cd29a5e0d25`.
+You should see in your logs the resulting HEX string that will be used as a nonce; it should look something like this: `0x942ab89b01671faeec84a76f4a8eae9b57ec12bf06157f8a87315cd29a5e0d25`.
 
 Copy it, you'll need it in the next step.
 
@@ -80,7 +69,7 @@ Paste the following code into it (make sure to replace `<nonce>` and `<attestedC
 const Kilt = require('@kiltprotocol/sdk-js')
 
 async function main() {
-  // <nonce> = nonce received from the verifier = UUID you copied from above
+  // <nonce> = nonce received from the verifier (copied from above)
   const nonce = '<nonce>'
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
@@ -126,12 +115,12 @@ Paste the following code into it (make sure to replace `<dataToVerifyJSONString>
 <!-- IMPORTANT! Respect the UNCOMMENT-LINE and REMOVE-LINE comments -->
 
 ```javascript
-const KiltUtils = require('@kiltprotocol/utils')
+const Kilt = require('@kiltprotocol/sdk-js')
 
 const { signedNonce, attestedClaimStruct } = JSON.parse('<dataToVerifyJSONString>')
 
-// verify the signed nonce (<nonce> is the uuid you've generated as the verifier)
-const isSenderOwner = KiltUtils.Crypto.verify(
+// verify the signed nonce (<nonce> is the one generated in the previous step as the verifier)
+const isSenderOwner = Kilt.Utils.Crypto.verify(
   nonce,
   signedNonce,
   attestedClaimStruct.request.claim.owner
