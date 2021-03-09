@@ -73,7 +73,7 @@ async function main() {
   const nonce = '<nonce>'
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
-  const claimer = await Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
+  const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
   // sign the nonce as the claimer with the claimer's private key
   const signedNonce = claimer.signStr(nonce)
 
