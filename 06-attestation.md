@@ -84,11 +84,11 @@ const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
   attester.getPublicIdentity()
 )
 
-// connect to the chain (this is one KILT devnet node)
-await Kilt.init({address: 'wss://full-nodes-lb.devnet.kilt.io'})
+// connect to the chain (this is one KILT testnet node)
+await Kilt.init({address: 'wss://full-nodes.kilt.io:9944'})
 await Kilt.connect()
 console.log(
-  'Successfully connected to KILT devnet, storing attestation next...'
+  'Successfully connected to KILT testnet, storing attestation next...'
 )
 
 // store the attestation on chain
@@ -108,7 +108,7 @@ console.log('attestedClaimJSONString:\n', JSON.stringify(attestedClaim))
 
 // disconnect from the chain
 await Kilt.disconnect()
-console.log('Disconnected from KILT devnet')
+console.log('Disconnected from KILT testnet')
 ```
 
 ## Run
@@ -129,4 +129,4 @@ Copy the `AttestedClaim` object, you'll need it soon.
 
 Your job as an <span class="label-role attester">attester</span> is done: you've successfully attested a claim, written the attestation hash onto the chain, and prepared the `AttestedClaim` object for the <span class="label-role claimer">claimer</span>.
 
-[faucet]: https://faucet-devnet.kilt.io/
+[faucet]: https://faucet.kilt.io/
