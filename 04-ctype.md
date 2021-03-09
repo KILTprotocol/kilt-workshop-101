@@ -54,7 +54,7 @@ The full CTYPE can be stored elsewhere, e.g., on a regular web service.
 
 In a real-life setup, a user would simply retrieve an existing CTYPE from a repository of CTYPEs for example via a REST API.
 
-In this tutorial, to keep it simple we'll use a CTYPE that we already know exists on the KILT development blockchain.
+In this tutorial, to keep it simple we'll use a CTYPE that we already know exists on the KILT test blockchain.
 
 ## Code
 
@@ -62,7 +62,7 @@ Create a new file `ctype.json`.
 
 Open it and paste the following:
 
-<!--TODO: This needs to be updated with the correct CTYPE saved on the devnet after it is restarted. -->
+<!--TODO: This needs to be updated with the correct CTYPE saved on the testnet after it is restarted. -->
 
 <!-- copy and paste 🚧 full content of ctype.json -->
 

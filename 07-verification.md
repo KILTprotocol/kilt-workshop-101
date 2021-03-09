@@ -38,10 +38,10 @@ async function main() {
     attestedClaimStruct
   )
 
-  await Kilt.init({address: "wss://full-nodes-lb.devnet.kilt.io"})
+  await Kilt.init({address: 'wss://full-nodes.kilt.io:9944'})
   await Kilt.connect()
   console.log(
-    'Successfully connected to KILT devnet, verifying attested claim next...'
+    'Successfully connected to KILT testnet, verifying attested claim next...'
   )
 
   // The `verify()` method does two things:
@@ -52,7 +52,7 @@ async function main() {
 
   // disconnect from the chain
   await Kilt.disconnect()
-  console.log('Disconnected from KILT devnet')
+  console.log('Disconnected from KILT testnet')
 }
 
 // execute calls
