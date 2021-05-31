@@ -43,6 +43,7 @@ jobs:
         run: |
           docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker run -d --rm -p 9944:9944 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG ./target/release/mashnet-node --dev --ws-port 9944 --ws-external
+          sleep 5s
           yarn ts-node 1_identity.ts
           yarn ts-node 2_ctypeFromSchema.ts
           yarn ts-node 3_claim.ts
