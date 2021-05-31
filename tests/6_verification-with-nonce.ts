@@ -7,16 +7,20 @@ import { nonce, attestedClaimJSONString, dataToVerifyJSONString } from './setup'
 // const Kilt = require('@kiltprotocol/sdk-js') //❗️ UNCOMMENT-LINE in workshop ❗️
 
 async function main() {
+  await Kilt.init()
   // <nonce> = nonce received from the verifier (copied from above)
-  const nonce = '<nonce>'
+  // const nonce = '<nonce>'  //❗️ UNCOMMENT-LINE in workshop ❗️
+  const claimer = Kilt.Identity.buildFromURI(
+    'cattle daring upset race urge during fish brand coral veteran crime seminar'
+  ) //❗️ COMMENT-LINE in workshop ❗️
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
-  const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>')
+  // const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>') //❗️ UNCOMMENT-LINE in workshop ❗️
   // sign the nonce as the claimer with the claimer's private key
   const signedNonce = claimer.signStr(nonce)
-
   // same data as in to the simple "Verification" step
-  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
+  // const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')  //❗️ UNCOMMENT-LINE in workshop ❗️
+  const attestedClaimStruct = JSON.parse(attestedClaimJSONString) //❗️ COMMENT-LINE in workshop ❗️
 
   // this is the message to send to the verifier
   const dataToVerify = {
@@ -25,8 +29,11 @@ async function main() {
   }
 
   console.log('Attested claim:\n', attestedClaimStruct.request.claim)
-  
-  console.log('dataToVerifyJSONString:\n', JSON.stringify(dataToVerify, undefined, 2))
+
+  console.log(
+    'dataToVerifyJSONString:\n',
+    JSON.stringify(dataToVerify, undefined, 2)
+  )
 }
 
 // execute calls

@@ -9,16 +9,14 @@ import setup from './setup'
 /* 🚧 1️⃣ COPY_START for requestForAttestation_example (below this comment) 🚧  */
 // const Kilt = require('@kiltprotocol/sdk-js') //❗️ UNCOMMENT-LINE in workshop ❗️
 
-// async function main() { //❗️ UNCOMMENT-LINE in workshop ❗️
+// function main() { //❗️ UNCOMMENT-LINE in workshop ❗️
 // ❗️ REMOVE-LINE BELOW in workshop ❗️
-async function main(requestForAttestationStruct: Kilt.RequestForAttestation) {
+function main(requestForAttestationStruct: Kilt.RequestForAttestation) {
   // use the attester mnemonic you've generated in the Identity step
   // const attester = await Kilt.Identity.buildFromMnemonic("<attesterMnemonic>"); //❗️ UNCOMMENT-LINE in workshop ❗️
 
   // const requestForAttestationStruct = JSON.parse("<requestForAttestationJSONString>"); //❗️ UNCOMMENT-LINE in workshop ❗️
   // @ts-ignore // ❗️ REMOVE-LINE in workshop ❗️
-  await Kilt.init()
-  
   const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
     requestForAttestationStruct
   )
@@ -32,8 +30,6 @@ async function attestationVerify(
   requestForAttestation: Kilt.RequestForAttestation
 ) {
   /* 🚧 2️⃣ COPY_START for attestationVerify_example (below this comment) 🚧  */
-  await Kilt.init()
-  
   const isDataValid = requestForAttestation.verifyData()
   const isSignatureValid = requestForAttestation.verifySignature()
   console.log('isDataValid: ', isDataValid)
@@ -46,28 +42,24 @@ async function attestClaim(
   requestForAttestation: Kilt.RequestForAttestation
 ) {
   /* 🚧 3️⃣ COPY_START for attestClaim_example (below this comment) 🚧  */
-  await Kilt.init()
-  
+
   // build the attestation object
   const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
     requestForAttestation,
     attester.getPublicIdentity()
   )
 
-  // connect to the chain (this is one KILT testnet node)
-  await Kilt.init({ address: 'wss://full-nodes.kilt.io:9944' })
-  await Kilt.connect()
   console.log(
     'Successfully connected to KILT testnet, storing attestation next...'
   )
-
   // store the attestation on chain
-  await attestation.store().then(async (tx) => {
-    await Kilt.BlockchainUtils.submitSignedTx(tx, {
-      resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
-    })
-    console.log('Attestation saved on chain.')
+
+  const tx = await attestation.store()
+  await Kilt.BlockchainUtils.signAndSubmitTx(tx, attester, {
+    resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
   })
+  console.log('Attestation saved on chain.')
+
   // the attestation was successfully stored on the chain, so you can now create the AttestedClaim object
   const attestedClaim = Kilt.AttestedClaim.fromRequestAndAttestation(
     requestForAttestation,
@@ -85,7 +77,6 @@ async function attestClaim(
 async function execution() {
   const { attester, requestForAttestation, requestForAttestationStruct } =
     await setup()
-  await main(requestForAttestationStruct)
   await attestationVerify(requestForAttestation)
   await attestClaim(attester, requestForAttestation)
 }

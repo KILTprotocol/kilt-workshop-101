@@ -16,11 +16,11 @@ async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   // const mnemonic = "<claimerMnemonic>"; //❗️ UNCOMMENT-LINE in workshop ❗️
   await Kilt.init()
-  
+
   const mnemonic = Kilt.Identity.generateMnemonic() // ❗️ REMOVE-LINE in workshop ❗️
   const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
-
+  
   const claimContents = {
     name: 'Alice',
     age: 25,
@@ -41,7 +41,7 @@ main()
 async function main2() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   await Kilt.init()
-  
+
   const mnemonic = Kilt.Identity.generateMnemonic()
   const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
@@ -57,7 +57,10 @@ async function main2() {
   )
 
   /* 🚧 2️⃣ COPY_START for requestForAttestation_example (below this comment) 🚧 */
-  const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
+  const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
+    claim,
+    claimer
+  )
 
   // log this so you can paste it locally
   console.log(

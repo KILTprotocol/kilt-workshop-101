@@ -13,8 +13,6 @@ import ctype from './2_ctypeFromSchema'
 // constants
 const FaucetSeed =
   'receive clutch item involve chaos clutch furnace arrest claw isolate okay together'
-/* clone of CtypeOnChain from @kiltprotocol/sdk-js/build/__integrationtests__/utils.ts */
-export const wannabeFaucet = Kilt.Identity.buildFromURI(FaucetSeed)
 export const nonce = '3a66fc28-379c-4443-9537-a00169fd76a4'
 export const signedNonce =
   '0x007f6f168bc6f0eda62b3af50bb86a1e5043fa33ec6e44e21ea66c6edda2a51d57de844c3105943a79bfad3851e056687566ee47fac58384a6fb92aaa8c0561800'
@@ -24,15 +22,6 @@ export const dataToVerifyJSONString = JSON.stringify({
   signedNonce,
   attestedClaimStruct: JSON.parse(attestedClaimJSONString),
 })
-
-/* clone of CtypeOnChain from @kiltprotocol/sdk-js/build/__integrationtests__/utils.ts */
-export async function CtypeOnChain(ctype: Kilt.CType): Promise<boolean> {
-  return getOwner(ctype.hash)
-    .then((ownerAddress) => {
-      return ownerAddress !== null
-    })
-    .catch(() => false)
-}
 
 /**
  * Creates all necessary identities and objects for attesting a claim until you would have to touch the chain.
@@ -51,8 +40,14 @@ export async function setup(): Promise<{
   attestation: Kilt.Attestation
   attestedClaim: Kilt.AttestedClaim
 }> {
+  await Kilt.init({ address: 'wss://full-nodes.kilt.io:9944' })
+  const wannabeFaucet = Kilt.Identity.buildFromURI(FaucetSeed, {
+    signingKeyPairType: 'ed25519',
+  })
   // claim
-  const claimer = await Kilt.Identity.buildFromURI('//Bob')
+  const claimer = Kilt.Identity.buildFromURI('//Bob', {
+    signingKeyPairType: 'ed25519',
+  })
   const claimContents = {
     name: 'Alice',
     age: 25,
@@ -64,19 +59,21 @@ export async function setup(): Promise<{
   )
 
   // request for attestation
-  const requestForAttestation =
-    await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
+  const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
+    claim,
+    claimer
+  )
   const requestForAttestationJSONString = JSON.stringify(requestForAttestation)
   const requestForAttestationStruct = JSON.parse(
     JSON.stringify(requestForAttestation)
   )
 
   // attestation
-  const attester = await wannabeFaucet
+  const attester = wannabeFaucet
 
-  if (!(await CtypeOnChain(ctype))) {
+  if (!(await Kilt.CTypeUtils.verifyStored(ctype))) {
     console.log('Missing CTPYE on chain, storing now...')
-    
+
     await ctype.store()
   }
 

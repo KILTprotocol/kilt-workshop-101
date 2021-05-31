@@ -43,7 +43,7 @@
     "@kiltprotocol/utils" "0.21.0"
     typescript-logging "^0.6.4"
 
-"@kiltprotocol/core@0.21.0", "@kiltprotocol/core@^0.21.0":
+"@kiltprotocol/core@0.21.0":
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/@kiltprotocol/core/-/core-0.21.0.tgz#7b979725587f15278fbe3ece327cb1e3b73e1bdc"
   integrity sha512-/w6WX0T/ik4JczmRtqHa8pxKhVNYgtM0DvogpffFbcokDngH+dP4mGafCwHOellDxcwqIMUBx+dIHtQyDcnk1g==
