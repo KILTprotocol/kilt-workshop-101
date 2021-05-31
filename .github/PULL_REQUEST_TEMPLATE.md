@@ -16,7 +16,8 @@ yarn ts-node 6_verification-with-nonce.ts
 
 ## Checklist:
 
-- [ ] The tests and the guide inside the MD are in sync
+- [ ] The tests inside the MD are in sync
+- [ ] The guide inside the MD are in sync
 - [ ] I have verified that the code works
 - [ ] I have verified that the code is easy to understand
 - [ ] I have [left the code in a better state](https://deviq.com/principles/boy-scout-rule)
