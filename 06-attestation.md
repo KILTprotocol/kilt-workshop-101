@@ -92,7 +92,7 @@ console.log(
 )
 
 // store the attestation on chain
-await attestation.store(attester).then((tx) => {
+await attestation.store(attester).then(async (tx) => {
   await Kilt.BlockchainUtils.submitSignedTx(tx, {
     resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
     })

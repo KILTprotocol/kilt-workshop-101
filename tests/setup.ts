@@ -8,7 +8,6 @@
  */
 
 import * as Kilt from '@kiltprotocol/sdk-js'
-import { getOwner } from '@kiltprotocol/sdk-js/build/ctype/CType.chain'
 import ctype from './2_ctypeFromSchema'
 
 // constants
@@ -65,9 +64,8 @@ export async function setup(): Promise<{
   )
 
   // request for attestation
-  const {
-    message: requestForAttestation,
-  } = await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
+  const requestForAttestation =
+    await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
   const requestForAttestationJSONString = JSON.stringify(requestForAttestation)
   const requestForAttestationStruct = JSON.parse(
     JSON.stringify(requestForAttestation)
@@ -78,7 +76,7 @@ export async function setup(): Promise<{
 
   if (!(await CtypeOnChain(ctype))) {
     console.log('Missing CTPYE on chain, storing now...')
-    await ctype.store(attester)
+    await ctype.store()
   }
 
   const isDataValid = requestForAttestation.verifyData()
