@@ -25,6 +25,7 @@ async function main() {
   }
 
   console.log('Attested claim:\n', attestedClaimStruct.request.claim)
+  
   console.log('dataToVerifyJSONString:\n', JSON.stringify(dataToVerify, undefined, 2))
 }
 
