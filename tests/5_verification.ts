@@ -8,7 +8,8 @@ import setup from './setup'
 
 async function main() {
   // create an attested claim from the JSON string
-  const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
+  const attestedClaimStruct = (await setup()).attestedClaim // ❗️ REMOVE-LINE in workshop ❗️
+  // const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>') //❗️ UNCOMMENT-LINE in workshop ❗️
   const attestedClaim =
     Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct)
 
