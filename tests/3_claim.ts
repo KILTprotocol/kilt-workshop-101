@@ -18,7 +18,7 @@ async function main() {
   await Kilt.init()
   
   const mnemonic = Kilt.Identity.generateMnemonic() // ❗️ REMOVE-LINE in workshop ❗️
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
 
   const claimContents = {
@@ -43,7 +43,7 @@ async function main2() {
   await Kilt.init()
   
   const mnemonic = Kilt.Identity.generateMnemonic()
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',

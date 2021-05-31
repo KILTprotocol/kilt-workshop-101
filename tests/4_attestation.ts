@@ -49,7 +49,7 @@ async function attestClaim(
   await Kilt.init()
   
   // build the attestation object
-  const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
+  const attestation = Kilt.Attestation.fromRequestAndPublicIdentity(
     requestForAttestation,
     attester.getPublicIdentity()
   )
