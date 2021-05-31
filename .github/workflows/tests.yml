@@ -3,6 +3,7 @@ name: Test
 on:
   repository_dispatch:
     types: [sdk-update]
+  pull_request:
 
 jobs:
   integration_test:
