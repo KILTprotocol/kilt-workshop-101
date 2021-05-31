@@ -18,6 +18,7 @@ async function main(requestForAttestationStruct: Kilt.RequestForAttestation) {
   // const requestForAttestationStruct = JSON.parse("<requestForAttestationJSONString>"); //❗️ UNCOMMENT-LINE in workshop ❗️
   // @ts-ignore // ❗️ REMOVE-LINE in workshop ❗️
   await Kilt.init()
+  
   const requestForAttestation = Kilt.RequestForAttestation.fromRequest(
     requestForAttestationStruct
   )
@@ -32,6 +33,7 @@ async function attestationVerify(
 ) {
   /* 🚧 2️⃣ COPY_START for attestationVerify_example (below this comment) 🚧  */
   await Kilt.init()
+  
   const isDataValid = requestForAttestation.verifyData()
   const isSignatureValid = requestForAttestation.verifySignature()
   console.log('isDataValid: ', isDataValid)
@@ -45,6 +47,7 @@ async function attestClaim(
 ) {
   /* 🚧 3️⃣ COPY_START for attestClaim_example (below this comment) 🚧  */
   await Kilt.init()
+  
   // build the attestation object
   const attestation = await Kilt.Attestation.fromRequestAndPublicIdentity(
     requestForAttestation,

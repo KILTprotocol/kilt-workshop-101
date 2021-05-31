@@ -76,6 +76,7 @@ export async function setup(): Promise<{
 
   if (!(await CtypeOnChain(ctype))) {
     console.log('Missing CTPYE on chain, storing now...')
+    
     await ctype.store()
   }
 

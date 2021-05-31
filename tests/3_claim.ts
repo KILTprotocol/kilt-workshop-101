@@ -16,6 +16,7 @@ async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   // const mnemonic = "<claimerMnemonic>"; //❗️ UNCOMMENT-LINE in workshop ❗️
   await Kilt.init()
+  
   const mnemonic = Kilt.Identity.generateMnemonic() // ❗️ REMOVE-LINE in workshop ❗️
   const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
 
@@ -40,6 +41,7 @@ main()
 async function main2() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   await Kilt.init()
+  
   const mnemonic = Kilt.Identity.generateMnemonic()
   const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
 
