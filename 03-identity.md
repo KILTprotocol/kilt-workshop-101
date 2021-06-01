@@ -42,6 +42,7 @@ const Kilt = require('@kiltprotocol/sdk-js')
 
 // wrap call inside async function
 async function main() {
+  await Kilt.init()
   const mnemonic = Kilt.Identity.generateMnemonic()
   console.log('Mnemonic: ', mnemonic)
 
@@ -82,6 +83,8 @@ const Kilt = require('@kiltprotocol/sdk-js')
 
 // wrap call inside async function
 async function identities() {
+  await Kilt.init()
+
   const claimerMnemonic = Kilt.Identity.generateMnemonic()
   console.log('Claimer mnemonic: ', claimerMnemonic)
   const claimer = Kilt.Identity.buildFromMnemonic(claimerMnemonic)

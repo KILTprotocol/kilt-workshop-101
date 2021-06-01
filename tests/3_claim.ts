@@ -4,6 +4,7 @@
 /* eslint-disable no-console */
 import * as Kilt from '@kiltprotocol/sdk-js'
 import ctype from './2_ctypeFromSchema'
+import setup from './setup'
 
 /* 🚧 1️⃣ COPY_START for claim_example (below this comment) 🚧  */
 // const Kilt = require('@kiltprotocol/sdk-js') //❗️ UNCOMMENT-LINE in workshop ❗️
@@ -15,8 +16,9 @@ import ctype from './2_ctypeFromSchema'
 async function main() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
   // const mnemonic = "<claimerMnemonic>"; //❗️ UNCOMMENT-LINE in workshop ❗️
+
   const mnemonic = Kilt.Identity.generateMnemonic() // ❗️ REMOVE-LINE in workshop ❗️
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',
@@ -31,14 +33,13 @@ async function main() {
   )
 }
 
-// execute calls
-main()
 /* 🚧 1️⃣ COPY_END for claim_example (above this comment) 🚧 */
 
 async function main2() {
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
+
   const mnemonic = Kilt.Identity.generateMnemonic()
-  const claimer = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 
   const claimContents = {
     name: 'Alice',
@@ -50,17 +51,28 @@ async function main2() {
     claimContents,
     claimer.address
   )
+
   /* 🚧 2️⃣ COPY_START for requestForAttestation_example (below this comment) 🚧 */
-  const {
-    message: requestForAttestation,
-  } = await Kilt.RequestForAttestation.fromClaimAndIdentity(claim, claimer)
+  const requestForAttestation = Kilt.RequestForAttestation.fromClaimAndIdentity(
+    claim,
+    claimer
+  )
 
   // log this so you can paste it locally
   console.log(
-    'requestForAttestationJSONString: ',
+    'requestForAttestationJSONString:\n',
     JSON.stringify(requestForAttestation)
   )
   /* 🚧 2️⃣ COPY_END for requestForAttestation_example (above this comment) 🚧 */
 }
+// execute calls
 
-main2()
+async function execution() {
+  await setup()
+  main()
+  main2()
+  await Kilt.disconnect()
+  console.log('Disconnected from KILT testnet')
+}
+
+execution()

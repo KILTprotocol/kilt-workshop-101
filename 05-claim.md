@@ -36,7 +36,10 @@ const ctype = require('./ctype.json')
 
 // wrap call inside async function
 async function main() {
+  await Kilt.init()
+  
   // <claimerMnemonic> is for example 'gold upset segment cake universe carry demand comfort dawn invite element capital'
+
   const mnemonic = '<claimerMnemonic>'
   const claimer = Kilt.Identity.buildFromMnemonic(mnemonic)
 

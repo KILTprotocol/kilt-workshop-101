@@ -34,11 +34,10 @@ const Kilt = require('@kiltprotocol/sdk-js')
 async function main() {
   // create an attested claim from the JSON string
   const attestedClaimStruct = JSON.parse('<attestedClaimJSONString>')
-  const attestedClaim = Kilt.AttestedClaim.fromAttestedClaim(
-    attestedClaimStruct
-  )
+  const attestedClaim =
+    Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct)
 
-  await Kilt.init({address: 'wss://full-nodes.kilt.io:9944'})
+  await Kilt.init({ address: 'wss://full-nodes.kilt.io:9944' })
   await Kilt.connect()
   console.log(
     'Successfully connected to KILT testnet, verifying attested claim next...'

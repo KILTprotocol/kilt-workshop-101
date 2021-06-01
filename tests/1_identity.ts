@@ -8,10 +8,12 @@ import * as Kilt from '@kiltprotocol/sdk-js'
 
 // wrap call inside async function
 async function main() {
+  await Kilt.init()
+  
   const mnemonic = Kilt.Identity.generateMnemonic()
   console.log('mnemonic:', mnemonic)
 
-  const identity = await Kilt.Identity.buildFromMnemonic(mnemonic)
+  const identity = Kilt.Identity.buildFromMnemonic(mnemonic)
   console.log('address:', identity.address)
 }
 
@@ -25,14 +27,16 @@ main()
 
 // wrap call inside async function
 async function identities() {
+  await Kilt.init()
+  
   const claimerMnemonic = Kilt.Identity.generateMnemonic()
   console.log('claimer mnemonic:', claimerMnemonic)
-  const claimer = await Kilt.Identity.buildFromMnemonic(claimerMnemonic)
+  const claimer = Kilt.Identity.buildFromMnemonic(claimerMnemonic)
   console.log('claimer address:', claimer.address)
 
   const attesterMnemonic = Kilt.Identity.generateMnemonic()
   console.log('attester mnemonic:', attesterMnemonic)
-  const attester = await Kilt.Identity.buildFromMnemonic(attesterMnemonic)
+  const attester = Kilt.Identity.buildFromMnemonic(attesterMnemonic)
   console.log('attester address:', attester.address)
 }
 
