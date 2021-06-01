@@ -40,7 +40,7 @@ export async function setup(): Promise<{
   attestation: Kilt.Attestation
   attestedClaim: Kilt.AttestedClaim
 }> {
-  await Kilt.init({ address: 'wss://full-nodes.kilt.io:9944' })
+  await Kilt.init({ address: 'ws://127.0.0.1:9944' })
   const wannabeFaucet = Kilt.Identity.buildFromURI(FaucetSeed, {
     signingKeyPairType: 'ed25519',
   })
@@ -52,6 +52,19 @@ export async function setup(): Promise<{
     name: 'Alice',
     age: 25,
   }
+  // attestation
+  const attester = wannabeFaucet
+
+  if (!(await ctype.verifyStored())) {
+    console.log('Missing CTPYE on chain, storing now...')
+
+    const tx = await ctype.store()
+
+    await Kilt.BlockchainUtils.signAndSubmitTx(tx, attester, {
+      resolveOn: Kilt.BlockchainUtils.IS_IN_BLOCK,
+    })
+  }
+
   const claim = Kilt.Claim.fromCTypeAndClaimContents(
     ctype,
     claimContents,
@@ -67,15 +80,6 @@ export async function setup(): Promise<{
   const requestForAttestationStruct = JSON.parse(
     JSON.stringify(requestForAttestation)
   )
-
-  // attestation
-  const attester = wannabeFaucet
-
-  if (!(await Kilt.CTypeUtils.verifyStored(ctype))) {
-    console.log('Missing CTPYE on chain, storing now...')
-
-    await ctype.store()
-  }
 
   const isDataValid = requestForAttestation.verifyData()
   const isSignatureValid = requestForAttestation.verifySignature()

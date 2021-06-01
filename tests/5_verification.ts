@@ -13,7 +13,6 @@ async function main() {
   const attestedClaim =
     Kilt.AttestedClaim.fromAttestedClaim(attestedClaimStruct)
 
-  await Kilt.init({ address: 'wss://full-nodes.kilt.io:9944' })
   await Kilt.connect()
   console.log(
     'Successfully connected to KILT testnet, verifying attested claim next...'
