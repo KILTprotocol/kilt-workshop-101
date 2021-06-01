@@ -49,9 +49,6 @@ async function attestClaim(
     attester.getPublicIdentity()
   )
 
-  console.log(
-    'Successfully connected to KILT testnet, storing attestation next...'
-  )
   // store the attestation on chain
 
   const tx = await attestation.store()

@@ -10,9 +10,9 @@ async function main() {
   await Kilt.init()
   // <nonce> = nonce received from the verifier (copied from above)
   // const nonce = '<nonce>'  //❗️ UNCOMMENT-LINE in workshop ❗️
-  const claimer = Kilt.Identity.buildFromURI(
-    'cattle daring upset race urge during fish brand coral veteran crime seminar'
-  ) //❗️ COMMENT-LINE in workshop ❗️
+  const claimer = Kilt.Identity.buildFromURI('//Bob', {
+    signingKeyPairType: 'ed25519',
+  }) //❗️ COMMENT-LINE in workshop ❗️
 
   // <claimerMnemonic> = claimer mnemonic generated in the Identity step
   // const claimer = Kilt.Identity.buildFromMnemonic('<claimerMnemonic>') //❗️ UNCOMMENT-LINE in workshop ❗️
