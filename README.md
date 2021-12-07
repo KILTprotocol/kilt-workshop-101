@@ -1,3 +1,5 @@
+⚠️⚠️⚠️ This workshop is deprecated! Please head over to [the new workshop](https://dev.kilt.io/docs/sdk/workshop/welcome/) ⚠️⚠️⚠️
+
 # KILT Tutorial 101
 
 SDK version **0.19.0**.
